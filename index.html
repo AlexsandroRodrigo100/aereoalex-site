@@ -154,4 +154,226 @@ style="display:inline-block;background:#19a463;color:#fff;text-decoration:none;p
 
 <footer>
 
-<b>Aéreo<span class="yellow">
+<b>Aéreo<span class="yellow">Alex</span></b>
+<br>
+Fotografia • Vídeos Aéreos
+<br>
+<small>Zona Sul de São Paulo • Orçamento personalizado</small>
+<br><br>
+
+<strong>
+📞 <a href="tel:+5511953169968" style="color:#fff;text-decoration:none">
+(11) 95316-9968
+</a>
+</strong>
+
+<br><br>
+
+<a href="https://wa.me/5511953169968"
+target="_blank"
+style="display:inline-block;background:#19a463;color:#fff;text-decoration:none;padding:12px 20px;border-radius:24px;font-weight:900">
+💬 Falar pelo WhatsApp
+</a>
+
+</footer>
+
+<div class="modal" id="modal">
+
+<div class="sheet">
+
+<button class="close" onclick="closeCart()">✕</button>
+
+<h2>Seu orçamento</h2>
+
+<div id="items"></div>
+
+<div class="total">
+Total dos serviços: R$ <span id="total">0,00</span>
+</div>
+
+<p>O deslocamento será calculado separadamente.</p>
+
+<button class="whats" onclick="sendWhats()">
+Solicitar orçamento pelo WhatsApp
+</button>
+
+</div>
+</div>
+
+<script>
+
+const services=[
+
+{id:1,cat:'foto',icon:'📷',name:'10 fotos aéreas',desc:'Fotos aéreas em alta resolução',price:180,details:['10 fotos digitais','Captação aérea','Arquivos prontos para uso']},
+
+{id:2,cat:'foto',icon:'📷',name:'20 fotos aéreas',desc:'Mais imagens para apresentar seu projeto',price:250,details:['20 fotos digitais','Captação aérea','Arquivos prontos para uso'],popular:true},
+
+{id:3,cat:'foto',icon:'📷',name:'30 fotos aéreas',desc:'Pacote ampliado de fotografias',price:300,details:['30 fotos digitais','Captação aérea','Arquivos prontos para uso']},
+
+{id:4,cat:'foto',icon:'📷',name:'Foto extra',desc:'Adicione fotografias ao pacote',price:4,unit:'/ foto',details:['A partir da contratação de um pacote','Quantidade livre']},
+
+{id:5,cat:'video',icon:'🎬',name:'Vídeo bruto • até 1 min',desc:'Material sem edição',price:180,details:['Até 1 minuto de vídeo','Arquivo bruto','Captação aérea']},
+
+{id:6,cat:'video',icon:'🎬',name:'Vídeo bruto • até 3 min',desc:'Material sem edição',price:280,details:['Até 3 minutos','Arquivo bruto','Captação aérea']},
+
+{id:7,cat:'video',icon:'🎬',name:'Vídeo bruto • até 5 min',desc:'Material sem edição',price:350,details:['Até 5 minutos','Arquivo bruto','Captação aérea']},
+
+{id:8,cat:'video',icon:'🎞️',name:'Vídeo editado • até 1 min',desc:'Edição dinâmica para divulgação',price:280,details:['Até 1 minuto final','Cortes e montagem','Arquivo final editado']},
+
+{id:9,cat:'video',icon:'🎞️',name:'Vídeo editado • até 3 min',desc:'Edição completa para apresentação',price:400,details:['Até 3 minutos finais','Cortes e montagem','Trilha conforme disponibilidade/licença']},
+
+{id:10,cat:'video',icon:'🎞️',name:'Vídeo editado • até 5 min',desc:'Vídeo completo para divulgação',price:550,details:['Até 5 minutos finais','Cortes e montagem','Entrega do arquivo final']},
+
+{id:11,cat:'pacote',icon:'⭐',name:'Imóveis e terrenos',desc:'Pacote para anúncio e divulgação',price:350,details:['15 fotos','Vídeo de até 2 min','Captação aérea']},
+
+{id:12,cat:'pacote',icon:'🏗️',name:'Obras e construções',desc:'Acompanhamento e apresentação',price:380,details:['15 fotos','Vídeo de até 2 min','Captação aérea']},
+
+{id:13,cat:'pacote',icon:'🌳',name:'Chácaras e sítios',desc:'Apresentação completa da propriedade',price:450,details:['20 fotos','Vídeo de até 3 min','Captação aérea']},
+
+{id:14,cat:'pacote',icon:'🎉',name:'Pequenos eventos',desc:'Registro aéreo do evento',price:500,details:['1 hora de captação','20 fotos','Clipes brutos de até 3 min no total']}
+
+];
+
+let cart=[];
+
+function money(v){
+return v.toLocaleString('pt-BR',{
+minimumFractionDigits:2
+})
+}
+
+function render(list=services){
+
+document.getElementById('cards').innerHTML=list.map(s=>`
+
+<div class="card ${s.popular?'popular':''}">
+
+${s.popular?'<div class="badge">MAIS ESCOLHIDO</div>':''}
+
+<div class="icon">${s.icon}</div>
+
+<h3>${s.name}</h3>
+
+<p>${s.desc}</p>
+
+<div class="price">
+R$ ${money(s.price)}
+<span class="unit">${s.unit||''}</span>
+</div>
+
+<ul>
+${s.details.map(x=>`<li>${x}</li>`).join('')}
+</ul>
+
+<button class="btn" onclick="add(${s.id})">
+Adicionar ao orçamento
+</button>
+
+</div>
+
+`).join('');
+
+}
+
+function filter(cat,el){
+
+document.querySelectorAll('.tab')
+.forEach(x=>x.classList.remove('active'));
+
+el.classList.add('active');
+
+render(
+cat==='todos'
+?services
+:services.filter(s=>s.cat===cat)
+);
+
+}
+
+function add(id){
+
+let s=services.find(x=>x.id===id);
+
+cart.push(s);
+
+document.getElementById('count').textContent=cart.length;
+
+}
+
+function openCart(){
+
+document.getElementById('modal')
+.classList.add('open');
+
+let total=cart.reduce((a,b)=>a+b.price,0);
+
+document.getElementById('items').innerHTML=
+
+cart.length
+
+?
+
+cart.map((x,i)=>`
+
+<div class="line">
+
+<span>${i+1}. ${x.name}</span>
+
+<b>R$ ${money(x.price)}</b>
+
+</div>
+
+`).join('')
+
+:
+
+'<p>Nenhum serviço selecionado.</p>';
+
+document.getElementById('total')
+.textContent=money(total);
+
+}
+
+function closeCart(){
+
+document.getElementById('modal')
+.classList.remove('open');
+
+}
+
+/* WHATSAPP DO AÉREOALEX */
+
+function sendWhats(){
+
+let total=cart.reduce((a,b)=>a+b.price,0);
+
+let text=
+'Olá! Gostaria de solicitar um orçamento com a AéreoAlex.\n\n'
++
+cart.map(x=>
+'• '+x.name+' — R$ '+money(x.price)
+).join('\n')
++
+'\n\nSubtotal dos serviços: R$ '
++
+money(total)
++
+'\n\nLocal do serviço: ';
+
+let url=
+'https://wa.me/5511953169968?text='
++
+encodeURIComponent(text);
+
+/* Abre diretamente o WhatsApp */
+
+window.location.href=url;
+
+}
+
+render();
+
+</script>
+
+</body>
+</html>

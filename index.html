@@ -3,9 +3,11 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 <title>AéreoAlex | Fotos e Vídeos com Drone</title>
 
 <style>
+
 :root{
   --blue:#061b3a;
   --blue2:#0b2d5c;
@@ -28,6 +30,8 @@ body{
   background:var(--gray);
   color:var(--text);
 }
+
+/* ================= HEADER ================= */
 
 header{
   position:sticky;
@@ -62,16 +66,20 @@ header{
   cursor:pointer;
 }
 
+/* ================= HERO ================= */
+
 .hero{
   min-height:360px;
   background:
     linear-gradient(rgba(0,20,50,.65),rgba(0,20,50,.75)),
     url("https://images.unsplash.com/photo-1473968512647-3e447244af8f?auto=format&fit=crop&w=1600&q=80")
     center/cover;
+
   display:flex;
   align-items:center;
   justify-content:center;
   text-align:center;
+
   color:#fff;
   padding:40px 20px;
 }
@@ -88,11 +96,15 @@ header{
   line-height:1.6;
 }
 
+/* ================= CONTAINER ================= */
+
 .container{
   max-width:1150px;
   margin:auto;
   padding:35px 18px;
 }
+
+/* ================= TABS ================= */
 
 .tabs{
   display:flex;
@@ -115,6 +127,8 @@ header{
   background:var(--blue);
   color:#fff;
 }
+
+/* ================= SERVIÇOS ================= */
 
 .grid{
   display:grid;
@@ -175,6 +189,8 @@ header{
   background:var(--blue2);
 }
 
+/* ================= ENDEREÇO ================= */
+
 .address-box{
   margin-top:35px;
   background:#fff;
@@ -224,12 +240,6 @@ header{
 .add-address-btn{
   background:var(--yellow);
   color:#111;
-  display:none;
-}
-
-.address-status{
-  margin-top:14px;
-  font-weight:bold;
 }
 
 .distance-result{
@@ -241,6 +251,13 @@ header{
   line-height:1.7;
 }
 
+.address-status{
+  margin-top:14px;
+  font-weight:bold;
+}
+
+/* ================= INFORMAÇÕES ================= */
+
 .info{
   margin-top:25px;
   background:#fff;
@@ -248,6 +265,8 @@ header{
   border-radius:15px;
   line-height:1.7;
 }
+
+/* ================= COMO FUNCIONA ================= */
 
 .how{
   margin-top:40px;
@@ -271,6 +290,8 @@ header{
   font-size:35px;
   margin-bottom:10px;
 }
+
+/* ================= CTA ================= */
 
 .cta{
   margin-top:40px;
@@ -296,6 +317,8 @@ header{
   font-weight:bold;
 }
 
+/* ================= FOOTER ================= */
+
 footer{
   background:#031329;
   color:#fff;
@@ -305,7 +328,7 @@ footer{
   line-height:1.8;
 }
 
-/* MODAL */
+/* ================= MODAL ================= */
 
 .modal{
   display:none;
@@ -313,6 +336,7 @@ footer{
   inset:0;
   background:rgba(0,0,0,.65);
   z-index:999;
+
   align-items:flex-end;
   justify-content:center;
 }
@@ -326,19 +350,26 @@ footer{
   max-width:700px;
   max-height:90vh;
   overflow-y:auto;
+
   background:#fff;
+
   border-radius:22px 22px 0 0;
+
   padding:25px;
+
   animation:up .25s ease;
 }
 
 @keyframes up{
+
   from{
     transform:translateY(100%);
   }
+
   to{
     transform:translateY(0);
   }
+
 }
 
 .sheet-header{
@@ -358,14 +389,20 @@ footer{
   cursor:pointer;
 }
 
+/* ================= ITEM DO ORÇAMENTO ================= */
+
 .cart-item{
   display:flex;
   justify-content:space-between;
   align-items:center;
   gap:12px;
+
   background:#f7f8fa;
+
   padding:14px;
+
   border-radius:12px;
+
   margin-bottom:10px;
 }
 
@@ -384,20 +421,33 @@ footer{
 
 .remove-btn{
   border:0;
+
   background:#ffe5e5;
+
   color:var(--danger);
+
   padding:9px 11px;
+
   border-radius:8px;
+
   cursor:pointer;
+
   font-weight:bold;
+
   white-space:nowrap;
 }
 
+/* ================= ENDEREÇO NO ORÇAMENTO ================= */
+
 .address-cart{
   background:#eef5ff;
+
   padding:15px;
+
   border-radius:12px;
+
   margin-top:15px;
+
   margin-bottom:10px;
 }
 
@@ -408,41 +458,1495 @@ footer{
 
 .address-cart-text{
   color:#475467;
+
   line-height:1.5;
+
   word-break:break-word;
 }
 
 .remove-address{
   border:0;
+
   margin-top:10px;
+
   background:#ffe5e5;
+
   color:var(--danger);
+
   padding:9px 11px;
+
   border-radius:8px;
+
   cursor:pointer;
+
   font-weight:bold;
 }
 
 .distance-cart{
   margin-top:8px;
+
   color:#475467;
+
   line-height:1.5;
 }
 
+/* ================= TOTAL ================= */
+
 .total{
   display:flex;
+
   justify-content:space-between;
+
   align-items:center;
+
   font-size:22px;
+
   font-weight:900;
+
   padding:20px 0;
+
   border-top:1px solid #ddd;
+
   margin-top:15px;
 }
 
+/* ================= WHATSAPP ================= */
+
 .send{
   width:100%;
+
   border:0;
+
   background:var(--green);
+
   color:#fff;
- 
+
+  padding:16px;
+
+  border-radius:12px;
+
+  font-size:17px;
+
+  font-weight:bold;
+
+  cursor:pointer;
+}
+
+.empty{
+  text-align:center;
+
+  padding:30px;
+
+  color:#667085;
+}
+
+/* ================= CELULAR ================= */
+
+@media(max-width:600px){
+
+  .hero h1{
+    font-size:32px;
+  }
+
+  .hero p{
+    font-size:16px;
+  }
+
+  .cart-item{
+    align-items:flex-start;
+  }
+
+  .remove-btn{
+    font-size:12px;
+  }
+
+}
+
+</style>
+</head>
+
+
+<body>
+
+
+<!-- ================= HEADER ================= -->
+
+<header>
+
+  <div class="logo">
+    Aéreo<span>Alex</span>
+  </div>
+
+  <button
+    class="cart-btn"
+    onclick="openCart()">
+
+    🛒 Orçamento
+    <span id="count">0</span>
+
+  </button>
+
+</header>
+
+
+<!-- ================= HERO ================= -->
+
+<section class="hero">
+
+  <div>
+
+    <h1>
+      Imagens que valorizam seu projeto
+    </h1>
+
+    <p>
+      Fotos e vídeos profissionais com drone
+      para imóveis, terrenos, chácaras,
+      sítios, obras, eventos e muito mais.
+    </p>
+
+  </div>
+
+</section>
+
+
+<!-- ================= CONTEÚDO ================= -->
+
+<main class="container">
+
+
+  <!-- ABAS -->
+
+  <div class="tabs">
+
+    <button
+      class="active"
+      onclick="filterServices('todos',this)">
+
+      Todos
+
+    </button>
+
+    <button
+      onclick="filterServices('fotos',this)">
+
+      Fotos
+
+    </button>
+
+    <button
+      onclick="filterServices('videos',this)">
+
+      Vídeos
+
+    </button>
+
+    <button
+      onclick="filterServices('pacotes',this)">
+
+      Pacotes
+
+    </button>
+
+  </div>
+
+
+  <!-- SERVIÇOS -->
+
+  <div
+    id="services"
+    class="grid">
+  </div>
+
+
+  <!-- ================= ENDEREÇO ================= -->
+
+  <section class="address-box">
+
+    <h2>
+      📍 Local do serviço
+    </h2>
+
+    <p>
+      Informe o endereço onde o serviço será realizado.
+    </p>
+
+
+    <input
+      id="clientAddress"
+      class="address-input"
+      type="text"
+      placeholder="Digite o endereço do serviço"
+    >
+
+
+    <div class="address-actions">
+
+
+      <!-- BOTÃO CALCULAR -->
+
+      <button
+        class="calculate-btn"
+        onclick="calculateDistance()">
+
+        📏 Calcular deslocamento
+
+      </button>
+
+
+      <!-- BOTÃO ANEXAR ENDEREÇO -->
+
+      <button
+        id="addAddressBtn"
+        class="add-address-btn"
+        onclick="addAddressToBudget()">
+
+        ➕ Anexar endereço ao orçamento
+
+      </button>
+
+
+      <!-- BOTÃO ADICIONAR DESLOCAMENTO -->
+
+      <button
+        id="addDistanceBtn"
+        class="add-address-btn"
+        onclick="addDistanceToBudget()"
+        style="display:none;">
+
+        ➕ Acrescentar deslocamento ao orçamento
+
+      </button>
+
+
+    </div>
+
+
+    <div
+      id="addressStatus"
+      class="address-status">
+
+      Digite o endereço do local onde o serviço será realizado.
+
+    </div>
+
+
+    <div
+      id="distanceResult"
+      class="distance-result">
+    </div>
+
+  </section>
+
+
+  <!-- ================= INFORMAÇÕES ================= -->
+
+  <div class="info">
+
+    <b>📌 Deslocamento:</b><br>
+
+    O valor do deslocamento será calculado
+    de acordo com a distância até o local do serviço.
+
+    <br><br>
+
+    O orçamento final será enviado pelo WhatsApp
+    para confirmação.
+
+  </div>
+
+
+  <!-- ================= COMO FUNCIONA ================= -->
+
+  <section class="how">
+
+    <h2>
+      Como funciona?
+    </h2>
+
+
+    <div class="how-grid">
+
+
+      <div class="how-card">
+
+        <div class="icon">
+          📋
+        </div>
+
+        <h3>
+          1. Escolha
+        </h3>
+
+        <p>
+          Selecione os serviços desejados.
+        </p>
+
+      </div>
+
+
+      <div class="how-card">
+
+        <div class="icon">
+          📍
+        </div>
+
+        <h3>
+          2. Local
+        </h3>
+
+        <p>
+          Informe o endereço do serviço.
+        </p>
+
+      </div>
+
+
+      <div class="how-card">
+
+        <div class="icon">
+          💰
+        </div>
+
+        <h3>
+          3. Orçamento
+        </h3>
+
+        <p>
+          Veja o valor estimado.
+        </p>
+
+      </div>
+
+
+      <div class="how-card">
+
+        <div class="icon">
+          📱
+        </div>
+
+        <h3>
+          4. WhatsApp
+        </h3>
+
+        <p>
+          Envie o orçamento para confirmação.
+        </p>
+
+      </div>
+
+
+    </div>
+
+  </section>
+
+
+  <!-- ================= CTA ================= -->
+
+  <section class="cta">
+
+    <h2>
+      Precisa de imagens profissionais?
+    </h2>
+
+    <p>
+      Entre em contato e solicite seu orçamento.
+    </p>
+
+
+    <a
+      class="whats"
+      href="https://wa.me/5511953169968"
+      target="_blank">
+
+      📱 Falar pelo WhatsApp
+
+    </a>
+
+  </section>
+
+
+</main>
+
+
+<!-- ================= FOOTER ================= -->
+
+<footer>
+
+  <strong>
+    AéreoAlex
+  </strong>
+
+  <br>
+
+  Fotos e vídeos profissionais com drone
+
+  <br>
+
+  📱 WhatsApp: (11) 95316-9968
+
+</footer>
+
+
+<!-- ================= MODAL ORÇAMENTO ================= -->
+
+<div
+  id="modal"
+  class="modal"
+  onclick="closeOutside(event)">
+
+
+  <div class="sheet">
+
+
+    <div class="sheet-header">
+
+      <h2>
+        🛒 Seu orçamento
+      </h2>
+
+
+      <button
+        class="close"
+        onclick="closeCart()">
+
+        ×
+
+      </button>
+
+    </div>
+
+
+    <div id="cartContent">
+    </div>
+
+
+    <div class="total">
+
+      <span>
+        Total
+      </span>
+
+      <span id="total">
+        R$ 0,00
+      </span>
+
+    </div>
+
+
+    <button
+      class="send"
+      onclick="sendWhats()">
+
+      📱 Enviar orçamento pelo WhatsApp
+
+    </button>
+
+
+  </div>
+
+</div>
+
+
+<script>
+
+/* =====================================================
+   CONFIGURAÇÃO DO BACKEND
+   =====================================================
+
+   Caso ainda não tenha o backend de cálculo,
+   deixe assim.
+
+   Depois você poderá colocar aqui a URL do seu
+   backend para calcular automaticamente a distância.
+
+===================================================== */
+
+const DISTANCE_API_URL =
+"COLOQUE_AQUI_A_URL_DO_SEU_BACKEND";
+
+
+/* =====================================================
+   SERVIÇOS
+===================================================== */
+
+const services = [
+
+  {
+    id:1,
+    type:"fotos",
+    name:"10 fotos aéreas",
+    desc:"Fotos aéreas profissionais com drone.",
+    price:180
+  },
+
+  {
+    id:2,
+    type:"fotos",
+    name:"20 fotos aéreas",
+    desc:"Pacote com 20 fotos aéreas profissionais.",
+    price:250,
+    popular:true
+  },
+
+  {
+    id:3,
+    type:"fotos",
+    name:"30 fotos aéreas",
+    desc:"Pacote completo com 30 fotos aéreas.",
+    price:300
+  },
+
+  {
+    id:4,
+    type:"fotos",
+    name:"Foto extra",
+    desc:"Foto adicional além do pacote contratado.",
+    price:4
+  },
+
+  {
+    id:5,
+    type:"videos",
+    name:"Vídeo bruto até 1 minuto",
+    desc:"Captação aérea em vídeo sem edição.",
+    price:180
+  },
+
+  {
+    id:6,
+    type:"videos",
+    name:"Vídeo bruto até 3 minutos",
+    desc:"Captação aérea em vídeo sem edição.",
+    price:280
+  },
+
+  {
+    id:7,
+    type:"videos",
+    name:"Vídeo bruto até 5 minutos",
+    desc:"Captação aérea em vídeo sem edição.",
+    price:350
+  },
+
+  {
+    id:8,
+    type:"videos",
+    name:"Vídeo editado até 1 minuto",
+    desc:"Vídeo aéreo com edição profissional.",
+    price:280
+  },
+
+  {
+    id:9,
+    type:"videos",
+    name:"Vídeo editado até 3 minutos",
+    desc:"Vídeo aéreo com edição profissional.",
+    price:400
+  },
+
+  {
+    id:10,
+    type:"videos",
+    name:"Vídeo editado até 5 minutos",
+    desc:"Vídeo aéreo com edição profissional.",
+    price:550
+  },
+
+  {
+    id:11,
+    type:"pacotes",
+    name:"Imóveis e terrenos",
+    desc:"Fotos e vídeos para divulgação de imóveis e terrenos.",
+    price:350
+  },
+
+  {
+    id:12,
+    type:"pacotes",
+    name:"Obras e construções",
+    desc:"Registro aéreo de obras e construções.",
+    price:380
+  },
+
+  {
+    id:13,
+    type:"pacotes",
+    name:"Chácaras e sítios",
+    desc:"Imagens aéreas para propriedades rurais e lazer.",
+    price:450
+  },
+
+  {
+    id:14,
+    type:"pacotes",
+    name:"Pequenos eventos",
+    desc:"Cobertura aérea de pequenos eventos.",
+    price:500
+  }
+
+];
+
+
+/* =====================================================
+   VARIÁVEIS
+===================================================== */
+
+let cart = [];
+
+let clientAddress = "";
+
+let distanceData = null;
+
+let distanceAdded = false;
+
+
+/* =====================================================
+   DINHEIRO
+===================================================== */
+
+function money(value){
+
+  return Number(value).toLocaleString(
+    "pt-BR",
+    {
+      style:"currency",
+      currency:"BRL"
+    }
+  );
+
+}
+
+
+/* =====================================================
+   RENDERIZAR SERVIÇOS
+===================================================== */
+
+function renderServices(list = services){
+
+  const container =
+    document.getElementById("services");
+
+  container.innerHTML = "";
+
+
+  list.forEach(service => {
+
+    const card =
+      document.createElement("div");
+
+    card.className = "card";
+
+
+    card.innerHTML = `
+
+      ${
+        service.popular
+        ?
+        `<div class="badge">
+          POPULAR
+        </div>`
+        :
+        ""
+      }
+
+      <h3>
+        ${service.name}
+      </h3>
+
+      <p>
+        ${service.desc}
+      </p>
+
+      <div class="price">
+        ${money(service.price)}
+      </div>
+
+      <button
+        class="add-btn"
+        onclick="addService(${service.id})">
+
+        ➕ Adicionar ao orçamento
+
+      </button>
+
+    `;
+
+
+    container.appendChild(card);
+
+  });
+
+}
+
+
+/* =====================================================
+   FILTROS
+===================================================== */
+
+function filterServices(type,button){
+
+  document
+    .querySelectorAll(".tabs button")
+    .forEach(btn => {
+
+      btn.classList.remove("active");
+
+    });
+
+
+  button.classList.add("active");
+
+
+  if(type === "todos"){
+
+    renderServices(services);
+
+  }else{
+
+    renderServices(
+      services.filter(
+        service => service.type === type
+      )
+    );
+
+  }
+
+}
+
+
+/* =====================================================
+   ADICIONAR SERVIÇO
+===================================================== */
+
+function addService(id){
+
+  const service =
+    services.find(
+      item => item.id === id
+    );
+
+
+  if(!service){
+    return;
+  }
+
+
+  cart.push({
+
+    id:service.id,
+
+    type:service.type,
+
+    name:service.name,
+
+    price:service.price
+
+  });
+
+
+  updateCount();
+
+}
+
+
+/* =====================================================
+   CONTADOR
+===================================================== */
+
+function updateCount(){
+
+  document.getElementById("count")
+    .textContent = cart.length;
+
+}
+
+
+/* =====================================================
+   ANEXAR ENDEREÇO AO ORÇAMENTO
+===================================================== */
+
+function addAddressToBudget(){
+
+  const input =
+    document.getElementById("clientAddress");
+
+
+  const address =
+    input.value.trim();
+
+
+  if(!address){
+
+    alert(
+      "Digite o endereço antes de anexá-lo ao orçamento."
+    );
+
+    input.focus();
+
+    return;
+
+  }
+
+
+  clientAddress = address;
+
+
+  document.getElementById(
+    "addressStatus"
+  ).textContent =
+    "✅ Endereço anexado ao orçamento.";
+
+
+  document.getElementById(
+    "addAddressBtn"
+  ).textContent =
+    "✅ Endereço anexado ao orçamento";
+
+
+  openCart();
+
+}
+
+
+/* =====================================================
+   CALCULAR DISTÂNCIA
+===================================================== */
+
+async function calculateDistance(){
+
+  const input =
+    document.getElementById("clientAddress");
+
+
+  const address =
+    input.value.trim();
+
+
+  if(!address){
+
+    alert(
+      "Digite o endereço do local do serviço."
+    );
+
+    input.focus();
+
+    return;
+
+  }
+
+
+  if(
+    DISTANCE_API_URL ===
+    "COLOQUE_AQUI_A_URL_DO_SEU_BACKEND"
+  ){
+
+    alert(
+      "O botão de anexar endereço funciona normalmente. O cálculo automático de distância ainda precisa ser conectado ao backend."
+    );
+
+    return;
+
+  }
+
+
+  const status =
+    document.getElementById(
+      "addressStatus"
+    );
+
+
+  const result =
+    document.getElementById(
+      "distanceResult"
+    );
+
+
+  const addDistanceButton =
+    document.getElementById(
+      "addDistanceBtn"
+    );
+
+
+  status.textContent =
+    "⏳ Calculando deslocamento...";
+
+
+  result.style.display =
+    "none";
+
+
+  addDistanceButton.style.display =
+    "none";
+
+
+  try{
+
+    const response =
+      await fetch(
+        DISTANCE_API_URL,
+        {
+          method:"POST",
+
+          headers:{
+            "Content-Type":
+              "application/json"
+          },
+
+          body:JSON.stringify({
+            destination:address
+          })
+
+        }
+      );
+
+
+    if(!response.ok){
+
+      throw new Error(
+        "Erro no servidor."
+      );
+
+    }
+
+
+    const data =
+      await response.json();
+
+
+    if(
+      data.oneWayKm === undefined ||
+      data.roundTripKm === undefined ||
+      data.price === undefined
+    ){
+
+      throw new Error(
+        "Resposta inválida."
+      );
+
+    }
+
+
+    clientAddress =
+      address;
+
+
+    distanceData = {
+
+      oneWayKm:
+        Number(data.oneWayKm),
+
+      roundTripKm:
+        Number(data.roundTripKm),
+
+      price:
+        Number(data.price)
+
+    };
+
+
+    result.innerHTML = `
+
+      <b>📍 Endereço:</b><br>
+
+      ${clientAddress}
+
+      <br><br>
+
+      <b>📏 Distância de ida:</b>
+      ${distanceData.oneWayKm} km
+
+      <br>
+
+      <b>🔄 Ida e volta:</b>
+      ${distanceData.roundTripKm} km
+
+      <br>
+
+      <b>💰 Deslocamento:</b>
+      ${money(distanceData.price)}
+
+    `;
+
+
+    result.style.display =
+      "block";
+
+
+    addDistanceButton.style.display =
+      "inline-block";
+
+
+    status.textContent =
+      "✅ Deslocamento calculado com sucesso.";
+
+
+  }catch(error){
+
+    console.error(error);
+
+    status.textContent =
+      "❌ Não foi possível calcular o deslocamento.";
+
+    alert(
+      "Não foi possível calcular a distância. Verifique o endereço e tente novamente."
+    );
+
+  }
+
+}
+
+
+/* =====================================================
+   ADICIONAR DESLOCAMENTO
+===================================================== */
+
+function addDistanceToBudget(){
+
+  if(!distanceData){
+
+    alert(
+      "Calcule o deslocamento primeiro."
+    );
+
+    return;
+
+  }
+
+
+  /* Remove deslocamento anterior */
+
+  cart =
+    cart.filter(
+      item => item.type !== "distance"
+    );
+
+
+  cart.push({
+
+    id:"distance",
+
+    type:"distance",
+
+    name:
+      `Deslocamento — ${distanceData.roundTripKm} km ida e volta`,
+
+    price:
+      Number(distanceData.price)
+
+  });
+
+
+  distanceAdded = true;
+
+
+  updateCount();
+
+
+  document.getElementById(
+    "addDistanceBtn"
+  ).textContent =
+    "✅ Deslocamento acrescentado";
+
+
+  openCart();
+
+}
+
+
+/* =====================================================
+   ABRIR ORÇAMENTO
+===================================================== */
+
+function openCart(){
+
+  const modal =
+    document.getElementById("modal");
+
+
+  const content =
+    document.getElementById("cartContent");
+
+
+  content.innerHTML = "";
+
+
+  let total = 0;
+
+
+  if(
+    cart.length === 0 &&
+    !clientAddress
+  ){
+
+    content.innerHTML = `
+
+      <div class="empty">
+
+        Seu orçamento está vazio.
+
+      </div>
+
+    `;
+
+  }
+
+
+  /* SERVIÇOS */
+
+  cart.forEach(
+    (item,index) => {
+
+      total +=
+        Number(item.price);
+
+
+      const div =
+        document.createElement("div");
+
+
+      div.className =
+        "cart-item";
+
+
+      div.innerHTML = `
+
+        <div class="cart-info">
+
+          <div class="cart-name">
+
+            ${item.name}
+
+          </div>
+
+          <div class="cart-price">
+
+            ${money(item.price)}
+
+          </div>
+
+        </div>
+
+
+        <button
+          class="remove-btn"
+          onclick="removeItem(${index})">
+
+          🗑️ Apagar
+
+        </button>
+
+      `;
+
+
+      content.appendChild(div);
+
+    }
+  );
+
+
+  /* ENDEREÇO */
+
+  if(clientAddress){
+
+    const addressDiv =
+      document.createElement("div");
+
+
+    addressDiv.className =
+      "address-cart";
+
+
+    addressDiv.innerHTML = `
+
+      <div class="address-cart-title">
+
+        📍 Endereço do serviço
+
+      </div>
+
+
+      <div class="address-cart-text">
+
+        ${clientAddress}
+
+      </div>
+
+
+      ${
+        distanceData
+        ?
+        `
+
+        <div class="distance-cart">
+
+          📏 Ida:
+          ${distanceData.oneWayKm} km
+
+          <br>
+
+          🔄 Ida e volta:
+          ${distanceData.roundTripKm} km
+
+          <br>
+
+          💰 Deslocamento:
+          ${money(distanceData.price)}
+
+        </div>
+
+        `
+        :
+        ""
+      }
+
+
+      <button
+        class="remove-address"
+        onclick="removeAddress()">
+
+        🗑️ Apagar endereço
+
+      </button>
+
+    `;
+
+
+    content.appendChild(
+      addressDiv
+    );
+
+  }
+
+
+  document.getElementById(
+    "total"
+  ).textContent =
+    money(total);
+
+
+  modal.classList.add(
+    "show"
+  );
+
+}
+
+
+/* =====================================================
+   APAGAR SERVIÇO
+===================================================== */
+
+function removeItem(index){
+
+  cart.splice(
+    index,
+    1
+  );
+
+
+  updateCount();
+
+
+  openCart();
+
+}
+
+
+/* =====================================================
+   APAGAR ENDEREÇO
+===================================================== */
+
+function removeAddress(){
+
+  clientAddress = "";
+
+  distanceData = null;
+
+  distanceAdded = false;
+
+
+  document.getElementById(
+    "clientAddress"
+  ).value = "";
+
+
+  document.getElementById(
+    "addressStatus"
+  ).textContent =
+    "Digite o endereço do local onde o serviço será realizado.";
+
+
+  document.getElementById(
+    "distanceResult"
+  ).style.display =
+    "none";
+
+
+  document.getElementById(
+    "addDistanceBtn"
+  ).style.display =
+    "none";
+
+
+  document.getElementById(
+    "addAddressBtn"
+  ).style.display =
+    "inline-block";
+
+
+  document.getElementById(
+    "addAddressBtn"
+  ).textContent =
+    "➕ Anexar endereço ao orçamento";
+
+
+  cart =
+    cart.filter(
+      item => item.type !== "distance"
+    );
+
+
+  updateCount();
+
+
+  openCart();
+
+}
+
+
+/* =====================================================
+   FECHAR ORÇAMENTO
+===================================================== */
+
+function closeCart(){
+
+  document.getElementById(
+    "modal"
+  ).classList.remove(
+    "show"
+  );
+
+}
+
+
+function closeOutside(event){
+
+  if(
+    event.target ===
+    document.getElementById("modal")
+  ){
+
+    closeCart();
+
+  }
+
+}
+
+
+/* =====================================================
+   WHATSAPP
+===================================================== */
+
+function sendWhats(){
+
+  if(cart.length === 0){
+
+    alert(
+      "Adicione pelo menos um serviço ao orçamento."
+    );
+
+    return;
+
+  }
+
+
+  let total = 0;
+
+
+  let message =
+    "Olá! Gostaria de solicitar um orçamento com a AéreoAlex.\n\n";
+
+
+  message +=
+    "📋 SERVIÇOS SELECIONADOS\n";
+
+
+  cart.forEach(
+    (item,index) => {
+
+      total +=
+        Number(item.price);
+
+
+      message +=
+        `${index + 1}. ${item.name} — ${money(item.price)}\n`;
+
+    }
+  );
+
+
+  if(clientAddress){
+
+    message +=
+      "\n📍 LOCAL DO SERVIÇO\n";
+
+
+    message +=
+      clientAddress + "\n";
+
+
+    if(distanceData){
+
+      message +=
+        "\n📏 DESLOCAMENTO\n";
+
+
+      message +=
+        `Ida: ${distanceData.oneWayKm} km\n`;
+
+
+      message +=
+        `Ida e volta: ${distanceData.roundTripKm} km\n`;
+
+
+      message +=
+        `Valor: ${money(distanceData.price)}\n`;
+
+    }
+
+  }
+
+
+  message +=
+    `\n💰 TOTAL: ${money(total)}\n`;
+
+
+  message +=
+    "\nAguardo a confirmação e disponibilidade para realizar o serviço.";
+
+
+  const url =
+    "https://wa.me/5511953169968?text=" +
+    encodeURIComponent(message);
+
+
+  window.open(
+    url,
+    "_blank"
+  );
+
+}
+
+
+/* =====================================================
+   INICIALIZAÇÃO
+===================================================== */
+
+renderServices();
+
+updateCount();
+
+</script>
+
+</body>
+</html>

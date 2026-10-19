@@ -1,1 +1,93 @@
-aereoalex.com.br
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AéreoAlex | Fotografia e Vídeos Aéreos</title>
+<style>
+:root{--blue:#061b52;--blue2:#0b2f78;--yellow:#ffd800;--white:#fff;--bg:#f5f6f8;--text:#172033;--green:#19a463}
+*{box-sizing:border-box}body{margin:0;font-family:Arial,Helvetica,sans-serif;background:var(--bg);color:var(--text)}
+header{background:linear-gradient(135deg,#03143d,#0b3d96);color:#fff;padding:20px 5%;position:sticky;top:0;z-index:10;box-shadow:0 3px 15px #0004}
+.nav{max-width:1150px;margin:auto;display:flex;align-items:center;justify-content:space-between;gap:20px}
+.logo{font-size:34px;font-weight:900;font-style:italic}.logo span{color:var(--yellow)}
+.tag{font-size:13px;opacity:.9}
+.cart{background:var(--yellow);color:#111;border:0;border-radius:25px;padding:12px 18px;font-weight:800;cursor:pointer}
+.hero{background:linear-gradient(135deg,#08265fdd,#1260b8dd),url('https://images.unsplash.com/photo-1478827387698-1527781a4887?auto=format&fit=crop&w=1600&q=80') center/cover;min-height:330px;color:#fff;display:flex;align-items:center}
+.hero-in{max-width:1150px;width:90%;margin:auto}.hero h1{font-size:clamp(36px,6vw,68px);margin:0 0 10px}.hero h1 span{color:var(--yellow)}.hero p{font-size:20px;max-width:680px}
+.wrap{max-width:1150px;margin:35px auto;padding:0 18px}
+h2{font-size:30px;margin:0 0 8px}.sub{color:#687080;margin-bottom:25px}
+.tabs{display:flex;gap:10px;overflow:auto;margin-bottom:22px}.tab{border:0;border-radius:22px;padding:12px 18px;background:#fff;font-weight:800;cursor:pointer}.tab.active{background:var(--yellow)}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:18px}
+.card{background:#fff;border-radius:18px;padding:22px;box-shadow:0 5px 20px #10234b12;border:1px solid #e6e8ee;position:relative}
+.card.popular{border:3px solid var(--yellow);transform:translateY(-2px)}
+.badge{position:absolute;right:15px;top:15px;background:var(--yellow);padding:6px 10px;border-radius:15px;font-size:11px;font-weight:900}
+.icon{font-size:38px}.card h3{font-size:22px;margin:10px 0}.price{font-size:30px;font-weight:900;color:var(--blue);margin:15px 0}.unit{font-size:13px;color:#717784;font-weight:normal}
+ul{padding-left:20px;line-height:1.8;color:#4c5565}.btn{width:100%;border:0;border-radius:12px;padding:13px;background:var(--blue);color:#fff;font-weight:900;cursor:pointer}.btn:hover{background:#0d3e91}
+.photo-row{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:15px;margin-top:18px}
+.note{background:#fff8c9;border-left:5px solid var(--yellow);padding:15px;border-radius:10px;margin:25px 0}
+footer{background:var(--blue);color:#fff;text-align:center;padding:30px 15px;margin-top:45px}.yellow{color:var(--yellow)}
+.modal{display:none;position:fixed;inset:0;background:#0008;z-index:20;align-items:flex-end;justify-content:center}.modal.open{display:flex}.sheet{background:#fff;width:min(650px,100%);max-height:85vh;overflow:auto;border-radius:22px 22px 0 0;padding:25px}.close{float:right;border:0;background:#eee;border-radius:50%;width:35px;height:35px}.line{display:flex;justify-content:space-between;border-bottom:1px solid #eee;padding:12px 0}.total{font-size:25px;font-weight:900;margin:20px 0}.whats{background:var(--green);color:#fff;border:0;border-radius:12px;padding:15px;width:100%;font-weight:900;font-size:16px}
+@media(max-width:600px){.logo{font-size:25px}.tag{display:none}.hero{min-height:290px}.hero p{font-size:16px}.wrap{margin-top:25px}}
+</style>
+</head>
+<body>
+<header><div class="nav"><div><div class="logo">AÉREO<span>Alex</span></div><div class="tag">Fotografia • Vídeos Aéreos</div></div><button class="cart" onclick="openCart()">🛒 Orçamento <span id="count">0</span></button></div></header>
+
+<section class="hero"><div class="hero-in"><h1>Seu projeto, <span>do alto!</span></h1><p>Fotografias aéreas, vídeos brutos e vídeos editados para imóveis, terrenos, obras, chácaras, sítios e eventos na Zona Sul de São Paulo.</p></div></section>
+
+<main class="wrap">
+<h2>Escolha seu serviço</h2><div class="sub">Modelo de contratação simples, como um cardápio: escolha a quantidade e monte seu orçamento.</div>
+
+<div class="tabs">
+<button class="tab active" onclick="filter('todos',this)">Todos</button>
+<button class="tab" onclick="filter('foto',this)">📷 Fotos</button>
+<button class="tab" onclick="filter('video',this)">🎬 Vídeos</button>
+<button class="tab" onclick="filter('pacote',this)">⭐ Pacotes</button>
+</div>
+
+<div id="cards" class="grid"></div>
+
+<div class="note"><b>📌 Deslocamento:</b> R$ 2,00 por km rodado (ida e volta), com mínimo de R$ 30. A distância é confirmada antes do serviço.<br>
+<b>⚠️ Importante:</b> valores são de referência para captação aérea. Autorizações especiais, áreas restritas, edição avançada e demandas fora do padrão podem ser orçadas à parte.</div>
+
+<h2>Como funciona</h2>
+<div class="photo-row">
+<div class="card"><div class="icon">1️⃣</div><h3>Escolha</h3><p>Selecione fotos, vídeo bruto, vídeo editado ou um pacote.</p></div>
+<div class="card"><div class="icon">2️⃣</div><h3>Agende</h3><p>Informe local, data, horário e objetivo da captação.</p></div>
+<div class="card"><div class="icon">3️⃣</div><h3>Captação</h3><p>Realizamos as imagens aéreas com drone DJI compatível com o serviço.</p></div>
+<div class="card"><div class="icon">4️⃣</div><h3>Entrega</h3><p>Arquivos brutos ou editados, conforme o pacote contratado.</p></div>
+</div>
+</main>
+
+<footer><b>Aéreo<span class="yellow">Alex</span></b><br>Fotografia • Vídeos Aéreos<br><small>Zona Sul de São Paulo • Orçamento personalizado</small><br><br><strong>📞 Contato: (11) 95316-9968</strong></footer>
+
+<div class="modal" id="modal"><div class="sheet"><button class="close" onclick="closeCart()">✕</button><h2>Seu orçamento</h2><div id="items"></div><div class="total">Total dos serviços: R$ <span id="total">0,00</span></div><p>O deslocamento será calculado separadamente.</p><button class="whats" onclick="sendWhats()">Solicitar orçamento pelo WhatsApp</button></div></div>
+
+<script>
+const services=[
+{id:1,cat:'foto',icon:'📷',name:'10 fotos aéreas',desc:'Fotos aéreas em alta resolução',price:180,details:['10 fotos digitais','Captação aérea','Arquivos prontos para uso']},
+{id:2,cat:'foto',icon:'📷',name:'20 fotos aéreas',desc:'Mais imagens para apresentar seu projeto',price:250,details:['20 fotos digitais','Captação aérea','Arquivos prontos para uso'],popular:true},
+{id:3,cat:'foto',icon:'📷',name:'30 fotos aéreas',desc:'Pacote ampliado de fotografias',price:300,details:['30 fotos digitais','Captação aérea','Arquivos prontos para uso']},
+{id:4,cat:'foto',icon:'📷',name:'Foto extra',desc:'Adicione fotografias ao pacote',price:4,unit:'/ foto',details:['A partir da contratação de um pacote','Quantidade livre']},
+{id:5,cat:'video',icon:'🎬',name:'Vídeo bruto • até 1 min',desc:'Material sem edição',price:180,details:['Até 1 minuto de vídeo','Arquivo bruto','Captação aérea']},
+{id:6,cat:'video',icon:'🎬',name:'Vídeo bruto • até 3 min',desc:'Material sem edição',price:280,details:['Até 3 minutos','Arquivo bruto','Captação aérea']},
+{id:7,cat:'video',icon:'🎬',name:'Vídeo bruto • até 5 min',desc:'Material sem edição',price:350,details:['Até 5 minutos','Arquivo bruto','Captação aérea']},
+{id:8,cat:'video',icon:'🎞️',name:'Vídeo editado • até 1 min',desc:'Edição dinâmica para divulgação',price:280,details:['Até 1 minuto final','Cortes e montagem','Arquivo final editado']},
+{id:9,cat:'video',icon:'🎞️',name:'Vídeo editado • até 3 min',desc:'Edição completa para apresentação',price:400,details:['Até 3 minutos finais','Cortes e montagem','Trilha conforme disponibilidade/licença']},
+{id:10,cat:'video',icon:'🎞️',name:'Vídeo editado • até 5 min',desc:'Vídeo completo para divulgação',price:550,details:['Até 5 minutos finais','Cortes e montagem','Entrega do arquivo final']},
+{id:11,cat:'pacote',icon:'⭐',name:'Imóveis e terrenos',desc:'Pacote para anúncio e divulgação',price:350,details:['15 fotos','Vídeo de até 2 min','Captação aérea']},
+{id:12,cat:'pacote',icon:'🏗️',name:'Obras e construções',desc:'Acompanhamento e apresentação',price:380,details:['15 fotos','Vídeo de até 2 min','Captação aérea']},
+{id:13,cat:'pacote',icon:'🌳',name:'Chácaras e sítios',desc:'Apresentação completa da propriedade',price:450,details:['20 fotos','Vídeo de até 3 min','Captação aérea']},
+{id:14,cat:'pacote',icon:'🎉',name:'Pequenos eventos',desc:'Registro aéreo do evento',price:500,details:['1 hora de captação','20 fotos','Clipes brutos de até 3 min no total']}
+];
+let cart=[];
+function money(v){return v.toLocaleString('pt-BR',{minimumFractionDigits:2})}
+function render(list=services){document.getElementById('cards').innerHTML=list.map(s=>`<div class="card ${s.popular?'popular':''}">${s.popular?'<div class="badge">MAIS ESCOLHIDO</div>':''}<div class="icon">${s.icon}</div><h3>${s.name}</h3><p>${s.desc}</p><div class="price">R$ ${money(s.price)} <span class="unit">${s.unit||''}</span></div><ul>${s.details.map(x=>`<li>${x}</li>`).join('')}</ul><button class="btn" onclick="add(${s.id})">Adicionar ao orçamento</button></div>`).join('')}
+function filter(cat,el){document.querySelectorAll('.tab').forEach(x=>x.classList.remove('active'));el.classList.add('active');render(cat==='todos'?services:services.filter(s=>s.cat===cat))}
+function add(id){let s=services.find(x=>x.id===id);cart.push(s);document.getElementById('count').textContent=cart.length}
+function openCart(){document.getElementById('modal').classList.add('open');let total=cart.reduce((a,b)=>a+b.price,0);document.getElementById('items').innerHTML=cart.length?cart.map((x,i)=>`<div class="line"><span>${i+1}. ${x.name}</span><b>R$ ${money(x.price)}</b></div>`).join(''):'<p>Nenhum serviço selecionado.</p>';document.getElementById('total').textContent=money(total)}
+function closeCart(){document.getElementById('modal').classList.remove('open')}
+function sendWhats(){let total=cart.reduce((a,b)=>a+b.price,0);let text='Olá! Gostaria de solicitar um orçamento com a AéreoAlex.%0A%0A'+cart.map(x=>'• '+x.name+' — R$ '+money(x.price)).join('%0A')+'%0A%0ASubtotal dos serviços: R$ '+money(total)+'%0A%0ALocal do serviço: ';window.open('https://wa.me/?text='+text,'_blank')}
+render();
+</script>
+</body></html>

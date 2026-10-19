@@ -183,4 +183,1052 @@ h2{
 .price{
   font-size:30px;
   font-weight:900;
-  color:var(--blue 
+  color:var(--blue);
+  margin:15px 0;
+}
+
+.unit{
+  font-size:13px;
+  color:#717784;
+  font-weight:normal;
+}
+
+ul{
+  padding-left:20px;
+  line-height:1.8;
+  color:#4c5565;
+}
+
+.btn{
+  width:100%;
+  border:0;
+  border-radius:12px;
+  padding:13px;
+  background:var(--blue);
+  color:#fff;
+  font-weight:900;
+  cursor:pointer;
+}
+
+.btn:hover{
+  background:#0d3e91;
+}
+
+/* ENDEREÇO */
+
+.address-box{
+  background:#fff;
+  border:1px solid #e6e8ee;
+  border-radius:18px;
+  padding:22px;
+  margin:25px 0;
+  box-shadow:0 5px 20px #10234b12;
+}
+
+.address-box label{
+  display:block;
+  font-weight:900;
+  margin-bottom:8px;
+}
+
+.address-box input{
+  width:100%;
+  padding:14px;
+  border:1px solid #ccd2dc;
+  border-radius:10px;
+  font-size:16px;
+  margin-bottom:12px;
+}
+
+.address-btn{
+  background:var(--blue);
+  color:#fff;
+  border:0;
+  border-radius:12px;
+  padding:13px 18px;
+  font-weight:900;
+  cursor:pointer;
+}
+
+.address-btn:hover{
+  background:#0d3e91;
+}
+
+.address-status{
+  margin-top:12px;
+  color:#4c5565;
+  font-size:14px;
+}
+
+.note{
+  background:#fff8c9;
+  border-left:5px solid var(--yellow);
+  padding:15px;
+  border-radius:10px;
+  margin:25px 0;
+}
+
+.photo-row{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+  gap:15px;
+  margin-top:18px;
+}
+
+footer{
+  background:var(--blue);
+  color:#fff;
+  text-align:center;
+  padding:30px 15px;
+  margin-top:45px;
+}
+
+.yellow{
+  color:var(--yellow);
+}
+
+/* CARRINHO */
+
+.modal{
+  display:none;
+  position:fixed;
+  inset:0;
+  background:#0008;
+  z-index:20;
+  align-items:flex-end;
+  justify-content:center;
+}
+
+.modal.open{
+  display:flex;
+}
+
+.sheet{
+  background:#fff;
+  width:min(650px,100%);
+  max-height:85vh;
+  overflow:auto;
+  border-radius:22px 22px 0 0;
+  padding:25px;
+}
+
+.close{
+  float:right;
+  border:0;
+  background:#eee;
+  border-radius:50%;
+  width:35px;
+  height:35px;
+}
+
+.line{
+  display:flex;
+  justify-content:space-between;
+  gap:15px;
+  border-bottom:1px solid #eee;
+  padding:12px 0;
+}
+
+.total{
+  font-size:25px;
+  font-weight:900;
+  margin:20px 0;
+}
+
+.whats{
+  background:var(--green);
+  color:#fff;
+  border:0;
+  border-radius:12px;
+  padding:15px;
+  width:100%;
+  font-weight:900;
+  font-size:16px;
+  cursor:pointer;
+}
+
+@media(max-width:600px){
+
+  .logo{
+    font-size:25px;
+  }
+
+  .tag{
+    display:none;
+  }
+
+  .hero{
+    min-height:290px;
+  }
+
+  .hero p{
+    font-size:16px;
+  }
+
+  .wrap{
+    margin-top:25px;
+  }
+}
+</style>
+</head>
+
+<body>
+
+<header>
+
+<div class="nav">
+
+<div>
+
+<div class="logo">
+AÉREO<span>Alex</span>
+</div>
+
+<div class="tag">
+Fotografia • Vídeos Aéreos
+</div>
+
+</div>
+
+<button class="cart" onclick="openCart()">
+🛒 Orçamento <span id="count">0</span>
+</button>
+
+</div>
+
+</header>
+
+
+<section class="hero">
+
+<div class="hero-in">
+
+<h1>
+Seu projeto, <span>do alto!</span>
+</h1>
+
+<p>
+Fotografias aéreas, vídeos brutos e vídeos editados para imóveis,
+terrenos, obras, chácaras, sítios e eventos na Zona Sul de São Paulo.
+</p>
+
+</div>
+
+</section>
+
+
+<main class="wrap">
+
+<h2>
+Escolha seu serviço
+</h2>
+
+<div class="sub">
+Escolha os serviços e monte seu orçamento.
+</div>
+
+
+<div class="tabs">
+
+<button class="tab active"
+onclick="filter('todos',this)">
+Todos
+</button>
+
+<button class="tab"
+onclick="filter('foto',this)">
+📷 Fotos
+</button>
+
+<button class="tab"
+onclick="filter('video',this)">
+🎬 Vídeos
+</button>
+
+<button class="tab"
+onclick="filter('pacote',this)">
+⭐ Pacotes
+</button>
+
+</div>
+
+
+<div id="cards" class="grid"></div>
+
+
+<!-- ENDEREÇO DO CLIENTE -->
+
+<div class="address-box">
+
+<label for="clientAddress">
+📍 Endereço do local do serviço
+</label>
+
+<input
+id="clientAddress"
+type="text"
+placeholder="Digite rua, número, bairro e cidade"
+>
+
+<button
+class="address-btn"
+onclick="addAddressToBudget()">
+
+➕ Acrescentar endereço ao orçamento
+
+</button>
+
+<div
+class="address-status"
+id="addressStatus">
+
+Digite o endereço do local onde o serviço será realizado.
+
+</div>
+
+</div>
+
+
+<div class="note">
+
+<b>📌 Deslocamento:</b>
+
+O valor do deslocamento será calculado de acordo
+com a distância até o local do serviço.
+
+<br><br>
+
+<b>🔒 Privacidade:</b>
+
+O endereço de origem do AéreoAlex não é exibido
+para o cliente.
+
+</div>
+
+
+<h2>
+Como funciona
+</h2>
+
+
+<div class="photo-row">
+
+<div class="card">
+
+<div class="icon">
+1️⃣
+</div>
+
+<h3>
+Escolha
+</h3>
+
+<p>
+Selecione fotos, vídeo bruto, vídeo editado ou pacote.
+</p>
+
+</div>
+
+
+<div class="card">
+
+<div class="icon">
+2️⃣
+</div>
+
+<h3>
+Informe o local
+</h3>
+
+<p>
+Digite o endereço onde o serviço será realizado.
+</p>
+
+</div>
+
+
+<div class="card">
+
+<div class="icon">
+3️⃣
+</div>
+
+<h3>
+Solicite
+</h3>
+
+<p>
+Acrescente o endereço ao orçamento e envie pelo WhatsApp.
+</p>
+
+</div>
+
+
+<div class="card">
+
+<div class="icon">
+4️⃣
+</div>
+
+<h3>
+Entrega
+</h3>
+
+<p>
+Receba seus arquivos conforme o serviço contratado.
+</p>
+
+</div>
+
+</div>
+
+</main>
+
+
+<section
+style="
+max-width:1150px;
+margin:0 auto 45px;
+padding:0 18px
+">
+
+<div
+style="
+background:linear-gradient(135deg,#061b52,#0b3d96);
+color:#fff;
+border-radius:20px;
+padding:28px;
+text-align:center;
+">
+
+<h2 style="margin:0 0 8px;color:#fff">
+
+📲 Solicite seu orçamento
+
+</h2>
+
+<p>
+Escolha os serviços, informe o endereço
+e envie o orçamento pelo WhatsApp.
+</p>
+
+<a
+href="https://wa.me/5511953169968"
+target="_blank"
+style="
+display:inline-block;
+background:#19a463;
+color:#fff;
+text-decoration:none;
+padding:14px 24px;
+border-radius:28px;
+font-weight:900;
+">
+
+💬 WhatsApp: (11) 95316-9968
+
+</a>
+
+</div>
+
+</section>
+
+
+<footer>
+
+<b>
+Aéreo<span class="yellow">Alex</span>
+</b>
+
+<br>
+
+Fotografia • Vídeos Aéreos
+
+<br>
+
+<small>
+Zona Sul de São Paulo • Orçamento personalizado
+</small>
+
+<br><br>
+
+<strong>
+📞
+<a
+href="tel:+5511953169968"
+style="color:#fff;text-decoration:none">
+
+(11) 95316-9968
+
+</a>
+</strong>
+
+<br><br>
+
+<a
+href="https://wa.me/5511953169968"
+target="_blank"
+style="
+display:inline-block;
+background:#19a463;
+color:#fff;
+text-decoration:none;
+padding:12px 20px;
+border-radius:24px;
+font-weight:900;
+">
+
+💬 Falar pelo WhatsApp
+
+</a>
+
+</footer>
+
+
+<!-- MODAL DO ORÇAMENTO -->
+
+<div
+class="modal"
+id="modal">
+
+<div class="sheet">
+
+<button
+class="close"
+onclick="closeCart()">
+
+✕
+
+</button>
+
+<h2>
+Seu orçamento
+</h2>
+
+<div id="items"></div>
+
+<div class="total">
+
+Total dos serviços:
+R$ <span id="total">0,00</span>
+
+</div>
+
+<p>
+O deslocamento será confirmado conforme o endereço informado.
+</p>
+
+<button
+class="whats"
+onclick="sendWhats()">
+
+📲 Solicitar orçamento pelo WhatsApp
+
+</button>
+
+</div>
+
+</div>
+
+
+<script>
+
+const services=[
+
+{
+id:1,
+cat:'foto',
+icon:'📷',
+name:'10 fotos aéreas',
+desc:'Fotos aéreas em alta resolução',
+price:180,
+details:[
+'10 fotos digitais',
+'Captação aérea',
+'Arquivos prontos para uso'
+]
+},
+
+{
+id:2,
+cat:'foto',
+icon:'📷',
+name:'20 fotos aéreas',
+desc:'Mais imagens para apresentar seu projeto',
+price:250,
+details:[
+'20 fotos digitais',
+'Captação aérea',
+'Arquivos prontos para uso'
+],
+popular:true
+},
+
+{
+id:3,
+cat:'foto',
+icon:'📷',
+name:'30 fotos aéreas',
+desc:'Pacote ampliado de fotografias',
+price:300,
+details:[
+'30 fotos digitais',
+'Captação aérea',
+'Arquivos prontos para uso'
+]
+},
+
+{
+id:4,
+cat:'foto',
+icon:'📷',
+name:'Foto extra',
+desc:'Adicione fotografias ao pacote',
+price:4,
+unit:'/ foto',
+details:[
+'Quantidade livre'
+]
+},
+
+{
+id:5,
+cat:'video',
+icon:'🎬',
+name:'Vídeo bruto • até 1 min',
+desc:'Material sem edição',
+price:180,
+details:[
+'Até 1 minuto',
+'Arquivo bruto',
+'Captação aérea'
+]
+},
+
+{
+id:6,
+cat:'video',
+icon:'🎬',
+name:'Vídeo bruto • até 3 min',
+desc:'Material sem edição',
+price:280,
+details:[
+'Até 3 minutos',
+'Arquivo bruto',
+'Captação aérea'
+]
+},
+
+{
+id:7,
+cat:'video',
+icon:'🎬',
+name:'Vídeo bruto • até 5 min',
+desc:'Material sem edição',
+price:350,
+details:[
+'Até 5 minutos',
+'Arquivo bruto',
+'Captação aérea'
+]
+},
+
+{
+id:8,
+cat:'video',
+icon:'🎞️',
+name:'Vídeo editado • até 1 min',
+desc:'Edição dinâmica',
+price:280,
+details:[
+'Até 1 minuto final',
+'Cortes e montagem'
+]
+},
+
+{
+id:9,
+cat:'video',
+icon:'🎞️',
+name:'Vídeo editado • até 3 min',
+desc:'Edição completa',
+price:400,
+details:[
+'Até 3 minutos finais',
+'Cortes e montagem'
+]
+},
+
+{
+id:10,
+cat:'video',
+icon:'🎞️',
+name:'Vídeo editado • até 5 min',
+desc:'Vídeo completo',
+price:550,
+details:[
+'Até 5 minutos finais',
+'Cortes e montagem'
+]
+},
+
+{
+id:11,
+cat:'pacote',
+icon:'⭐',
+name:'Imóveis e terrenos',
+desc:'Pacote para divulgação',
+price:350,
+details:[
+'15 fotos',
+'Vídeo de até 2 min',
+'Captação aérea'
+]
+},
+
+{
+id:12,
+cat:'pacote',
+icon:'🏗️',
+name:'Obras e construções',
+desc:'Acompanhamento',
+price:380,
+details:[
+'15 fotos',
+'Vídeo de até 2 min',
+'Captação aérea'
+]
+},
+
+{
+id:13,
+cat:'pacote',
+icon:'🌳',
+name:'Chácaras e sítios',
+desc:'Apresentação completa',
+price:450,
+details:[
+'20 fotos',
+'Vídeo de até 3 min',
+'Captação aérea'
+]
+},
+
+{
+id:14,
+cat:'pacote',
+icon:'🎉',
+name:'Pequenos eventos',
+desc:'Registro aéreo',
+price:500,
+details:[
+'1 hora de captação',
+'20 fotos',
+'Clipes brutos'
+]
+}
+
+];
+
+
+let cart=[];
+
+let clientAddress="";
+
+
+function money(value){
+
+return value.toLocaleString(
+'pt-BR',
+{
+minimumFractionDigits:2
+}
+);
+
+}
+
+
+function render(list=services){
+
+document.getElementById('cards').innerHTML=
+
+list.map(s=>`
+
+<div class="card ${s.popular?'popular':''}">
+
+${s.popular?
+'<div class="badge">MAIS ESCOLHIDO</div>'
+:''}
+
+<div class="icon">
+${s.icon}
+</div>
+
+<h3>
+${s.name}
+</h3>
+
+<p>
+${s.desc}
+</p>
+
+<div class="price">
+
+R$ ${money(s.price)}
+
+<span class="unit">
+${s.unit||''}
+</span>
+
+</div>
+
+<ul>
+
+${s.details.map(x=>
+`<li>${x}</li>`
+).join('')}
+
+</ul>
+
+<button
+class="btn"
+onclick="add(${s.id})">
+
+➕ Acrescentar ao orçamento
+
+</button>
+
+</div>
+
+`).join('');
+
+}
+
+
+function filter(cat,el){
+
+document
+.querySelectorAll('.tab')
+.forEach(x=>
+x.classList.remove('active')
+);
+
+el.classList.add('active');
+
+render(
+cat==='todos'
+?
+services
+:
+services.filter(s=>s.cat===cat)
+);
+
+}
+
+
+function add(id){
+
+let service=
+services.find(x=>x.id===id);
+
+cart.push(service);
+
+document
+.getElementById('count')
+.textContent=cart.length;
+
+}
+
+
+function addAddressToBudget(){
+
+let input=
+document.getElementById('clientAddress');
+
+let address=
+input.value.trim();
+
+if(!address){
+
+alert(
+'Digite o endereço do local do serviço.'
+);
+
+input.focus();
+
+return;
+
+}
+
+clientAddress=address;
+
+document
+.getElementById('addressStatus')
+.textContent=
+'✅ Endereço acrescentado ao orçamento: '
++
+address;
+
+}
+
+
+function openCart(){
+
+document
+.getElementById('modal')
+.classList.add('open');
+
+let total=
+cart.reduce(
+(a,b)=>a+b.price,
+0
+);
+
+let html=
+cart.length
+
+?
+
+cart.map((x,i)=>`
+
+<div class="line">
+
+<span>
+${i+1}. ${x.name}
+</span>
+
+<b>
+R$ ${money(x.price)}
+</b>
+
+</div>
+
+`).join('')
+
+:
+
+'<p>Nenhum serviço selecionado.</p>';
+
+
+if(clientAddress){
+
+html+=`
+
+<div class="line">
+
+<span>
+📍 Endereço
+</span>
+
+<b
+style="
+max-width:65%;
+text-align:right;
+font-size:14px;
+">
+
+${clientAddress}
+
+</b>
+
+</div>
+
+`;
+
+}
+
+
+document
+.getElementById('items')
+.innerHTML=html;
+
+document
+.getElementById('total')
+.textContent=money(total);
+
+}
+
+
+function closeCart(){
+
+document
+.getElementById('modal')
+.classList.remove('open');
+
+}
+
+
+/* WHATSAPP */
+
+function sendWhats(){
+
+if(cart.length===0){
+
+alert(
+'Adicione pelo menos um serviço ao orçamento.'
+);
+
+return;
+
+}
+
+
+if(!clientAddress){
+
+alert(
+'Digite o endereço do local e clique em "Acrescentar endereço ao orçamento".'
+);
+
+return;
+
+}
+
+
+let total=
+cart.reduce(
+(a,b)=>a+b.price,
+0
+);
+
+
+let text=
+'Olá! Gostaria de solicitar um orçamento com a AéreoAlex.\n\n'
++
+cart.map(x=>
+'• '+x.name+
+' — R$ '+
+money(x.price)
+).join('\n')
++
+'\n\n'
++
+'Subtotal dos serviços: R$ '+
+money(total)
++
+'\n\n'
++
+'📍 Endereço do local:\n'+
+clientAddress
++
+'\n\n'
++
+'Gostaria de receber o valor final do orçamento, incluindo o deslocamento.';
+
+
+let url=
+'https://wa.me/5511953169968?text='
++
+encodeURIComponent(text);
+
+
+window.location.href=url;
+
+}
+
+
+render();
+
+</script>
+
+</body>
+</html>

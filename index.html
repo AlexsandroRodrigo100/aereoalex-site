@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
@@ -59,7 +60,15 @@ footer{background:var(--blue);color:#fff;text-align:center;padding:30px 15px;mar
 </div>
 </main>
 
-<footer><b>Aéreo<span class="yellow">Alex</span></b><br>Fotografia • Vídeos Aéreos<br><small>Zona Sul de São Paulo • Orçamento personalizado</small><br><br><strong>📞 Contato: (11) 95316-9968</strong></footer>
+<section style="max-width:1150px;margin:0 auto 45px;padding:0 18px">
+<div style="background:linear-gradient(135deg,#061b52,#0b3d96);color:#fff;border-radius:20px;padding:28px;text-align:center;box-shadow:0 8px 25px #10234b20">
+<h2 style="margin:0 0 8px;color:#fff">📲 Solicite seu orçamento</h2>
+<p style="margin:0 0 18px;opacity:.95">Envie o local, data, horário e o tipo de serviço que você precisa.</p>
+<a href="https://wa.me/5511953169968" target="_blank" style="display:inline-block;background:#19a463;color:#fff;text-decoration:none;padding:14px 24px;border-radius:28px;font-weight:900">💬 WhatsApp: (11) 95316-9968</a>
+</div>
+</section>
+
+<footer><b>Aéreo<span class="yellow">Alex</span></b><br>Fotografia • Vídeos Aéreos<br><small>Zona Sul de São Paulo • Orçamento personalizado</small><br><br><strong>📞 <a href="tel:+5511953169968" style="color:#fff;text-decoration:none">(11) 95316-9968</a></strong><br><br><a href="https://wa.me/5511953169968" target="_blank" style="display:inline-block;background:#19a463;color:#fff;text-decoration:none;padding:12px 20px;border-radius:24px;font-weight:900">💬 Falar pelo WhatsApp</a></footer>
 
 <div class="modal" id="modal"><div class="sheet"><button class="close" onclick="closeCart()">✕</button><h2>Seu orçamento</h2><div id="items"></div><div class="total">Total dos serviços: R$ <span id="total">0,00</span></div><p>O deslocamento será calculado separadamente.</p><button class="whats" onclick="sendWhats()">Solicitar orçamento pelo WhatsApp</button></div></div>
 
@@ -87,7 +96,7 @@ function filter(cat,el){document.querySelectorAll('.tab').forEach(x=>x.classList
 function add(id){let s=services.find(x=>x.id===id);cart.push(s);document.getElementById('count').textContent=cart.length}
 function openCart(){document.getElementById('modal').classList.add('open');let total=cart.reduce((a,b)=>a+b.price,0);document.getElementById('items').innerHTML=cart.length?cart.map((x,i)=>`<div class="line"><span>${i+1}. ${x.name}</span><b>R$ ${money(x.price)}</b></div>`).join(''):'<p>Nenhum serviço selecionado.</p>';document.getElementById('total').textContent=money(total)}
 function closeCart(){document.getElementById('modal').classList.remove('open')}
-function sendWhats(){let total=cart.reduce((a,b)=>a+b.price,0);let text='Olá! Gostaria de solicitar um orçamento com a AéreoAlex.%0A%0A'+cart.map(x=>'• '+x.name+' — R$ '+money(x.price)).join('%0A')+'%0A%0ASubtotal dos serviços: R$ '+money(total)+'%0A%0ALocal do serviço: ';window.open('https://wa.me/?text='+text,'_blank')}
+function sendWhats(){let total=cart.reduce((a,b)=>a+b.price,0);let text='Olá! Gostaria de solicitar um orçamento com a AéreoAlex.%0A%0A'+cart.map(x=>'• '+x.name+' — R$ '+money(x.price)).join('%0A')+'%0A%0ASubtotal dos serviços: R$ '+money(total)+'%0A%0ALocal do serviço: ';window.open('https://wa.me/5511953169968?text='+text,'_blank')}
 render();
 </script>
 </body></html>

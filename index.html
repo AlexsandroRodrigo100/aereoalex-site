@@ -3,1232 +3,446 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-<title>AéreoAlex | Fotografia e Vídeos Aéreos</title>
+<title>AéreoAlex | Fotos e Vídeos com Drone</title>
 
 <style>
 :root{
-  --blue:#061b52;
-  --blue2:#0b3d96;
-  --yellow:#ffd800;
+  --blue:#061b3a;
+  --blue2:#0b2d5c;
+  --yellow:#ffc400;
+  --green:#25d366;
   --white:#fff;
-  --bg:#f5f6f8;
+  --gray:#f2f4f7;
   --text:#172033;
-  --green:#19a463;
+  --danger:#e53935;
 }
 
 *{
   box-sizing:border-box;
+  margin:0;
+  padding:0;
 }
 
 body{
-  margin:0;
   font-family:Arial,Helvetica,sans-serif;
-  background:var(--bg);
+  background:var(--gray);
   color:var(--text);
 }
 
 header{
-  background:linear-gradient(135deg,#03143d,#0b3d96);
-  color:#fff;
-  padding:20px 5%;
   position:sticky;
   top:0;
-  z-index:10;
-  box-shadow:0 3px 15px #0004;
-}
-
-.nav{
-  max-width:1150px;
-  margin:auto;
+  z-index:100;
+  background:var(--blue);
+  color:#fff;
+  padding:14px 18px;
   display:flex;
-  align-items:center;
   justify-content:space-between;
-  gap:20px;
+  align-items:center;
+  box-shadow:0 2px 10px rgba(0,0,0,.2);
 }
 
 .logo{
-  font-size:34px;
+  font-size:24px;
   font-weight:900;
-  font-style:italic;
-}
-
-.logo span{
   color:var(--yellow);
 }
 
-.tag{
-  font-size:13px;
-  opacity:.9;
+.logo span{
+  color:#fff;
 }
 
-.cart{
+.cart-btn{
   background:var(--yellow);
   color:#111;
   border:0;
-  border-radius:25px;
-  padding:12px 18px;
-  font-weight:800;
+  padding:11px 16px;
+  border-radius:10px;
+  font-weight:bold;
   cursor:pointer;
 }
 
 .hero{
+  min-height:360px;
   background:
-  linear-gradient(135deg,#08265fdd,#1260b8dd),
-  url('https://images.unsplash.com/photo-1478827387698-1527781a4887?auto=format&fit=crop&w=1600&q=80')
-  center/cover;
-
-  min-height:330px;
-  color:#fff;
+    linear-gradient(rgba(0,20,50,.65),rgba(0,20,50,.75)),
+    url("https://images.unsplash.com/photo-1473968512647-3e447244af8f?auto=format&fit=crop&w=1600&q=80")
+    center/cover;
   display:flex;
   align-items:center;
-}
-
-.hero-in{
-  max-width:1150px;
-  width:90%;
-  margin:auto;
+  justify-content:center;
+  text-align:center;
+  color:#fff;
+  padding:40px 20px;
 }
 
 .hero h1{
-  font-size:clamp(36px,6vw,68px);
-  margin:0 0 10px;
-}
-
-.hero h1 span{
-  color:var(--yellow);
+  font-size:42px;
+  margin-bottom:15px;
 }
 
 .hero p{
-  font-size:20px;
-  max-width:680px;
+  font-size:18px;
+  max-width:700px;
+  margin:auto;
+  line-height:1.6;
 }
 
-.wrap{
+.container{
   max-width:1150px;
-  margin:35px auto;
-  padding:0 18px;
-}
-
-h2{
-  font-size:30px;
-  margin:0 0 8px;
-}
-
-.sub{
-  color:#687080;
-  margin-bottom:25px;
+  margin:auto;
+  padding:35px 18px;
 }
 
 .tabs{
   display:flex;
   gap:10px;
-  overflow:auto;
-  margin-bottom:22px;
+  overflow-x:auto;
+  margin-bottom:25px;
 }
 
-.tab{
+.tabs button{
   border:0;
-  border-radius:22px;
-  padding:12px 18px;
   background:#fff;
-  font-weight:800;
+  padding:12px 18px;
+  border-radius:10px;
   cursor:pointer;
+  font-weight:bold;
+  white-space:nowrap;
 }
 
-.tab.active{
-  background:var(--yellow);
+.tabs button.active{
+  background:var(--blue);
+  color:#fff;
 }
 
 .grid{
   display:grid;
   grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
-  gap:18px;
+  gap:20px;
 }
 
 .card{
   background:#fff;
-  border-radius:18px;
+  border-radius:16px;
   padding:22px;
-  box-shadow:0 5px 20px #10234b12;
-  border:1px solid #e6e8ee;
+  box-shadow:0 5px 20px rgba(0,0,0,.08);
   position:relative;
-}
-
-.card.popular{
-  border:3px solid var(--yellow);
-  transform:translateY(-2px);
 }
 
 .badge{
   position:absolute;
-  right:15px;
-  top:15px;
+  top:12px;
+  right:12px;
   background:var(--yellow);
-  padding:6px 10px;
-  border-radius:15px;
-  font-size:11px;
-  font-weight:900;
-}
-
-.icon{
-  font-size:38px;
+  color:#111;
+  padding:6px 9px;
+  border-radius:8px;
+  font-size:12px;
+  font-weight:bold;
 }
 
 .card h3{
-  font-size:22px;
-  margin:10px 0;
+  margin-bottom:10px;
+  font-size:19px;
+}
+
+.card p{
+  color:#667085;
+  min-height:42px;
+  line-height:1.4;
 }
 
 .price{
-  font-size:30px;
+  font-size:25px;
   font-weight:900;
+  margin:18px 0;
   color:var(--blue);
-  margin:15px 0;
 }
 
-.unit{
-  font-size:13px;
-  color:#717784;
-  font-weight:normal;
-}
-
-ul{
-  padding-left:20px;
-  line-height:1.8;
-  color:#4c5565;
-}
-
-.btn{
+.add-btn{
   width:100%;
   border:0;
-  border-radius:12px;
-  padding:13px;
   background:var(--blue);
   color:#fff;
-  font-weight:900;
+  padding:13px;
+  border-radius:10px;
   cursor:pointer;
+  font-weight:bold;
 }
 
-.btn:hover{
-  background:#0d3e91;
+.add-btn:hover{
+  background:var(--blue2);
 }
-
-/* ENDEREÇO */
 
 .address-box{
+  margin-top:35px;
   background:#fff;
-  border:1px solid #e6e8ee;
-  border-radius:18px;
-  padding:22px;
-  margin:25px 0;
-  box-shadow:0 5px 20px #10234b12;
+  padding:25px;
+  border-radius:16px;
+  box-shadow:0 5px 20px rgba(0,0,0,.08);
 }
 
-.address-box label{
-  display:block;
-  font-weight:900;
-  margin-bottom:8px;
+.address-box h2{
+  margin-bottom:10px;
 }
 
-.address-box input{
+.address-box p{
+  color:#667085;
+  margin-bottom:15px;
+  line-height:1.5;
+}
+
+.address-input{
   width:100%;
   padding:14px;
-  border:1px solid #ccd2dc;
+  border:1px solid #d0d5dd;
   border-radius:10px;
   font-size:16px;
-  margin-bottom:12px;
+  margin-bottom:10px;
 }
 
-.address-btn{
+.address-actions{
+  display:flex;
+  gap:10px;
+  flex-wrap:wrap;
+}
+
+.address-actions button{
+  border:0;
+  padding:13px 16px;
+  border-radius:10px;
+  cursor:pointer;
+  font-weight:bold;
+}
+
+.calculate-btn{
   background:var(--blue);
   color:#fff;
-  border:0;
-  border-radius:12px;
-  padding:13px 18px;
-  font-weight:900;
-  cursor:pointer;
 }
 
-.address-btn:hover{
-  background:#0d3e91;
+.add-address-btn{
+  background:var(--yellow);
+  color:#111;
+  display:none;
 }
 
 .address-status{
-  margin-top:12px;
-  color:#4c5565;
-  font-size:14px;
+  margin-top:14px;
+  font-weight:bold;
 }
 
-.note{
-  background:#fff8c9;
-  border-left:5px solid var(--yellow);
+.distance-result{
+  display:none;
+  margin-top:15px;
+  background:#f6f8fb;
   padding:15px;
   border-radius:10px;
-  margin:25px 0;
+  line-height:1.7;
 }
 
-.photo-row{
+.info{
+  margin-top:25px;
+  background:#fff;
+  padding:20px;
+  border-radius:15px;
+  line-height:1.7;
+}
+
+.how{
+  margin-top:40px;
+}
+
+.how-grid{
   display:grid;
-  grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
-  gap:15px;
-  margin-top:18px;
+  grid-template-columns:repeat(auto-fit,minmax(200px,1fr));
+  gap:18px;
+  margin-top:20px;
+}
+
+.how-card{
+  background:#fff;
+  padding:22px;
+  border-radius:15px;
+  text-align:center;
+}
+
+.how-card .icon{
+  font-size:35px;
+  margin-bottom:10px;
+}
+
+.cta{
+  margin-top:40px;
+  background:var(--blue);
+  color:#fff;
+  padding:40px 20px;
+  text-align:center;
+  border-radius:20px;
+}
+
+.cta h2{
+  margin-bottom:10px;
+}
+
+.whats{
+  display:inline-block;
+  margin-top:20px;
+  background:var(--green);
+  color:#fff;
+  text-decoration:none;
+  padding:15px 24px;
+  border-radius:12px;
+  font-weight:bold;
 }
 
 footer{
-  background:var(--blue);
+  background:#031329;
   color:#fff;
   text-align:center;
   padding:30px 15px;
-  margin-top:45px;
+  margin-top:40px;
+  line-height:1.8;
 }
 
-.yellow{
-  color:var(--yellow);
-}
-
-/* CARRINHO */
+/* MODAL */
 
 .modal{
   display:none;
   position:fixed;
   inset:0;
-  background:#0008;
-  z-index:20;
+  background:rgba(0,0,0,.65);
+  z-index:999;
   align-items:flex-end;
   justify-content:center;
 }
 
-.modal.open{
+.modal.show{
   display:flex;
 }
 
 .sheet{
+  width:100%;
+  max-width:700px;
+  max-height:90vh;
+  overflow-y:auto;
   background:#fff;
-  width:min(650px,100%);
-  max-height:85vh;
-  overflow:auto;
   border-radius:22px 22px 0 0;
   padding:25px;
+  animation:up .25s ease;
+}
+
+@keyframes up{
+  from{
+    transform:translateY(100%);
+  }
+  to{
+    transform:translateY(0);
+  }
+}
+
+.sheet-header{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  margin-bottom:20px;
 }
 
 .close{
-  float:right;
   border:0;
   background:#eee;
+  width:38px;
+  height:38px;
   border-radius:50%;
-  width:35px;
-  height:35px;
-}
-
-.line{
-  display:flex;
-  justify-content:space-between;
-  gap:15px;
-  border-bottom:1px solid #eee;
-  padding:12px 0;
-}
-
-.total{
-  font-size:25px;
-  font-weight:900;
-  margin:20px 0;
-}
-
-.whats{
-  background:var(--green);
-  color:#fff;
-  border:0;
-  border-radius:12px;
-  padding:15px;
-  width:100%;
-  font-weight:900;
-  font-size:16px;
+  font-size:20px;
   cursor:pointer;
 }
 
-@media(max-width:600px){
-
-  .logo{
-    font-size:25px;
-  }
-
-  .tag{
-    display:none;
-  }
-
-  .hero{
-    min-height:290px;
-  }
-
-  .hero p{
-    font-size:16px;
-  }
-
-  .wrap{
-    margin-top:25px;
-  }
-}
-</style>
-</head>
-
-<body>
-
-<header>
-
-<div class="nav">
-
-<div>
-
-<div class="logo">
-AÉREO<span>Alex</span>
-</div>
-
-<div class="tag">
-Fotografia • Vídeos Aéreos
-</div>
-
-</div>
-
-<button class="cart" onclick="openCart()">
-🛒 Orçamento <span id="count">0</span>
-</button>
-
-</div>
-
-</header>
-
-
-<section class="hero">
-
-<div class="hero-in">
-
-<h1>
-Seu projeto, <span>do alto!</span>
-</h1>
-
-<p>
-Fotografias aéreas, vídeos brutos e vídeos editados para imóveis,
-terrenos, obras, chácaras, sítios e eventos na Zona Sul de São Paulo.
-</p>
-
-</div>
-
-</section>
-
-
-<main class="wrap">
-
-<h2>
-Escolha seu serviço
-</h2>
-
-<div class="sub">
-Escolha os serviços e monte seu orçamento.
-</div>
-
-
-<div class="tabs">
-
-<button class="tab active"
-onclick="filter('todos',this)">
-Todos
-</button>
-
-<button class="tab"
-onclick="filter('foto',this)">
-📷 Fotos
-</button>
-
-<button class="tab"
-onclick="filter('video',this)">
-🎬 Vídeos
-</button>
-
-<button class="tab"
-onclick="filter('pacote',this)">
-⭐ Pacotes
-</button>
-
-</div>
-
-
-<div id="cards" class="grid"></div>
-
-
-<!-- ENDEREÇO DO CLIENTE -->
-
-<div class="address-box">
-
-<label for="clientAddress">
-📍 Endereço do local do serviço
-</label>
-
-<input
-id="clientAddress"
-type="text"
-placeholder="Digite rua, número, bairro e cidade"
->
-
-<button
-class="address-btn"
-onclick="addAddressToBudget()">
-
-➕ Acrescentar endereço ao orçamento
-
-</button>
-
-<div
-class="address-status"
-id="addressStatus">
-
-Digite o endereço do local onde o serviço será realizado.
-
-</div>
-
-</div>
-
-
-<div class="note">
-
-<b>📌 Deslocamento:</b>
-
-O valor do deslocamento será calculado de acordo
-com a distância até o local do serviço.
-
-<br><br>
-
-<b>🔒 Privacidade:</b>
-
-O endereço de origem do AéreoAlex não é exibido
-para o cliente.
-
-</div>
-
-
-<h2>
-Como funciona
-</h2>
-
-
-<div class="photo-row">
-
-<div class="card">
-
-<div class="icon">
-1️⃣
-</div>
-
-<h3>
-Escolha
-</h3>
-
-<p>
-Selecione fotos, vídeo bruto, vídeo editado ou pacote.
-</p>
-
-</div>
-
-
-<div class="card">
-
-<div class="icon">
-2️⃣
-</div>
-
-<h3>
-Informe o local
-</h3>
-
-<p>
-Digite o endereço onde o serviço será realizado.
-</p>
-
-</div>
-
-
-<div class="card">
-
-<div class="icon">
-3️⃣
-</div>
-
-<h3>
-Solicite
-</h3>
-
-<p>
-Acrescente o endereço ao orçamento e envie pelo WhatsApp.
-</p>
-
-</div>
-
-
-<div class="card">
-
-<div class="icon">
-4️⃣
-</div>
-
-<h3>
-Entrega
-</h3>
-
-<p>
-Receba seus arquivos conforme o serviço contratado.
-</p>
-
-</div>
-
-</div>
-
-</main>
-
-
-<section
-style="
-max-width:1150px;
-margin:0 auto 45px;
-padding:0 18px
-">
-
-<div
-style="
-background:linear-gradient(135deg,#061b52,#0b3d96);
-color:#fff;
-border-radius:20px;
-padding:28px;
-text-align:center;
-">
-
-<h2 style="margin:0 0 8px;color:#fff">
-
-📲 Solicite seu orçamento
-
-</h2>
-
-<p>
-Escolha os serviços, informe o endereço
-e envie o orçamento pelo WhatsApp.
-</p>
-
-<a
-href="https://wa.me/5511953169968"
-target="_blank"
-style="
-display:inline-block;
-background:#19a463;
-color:#fff;
-text-decoration:none;
-padding:14px 24px;
-border-radius:28px;
-font-weight:900;
-">
-
-💬 WhatsApp: (11) 95316-9968
-
-</a>
-
-</div>
-
-</section>
-
-
-<footer>
-
-<b>
-Aéreo<span class="yellow">Alex</span>
-</b>
-
-<br>
-
-Fotografia • Vídeos Aéreos
-
-<br>
-
-<small>
-Zona Sul de São Paulo • Orçamento personalizado
-</small>
-
-<br><br>
-
-<strong>
-📞
-<a
-href="tel:+5511953169968"
-style="color:#fff;text-decoration:none">
-
-(11) 95316-9968
-
-</a>
-</strong>
-
-<br><br>
-
-<a
-href="https://wa.me/5511953169968"
-target="_blank"
-style="
-display:inline-block;
-background:#19a463;
-color:#fff;
-text-decoration:none;
-padding:12px 20px;
-border-radius:24px;
-font-weight:900;
-">
-
-💬 Falar pelo WhatsApp
-
-</a>
-
-</footer>
-
-
-<!-- MODAL DO ORÇAMENTO -->
-
-<div
-class="modal"
-id="modal">
-
-<div class="sheet">
-
-<button
-class="close"
-onclick="closeCart()">
-
-✕
-
-</button>
-
-<h2>
-Seu orçamento
-</h2>
-
-<div id="items"></div>
-
-<div class="total">
-
-Total dos serviços:
-R$ <span id="total">0,00</span>
-
-</div>
-
-<p>
-O deslocamento será confirmado conforme o endereço informado.
-</p>
-
-<button
-class="whats"
-onclick="sendWhats()">
-
-📲 Solicitar orçamento pelo WhatsApp
-
-</button>
-
-</div>
-
-</div>
-
-
-<script>
-
-const services=[
-
-{
-id:1,
-cat:'foto',
-icon:'📷',
-name:'10 fotos aéreas',
-desc:'Fotos aéreas em alta resolução',
-price:180,
-details:[
-'10 fotos digitais',
-'Captação aérea',
-'Arquivos prontos para uso'
-]
-},
-
-{
-id:2,
-cat:'foto',
-icon:'📷',
-name:'20 fotos aéreas',
-desc:'Mais imagens para apresentar seu projeto',
-price:250,
-details:[
-'20 fotos digitais',
-'Captação aérea',
-'Arquivos prontos para uso'
-],
-popular:true
-},
-
-{
-id:3,
-cat:'foto',
-icon:'📷',
-name:'30 fotos aéreas',
-desc:'Pacote ampliado de fotografias',
-price:300,
-details:[
-'30 fotos digitais',
-'Captação aérea',
-'Arquivos prontos para uso'
-]
-},
-
-{
-id:4,
-cat:'foto',
-icon:'📷',
-name:'Foto extra',
-desc:'Adicione fotografias ao pacote',
-price:4,
-unit:'/ foto',
-details:[
-'Quantidade livre'
-]
-},
-
-{
-id:5,
-cat:'video',
-icon:'🎬',
-name:'Vídeo bruto • até 1 min',
-desc:'Material sem edição',
-price:180,
-details:[
-'Até 1 minuto',
-'Arquivo bruto',
-'Captação aérea'
-]
-},
-
-{
-id:6,
-cat:'video',
-icon:'🎬',
-name:'Vídeo bruto • até 3 min',
-desc:'Material sem edição',
-price:280,
-details:[
-'Até 3 minutos',
-'Arquivo bruto',
-'Captação aérea'
-]
-},
-
-{
-id:7,
-cat:'video',
-icon:'🎬',
-name:'Vídeo bruto • até 5 min',
-desc:'Material sem edição',
-price:350,
-details:[
-'Até 5 minutos',
-'Arquivo bruto',
-'Captação aérea'
-]
-},
-
-{
-id:8,
-cat:'video',
-icon:'🎞️',
-name:'Vídeo editado • até 1 min',
-desc:'Edição dinâmica',
-price:280,
-details:[
-'Até 1 minuto final',
-'Cortes e montagem'
-]
-},
-
-{
-id:9,
-cat:'video',
-icon:'🎞️',
-name:'Vídeo editado • até 3 min',
-desc:'Edição completa',
-price:400,
-details:[
-'Até 3 minutos finais',
-'Cortes e montagem'
-]
-},
-
-{
-id:10,
-cat:'video',
-icon:'🎞️',
-name:'Vídeo editado • até 5 min',
-desc:'Vídeo completo',
-price:550,
-details:[
-'Até 5 minutos finais',
-'Cortes e montagem'
-]
-},
-
-{
-id:11,
-cat:'pacote',
-icon:'⭐',
-name:'Imóveis e terrenos',
-desc:'Pacote para divulgação',
-price:350,
-details:[
-'15 fotos',
-'Vídeo de até 2 min',
-'Captação aérea'
-]
-},
-
-{
-id:12,
-cat:'pacote',
-icon:'🏗️',
-name:'Obras e construções',
-desc:'Acompanhamento',
-price:380,
-details:[
-'15 fotos',
-'Vídeo de até 2 min',
-'Captação aérea'
-]
-},
-
-{
-id:13,
-cat:'pacote',
-icon:'🌳',
-name:'Chácaras e sítios',
-desc:'Apresentação completa',
-price:450,
-details:[
-'20 fotos',
-'Vídeo de até 3 min',
-'Captação aérea'
-]
-},
-
-{
-id:14,
-cat:'pacote',
-icon:'🎉',
-name:'Pequenos eventos',
-desc:'Registro aéreo',
-price:500,
-details:[
-'1 hora de captação',
-'20 fotos',
-'Clipes brutos'
-]
+.cart-item{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  gap:12px;
+  background:#f7f8fa;
+  padding:14px;
+  border-radius:12px;
+  margin-bottom:10px;
 }
 
-];
-
-
-let cart=[];
-
-let clientAddress="";
-
-
-function money(value){
-
-return value.toLocaleString(
-'pt-BR',
-{
-minimumFractionDigits:2
-}
-);
-
+.cart-info{
+  flex:1;
 }
 
-
-function render(list=services){
-
-document.getElementById('cards').innerHTML=
-
-list.map(s=>`
-
-<div class="card ${s.popular?'popular':''}">
-
-${s.popular?
-'<div class="badge">MAIS ESCOLHIDO</div>'
-:''}
-
-<div class="icon">
-${s.icon}
-</div>
-
-<h3>
-${s.name}
-</h3>
-
-<p>
-${s.desc}
-</p>
-
-<div class="price">
-
-R$ ${money(s.price)}
-
-<span class="unit">
-${s.unit||''}
-</span>
-
-</div>
-
-<ul>
-
-${s.details.map(x=>
-`<li>${x}</li>`
-).join('')}
-
-</ul>
-
-<button
-class="btn"
-onclick="add(${s.id})">
-
-➕ Acrescentar ao orçamento
-
-</button>
-
-</div>
-
-`).join('');
-
+.cart-name{
+  font-weight:bold;
 }
 
-
-function filter(cat,el){
-
-document
-.querySelectorAll('.tab')
-.forEach(x=>
-x.classList.remove('active')
-);
-
-el.classList.add('active');
-
-render(
-cat==='todos'
-?
-services
-:
-services.filter(s=>s.cat===cat)
-);
-
+.cart-price{
+  color:#475467;
+  margin-top:5px;
 }
 
-
-function add(id){
-
-let service=
-services.find(x=>x.id===id);
-
-cart.push(service);
-
-document
-.getElementById('count')
-.textContent=cart.length;
-
+.remove-btn{
+  border:0;
+  background:#ffe5e5;
+  color:var(--danger);
+  padding:9px 11px;
+  border-radius:8px;
+  cursor:pointer;
+  font-weight:bold;
+  white-space:nowrap;
 }
 
-
-function addAddressToBudget(){
-
-let input=
-document.getElementById('clientAddress');
-
-let address=
-input.value.trim();
-
-if(!address){
-
-alert(
-'Digite o endereço do local do serviço.'
-);
-
-input.focus();
-
-return;
-
+.address-cart{
+  background:#eef5ff;
+  padding:15px;
+  border-radius:12px;
+  margin-top:15px;
+  margin-bottom:10px;
 }
 
-clientAddress=address;
-
-document
-.getElementById('addressStatus')
-.textContent=
-'✅ Endereço acrescentado ao orçamento: '
-+
-address;
-
+.address-cart-title{
+  font-weight:bold;
+  margin-bottom:7px;
 }
 
-
-function openCart(){
-
-document
-.getElementById('modal')
-.classList.add('open');
-
-let total=
-cart.reduce(
-(a,b)=>a+b.price,
-0
-);
-
-let html=
-cart.length
-
-?
-
-cart.map((x,i)=>`
-
-<div class="line">
-
-<span>
-${i+1}. ${x.name}
-</span>
-
-<b>
-R$ ${money(x.price)}
-</b>
-
-</div>
-
-`).join('')
-
-:
-
-'<p>Nenhum serviço selecionado.</p>';
-
-
-if(clientAddress){
-
-html+=`
-
-<div class="line">
-
-<span>
-📍 Endereço
-</span>
-
-<b
-style="
-max-width:65%;
-text-align:right;
-font-size:14px;
-">
-
-${clientAddress}
-
-</b>
-
-</div>
-
-`;
-
+.address-cart-text{
+  color:#475467;
+  line-height:1.5;
+  word-break:break-word;
 }
 
-
-document
-.getElementById('items')
-.innerHTML=html;
-
-document
-.getElementById('total')
-.textContent=money(total);
-
+.remove-address{
+  border:0;
+  margin-top:10px;
+  background:#ffe5e5;
+  color:var(--danger);
+  padding:9px 11px;
+  border-radius:8px;
+  cursor:pointer;
+  font-weight:bold;
 }
 
-
-function closeCart(){
-
-document
-.getElementById('modal')
-.classList.remove('open');
-
+.distance-cart{
+  margin-top:8px;
+  color:#475467;
+  line-height:1.5;
 }
 
-
-/* WHATSAPP */
-
-function sendWhats(){
-
-if(cart.length===0){
-
-alert(
-'Adicione pelo menos um serviço ao orçamento.'
-);
-
-return;
-
+.total{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  font-size:22px;
+  font-weight:900;
+  padding:20px 0;
+  border-top:1px solid #ddd;
+  margin-top:15px;
 }
 
-
-if(!clientAddress){
-
-alert(
-'Digite o endereço do local e clique em "Acrescentar endereço ao orçamento".'
-);
-
-return;
-
-}
-
-
-let total=
-cart.reduce(
-(a,b)=>a+b.price,
-0
-);
-
-
-let text=
-'Olá! Gostaria de solicitar um orçamento com a AéreoAlex.\n\n'
-+
-cart.map(x=>
-'• '+x.name+
-' — R$ '+
-money(x.price)
-).join('\n')
-+
-'\n\n'
-+
-'Subtotal dos serviços: R$ '+
-money(total)
-+
-'\n\n'
-+
-'📍 Endereço do local:\n'+
-clientAddress
-+
-'\n\n'
-+
-'Gostaria de receber o valor final do orçamento, incluindo o deslocamento.';
-
-
-let url=
-'https://wa.me/5511953169968?text='
-+
-encodeURIComponent(text);
-
-
-window.location.href=url;
-
-}
-
-
-render();
-
-</script>
-
-</body>
-</html>
+.send{
+  width:100%;
+  border:0;
+  background:var(--green);
+  color:#fff;
+ 

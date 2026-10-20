@@ -3,6 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 <title>AéreoAlex | Fotos e Vídeos com Drone</title>
 
 <style>
@@ -61,8 +62,12 @@ header{
   min-height:440px;
   display:flex;
   align-items:center;
+
   background:
-    linear-gradient(rgba(3,15,30,.75),rgba(3,15,30,.88)),
+    linear-gradient(
+      rgba(3,15,30,.75),
+      rgba(3,15,30,.88)
+    ),
     url("https://images.unsplash.com/photo-1473968512647-3e447244af8f?auto=format&fit=crop&w=1800&q=80")
     center/cover;
 }
@@ -141,7 +146,8 @@ header{
 
 .services{
   display:grid;
-  grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+  grid-template-columns:
+    repeat(auto-fit,minmax(250px,1fr));
   gap:18px;
 }
 
@@ -245,7 +251,8 @@ header{
   font-size:14px;
 }
 
-/* INFORMAÇÕES DO DESLOCAMENTO */
+/* DESLOCAMENTO */
+
 .travel-info{
   margin-top:18px;
   background:#081a30;
@@ -287,7 +294,8 @@ header{
 
 .steps{
   display:grid;
-  grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+  grid-template-columns:
+    repeat(auto-fit,minmax(220px,1fr));
   gap:18px;
 }
 
@@ -306,7 +314,12 @@ header{
 
 .cta{
   margin-top:45px;
-  background:linear-gradient(135deg,#102b48,#081a30);
+  background:
+    linear-gradient(
+      135deg,
+      #102b48,
+      #081a30
+    );
   border:1px solid #244c6d;
   border-radius:18px;
   padding:35px 25px;
@@ -333,6 +346,7 @@ footer{
 }
 
 /* MODAL */
+
 .modal{
   display:none;
   position:fixed;
@@ -465,6 +479,7 @@ footer{
 }
 
 @media(max-width:600px){
+
   .hero h1{
     font-size:35px;
   }
@@ -476,6 +491,7 @@ footer{
   .logo{
     font-size:23px;
   }
+
 }
 </style>
 </head>
@@ -483,33 +499,53 @@ footer{
 <body>
 
 <header>
-  <div class="header-content">
-    <div class="logo">Aéreo<span>Alex</span></div>
 
-    <button class="cart-button" onclick="openCart()">
-      🛒 Orçamento <span id="cartCount">0</span>
+  <div class="header-content">
+
+    <div class="logo">
+      Aéreo<span>Alex</span>
+    </div>
+
+    <button
+      class="cart-button"
+      onclick="openCart()"
+    >
+      🛒 Orçamento
+      <span id="cartCount">0</span>
     </button>
+
   </div>
+
 </header>
 
+
 <section class="hero">
+
   <div class="hero-content">
+
     <h1>
-      Imagens que mostram seu projeto de um novo <span>ângulo.</span>
+      Imagens que mostram seu projeto
+      de um novo <span>ângulo.</span>
     </h1>
 
     <p>
-      Fotos e vídeos profissionais com drone para imóveis, terrenos,
-      obras, chácaras, sítios, eventos e diversos tipos de projetos.
+      Fotos e vídeos profissionais com drone
+      para imóveis, terrenos, obras, chácaras,
+      sítios, eventos e diversos tipos de projetos.
     </p>
 
-    <a class="whatsapp-button"
-       href="https://wa.me/5511953169968"
-       target="_blank">
+    <a
+      class="whatsapp-button"
+      href="https://wa.me/5511953169968"
+      target="_blank"
+    >
       💬 Falar pelo WhatsApp
     </a>
+
   </div>
+
 </section>
+
 
 <main class="container">
 
@@ -517,27 +553,48 @@ footer{
     Nossos <span>serviços</span>
   </h2>
 
+
   <div class="tabs">
-    <button class="tab active" onclick="filterServices('todos',this)">
+
+    <button
+      class="tab active"
+      onclick="filterServices('todos',this)"
+    >
       Todos
     </button>
 
-    <button class="tab" onclick="filterServices('fotos',this)">
+    <button
+      class="tab"
+      onclick="filterServices('fotos',this)"
+    >
       Fotos
     </button>
 
-    <button class="tab" onclick="filterServices('videos',this)">
+    <button
+      class="tab"
+      onclick="filterServices('videos',this)"
+    >
       Vídeos
     </button>
 
-    <button class="tab" onclick="filterServices('pacotes',this)">
+    <button
+      class="tab"
+      onclick="filterServices('pacotes',this)"
+    >
       Pacotes
     </button>
+
   </div>
 
-  <div id="services" class="services"></div>
 
-  <!-- LOCAL -->
+  <div
+    id="services"
+    class="services"
+  ></div>
+
+
+  <!-- ENDEREÇO -->
+
   <section class="address-box">
 
     <h2>📍 Local do serviço</h2>
@@ -553,6 +610,7 @@ footer{
       placeholder="Digite o endereço do serviço"
     >
 
+
     <div class="address-actions">
 
       <button
@@ -565,21 +623,29 @@ footer{
 
     </div>
 
-    <div id="addressStatus" class="address-status">
+
+    <div
+      id="addressStatus"
+      class="address-status"
+    >
       Digite o endereço do local onde o serviço será realizado.
     </div>
 
-    <!-- VALOR DO DESLOCAMENTO -->
+
+    <!-- DESLOCAMENTO -->
+
     <div class="travel-info">
 
       <h3>🚗 Valor do deslocamento</h3>
 
       <p>
-        <strong>Valor mínimo:</strong> R$ 30,00
+        <strong>Valor mínimo:</strong>
+        R$ 30,00
       </p>
 
       <p>
-        <strong>Valor por km:</strong> R$ 2,00 por km rodado
+        <strong>Valor por km:</strong>
+        R$ 2,00 por km rodado
       </p>
 
       <p>
@@ -587,28 +653,45 @@ footer{
         distância em quilômetros × R$ 2,00.
       </p>
 
+
       <div class="example-box">
-        <b>Exemplos:</b><br><br>
 
-        5 km × R$ 2,00 = R$ 10,00 →
-        <b>cobra R$ 30,00</b> (valor mínimo)<br>
+        <b>Exemplos:</b>
+        <br><br>
 
-        10 km × R$ 2,00 = R$ 20,00 →
-        <b>cobra R$ 30,00</b> (valor mínimo)<br>
+        5 km × R$ 2,00 = R$ 10,00
+        → <b>cobra R$ 30,00</b>
+        (valor mínimo)
 
-        15 km × R$ 2,00 = R$ 30,00 →
-        <b>cobra R$ 30,00</b><br>
+        <br>
 
-        20 km × R$ 2,00 = R$ 40,00 →
-        <b>cobra R$ 40,00</b><br>
+        10 km × R$ 2,00 = R$ 20,00
+        → <b>cobra R$ 30,00</b>
+        (valor mínimo)
 
-        30 km × R$ 2,00 = R$ 60,00 →
-        <b>cobra R$ 60,00</b>
+        <br>
+
+        15 km × R$ 2,00 = R$ 30,00
+        → <b>cobra R$ 30,00</b>
+
+        <br>
+
+        20 km × R$ 2,00 = R$ 40,00
+        → <b>cobra R$ 40,00</b>
+
+        <br>
+
+        30 km × R$ 2,00 = R$ 60,00
+        → <b>cobra R$ 60,00</b>
+
       </div>
 
     </div>
 
   </section>
+
+
+  <!-- COMO FUNCIONA -->
 
   <section class="how">
 
@@ -616,38 +699,72 @@ footer{
       Como <span>funciona</span>
     </h2>
 
+
     <div class="steps">
 
       <div class="step">
-        <strong>01. Escolha o serviço</strong>
-        Selecione as fotos, vídeos ou serviços que deseja contratar.
+
+        <strong>
+          01. Escolha o serviço
+        </strong>
+
+        Selecione as fotos, vídeos
+        ou serviços que deseja contratar.
+
       </div>
 
-      <div class="step">
-        <strong>02. Informe o local</strong>
-        Digite o endereço onde será realizada a filmagem.
-      </div>
 
       <div class="step">
-        <strong>03. Monte seu orçamento</strong>
-        Confira os serviços escolhidos e o endereço informado.
+
+        <strong>
+          02. Informe o local
+        </strong>
+
+        Digite o endereço onde será
+        realizada a filmagem.
+
       </div>
 
+
       <div class="step">
-        <strong>04. Envie pelo WhatsApp</strong>
-        O orçamento será enviado diretamente para nossa equipe.
+
+        <strong>
+          03. Monte seu orçamento
+        </strong>
+
+        Confira os serviços escolhidos
+        e o endereço informado.
+
+      </div>
+
+
+      <div class="step">
+
+        <strong>
+          04. Envie pelo WhatsApp
+        </strong>
+
+        O orçamento será enviado
+        diretamente para nossa equipe.
+
       </div>
 
     </div>
 
   </section>
 
+
+  <!-- CTA -->
+
   <section class="cta">
 
-    <h2>Precisa de um orçamento?</h2>
+    <h2>
+      Precisa de um orçamento?
+    </h2>
 
     <p>
-      Escolha os serviços acima ou fale diretamente conosco.
+      Escolha os serviços acima ou fale
+      diretamente conosco.
     </p>
 
     <a
@@ -662,19 +779,29 @@ footer{
 
 </main>
 
+
 <footer>
-  © 2026 AéreoAlex — Fotos e vídeos profissionais com drone.
+
+  © 2026 AéreoAlex —
+  Fotos e vídeos profissionais com drone.
+
 </footer>
 
 
-<!-- MODAL DO ORÇAMENTO -->
-<div id="cartModal" class="modal">
+<!-- MODAL ORÇAMENTO -->
+
+<div
+  id="cartModal"
+  class="modal"
+>
 
   <div class="modal-box">
 
     <div class="modal-header">
 
-      <h2>🧾 Seu orçamento</h2>
+      <h2>
+        🧾 Seu orçamento
+      </h2>
 
       <button
         class="close"
@@ -685,11 +812,15 @@ footer{
 
     </div>
 
+
     <div id="cartContent"></div>
+
 
     <div class="total">
 
-      <span>Total dos serviços</span>
+      <span>
+        Total dos serviços
+      </span>
 
       <span
         id="cartTotal"
@@ -699,6 +830,7 @@ footer{
       </span>
 
     </div>
+
 
     <button
       class="send-whatsapp"
@@ -719,7 +851,8 @@ const services = [
   {
     id:1,
     name:"10 fotos aéreas",
-    description:"Registro aéreo com até 10 fotos profissionais.",
+    description:
+      "Registro aéreo com até 10 fotos profissionais.",
     price:180,
     category:"fotos"
   },
@@ -727,7 +860,8 @@ const services = [
   {
     id:2,
     name:"20 fotos aéreas",
-    description:"Registro aéreo com até 20 fotos profissionais.",
+    description:
+      "Registro aéreo com até 20 fotos profissionais.",
     price:250,
     category:"fotos",
     popular:true
@@ -736,7 +870,8 @@ const services = [
   {
     id:3,
     name:"30 fotos aéreas",
-    description:"Registro aéreo com até 30 fotos profissionais.",
+    description:
+      "Registro aéreo com até 30 fotos profissionais.",
     price:300,
     category:"fotos"
   },
@@ -744,7 +879,8 @@ const services = [
   {
     id:4,
     name:"Foto extra",
-    description:"Foto adicional além do pacote contratado.",
+    description:
+      "Foto adicional além do pacote contratado.",
     price:4,
     category:"fotos"
   },
@@ -752,7 +888,8 @@ const services = [
   {
     id:5,
     name:"Vídeo bruto até 1 min",
-    description:"Captação aérea em vídeo, sem edição.",
+    description:
+      "Captação aérea em vídeo, sem edição.",
     price:180,
     category:"videos"
   },
@@ -760,7 +897,8 @@ const services = [
   {
     id:6,
     name:"Vídeo bruto até 3 min",
-    description:"Captação aérea em vídeo, sem edição.",
+    description:
+      "Captação aérea em vídeo, sem edição.",
     price:280,
     category:"videos"
   },
@@ -768,7 +906,8 @@ const services = [
   {
     id:7,
     name:"Vídeo bruto até 5 min",
-    description:"Captação aérea em vídeo, sem edição.",
+    description:
+      "Captação aérea em vídeo, sem edição.",
     price:350,
     category:"videos"
   },
@@ -776,7 +915,8 @@ const services = [
   {
     id:8,
     name:"Vídeo editado até 1 min",
-    description:"Captação e edição profissional.",
+    description:
+      "Captação e edição profissional.",
     price:280,
     category:"videos"
   },
@@ -784,7 +924,8 @@ const services = [
   {
     id:9,
     name:"Vídeo editado até 3 min",
-    description:"Captação e edição profissional.",
+    description:
+      "Captação e edição profissional.",
     price:400,
     category:"videos"
   },
@@ -792,7 +933,8 @@ const services = [
   {
     id:10,
     name:"Vídeo editado até 5 min",
-    description:"Captação e edição profissional.",
+    description:
+      "Captação e edição profissional.",
     price:550,
     category:"videos"
   },
@@ -800,7 +942,8 @@ const services = [
   {
     id:11,
     name:"Imóveis e terrenos",
-    description:"Fotos e vídeos aéreos para imóveis e terrenos.",
+    description:
+      "Fotos e vídeos aéreos para imóveis e terrenos.",
     price:350,
     category:"pacotes"
   },
@@ -808,7 +951,8 @@ const services = [
   {
     id:12,
     name:"Obras e construções",
-    description:"Registro aéreo de obras e construções.",
+    description:
+      "Registro aéreo de obras e construções.",
     price:380,
     category:"pacotes"
   },
@@ -816,7 +960,8 @@ const services = [
   {
     id:13,
     name:"Chácaras e sítios",
-    description:"Produção de imagens aéreas para chácaras e sítios.",
+    description:
+      "Produção de imagens aéreas para chácaras e sítios.",
     price:450,
     category:"pacotes"
   },
@@ -824,15 +969,21 @@ const services = [
   {
     id:14,
     name:"Pequenos eventos",
-    description:"Cobertura aérea de pequenos eventos.",
+    description:
+      "Cobertura aérea de pequenos eventos.",
     price:500,
     category:"pacotes"
   }
 
 ];
 
+
 let cart = [];
+
 let clientAddress = "";
+
+
+/* FORMATA DINHEIRO */
 
 function money(value){
 
@@ -847,6 +998,8 @@ function money(value){
 }
 
 
+/* MOSTRA SERVIÇOS */
+
 function renderServices(category="todos"){
 
   const container =
@@ -854,12 +1007,15 @@ function renderServices(category="todos"){
 
   container.innerHTML = "";
 
+
   const list =
     category === "todos"
       ? services
       : services.filter(
-          service => service.category === category
+          service =>
+            service.category === category
         );
+
 
   list.forEach(service => {
 
@@ -868,21 +1024,31 @@ function renderServices(category="todos"){
 
     card.className = "card";
 
+
     card.innerHTML = `
 
       <div>
 
         ${
           service.popular
-          ? `<span class="badge">MAIS ESCOLHIDO</span>`
-          : ""
+            ? `
+              <span class="badge">
+                MAIS ESCOLHIDO
+              </span>
+            `
+            : ""
         }
 
-        <h3>${service.name}</h3>
+        <h3>
+          ${service.name}
+        </h3>
 
-        <p>${service.description}</p>
+        <p>
+          ${service.description}
+        </p>
 
       </div>
+
 
       <div>
 
@@ -890,13 +1056,16 @@ function renderServices(category="todos"){
           ${money(service.price)}
         </div>
 
-        <button onclick="addService(${service.id})">
+        <button
+          onclick="addService(${service.id})"
+        >
           ➕ Adicionar ao orçamento
         </button>
 
       </div>
 
     `;
+
 
     container.appendChild(card);
 
@@ -905,38 +1074,61 @@ function renderServices(category="todos"){
 }
 
 
+/* FILTRO */
+
 function filterServices(category,button){
 
   document
     .querySelectorAll(".tab")
-    .forEach(tab => tab.classList.remove("active"));
+    .forEach(tab =>
+      tab.classList.remove("active")
+    );
+
 
   button.classList.add("active");
+
 
   renderServices(category);
 
 }
 
 
+/* ADICIONAR SERVIÇO */
+
 function addService(id){
 
   const service =
-    services.find(item => item.id === id);
+    services.find(
+      item => item.id === id
+    );
+
 
   if(!service) return;
 
+
   cart.push({
+
     id:service.id,
+
     name:service.name,
+
     price:service.price
+
   });
+
 
   updateCartCount();
 
-  openCart();
+  /*
+    IMPORTANTE:
+    O carrinho NÃO abre aqui.
+    O cliente continua na página.
+  */
 
 }
 
+
+/* REMOVER SERVIÇO */
 
 function removeItem(index){
 
@@ -949,21 +1141,30 @@ function removeItem(index){
 }
 
 
+/* CONTADOR */
+
 function updateCartCount(){
 
-  document.getElementById("cartCount").textContent =
-    cart.length;
+  document.getElementById(
+    "cartCount"
+  ).textContent = cart.length;
 
 }
 
 
+/* ANEXAR ENDEREÇO */
+
 function addAddressToBudget(){
 
   const input =
-    document.getElementById("clientAddress");
+    document.getElementById(
+      "clientAddress"
+    );
+
 
   const address =
     input.value.trim();
+
 
   if(!address){
 
@@ -974,114 +1175,159 @@ function addAddressToBudget(){
     input.focus();
 
     return;
+
   }
 
+
   clientAddress = address;
+
 
   document.getElementById(
     "addressStatus"
   ).textContent =
     "✅ Endereço anexado ao orçamento.";
 
+
   document.getElementById(
     "addAddressBtn"
   ).textContent =
     "✅ Endereço anexado ao orçamento";
+
+
+  /*
+    O carrinho SÓ abre neste momento.
+  */
 
   openCart();
 
 }
 
 
+/* REMOVER ENDEREÇO */
+
 function removeAddress(){
 
   clientAddress = "";
 
+
   document.getElementById(
     "clientAddress"
   ).value = "";
+
 
   document.getElementById(
     "addressStatus"
   ).textContent =
     "Digite o endereço do local onde o serviço será realizado.";
 
+
   document.getElementById(
     "addAddressBtn"
   ).textContent =
     "➕ Anexar endereço ao orçamento";
+
 
   openCart();
 
 }
 
 
+/* ABRIR ORÇAMENTO */
+
 function openCart(){
 
   const modal =
-    document.getElementById("cartModal");
+    document.getElementById(
+      "cartModal"
+    );
+
 
   const content =
-    document.getElementById("cartContent");
+    document.getElementById(
+      "cartContent"
+    );
+
 
   content.innerHTML = "";
 
+
   let total = 0;
 
-  if(cart.length === 0 && !clientAddress){
+
+  if(
+    cart.length === 0 &&
+    !clientAddress
+  ){
 
     content.innerHTML = `
+
       <div class="empty">
         Seu orçamento está vazio.
       </div>
+
     `;
 
   }
 
-  cart.forEach((item,index) => {
 
-    total += Number(item.price);
+  /* SERVIÇOS */
 
-    const div =
-      document.createElement("div");
+  cart.forEach(
+    (item,index) => {
 
-    div.className = "cart-item";
+      total += Number(item.price);
 
-    div.innerHTML = `
 
-      <div class="cart-info">
+      const div =
+        document.createElement("div");
 
-        <div class="cart-name">
-          ${item.name}
+
+      div.className =
+        "cart-item";
+
+
+      div.innerHTML = `
+
+        <div class="cart-info">
+
+          <div class="cart-name">
+            ${escapeHTML(item.name)}
+          </div>
+
+          <div class="cart-price">
+            ${money(item.price)}
+          </div>
+
         </div>
 
-        <div class="cart-price">
-          ${money(item.price)}
-        </div>
 
-      </div>
+        <button
+          class="remove-btn"
+          onclick="removeItem(${index})"
+        >
+          🗑️ Apagar
+        </button>
 
-      <button
-        class="remove-btn"
-        onclick="removeItem(${index})"
-      >
-        🗑️ Apagar
-      </button>
+      `;
 
-    `;
 
-    content.appendChild(div);
+      content.appendChild(div);
 
-  });
+    }
+  );
 
+
+  /* ENDEREÇO */
 
   if(clientAddress){
 
     const addressDiv =
       document.createElement("div");
 
+
     addressDiv.className =
       "address-cart";
+
 
     addressDiv.innerHTML = `
 
@@ -1089,9 +1335,11 @@ function openCart(){
         📍 Endereço do serviço
       </div>
 
+
       <div class="address-cart-text">
         ${escapeHTML(clientAddress)}
       </div>
+
 
       <button
         class="remove-address"
@@ -1102,6 +1350,7 @@ function openCart(){
 
     `;
 
+
     content.appendChild(addressDiv);
 
   }
@@ -1109,33 +1358,45 @@ function openCart(){
 
   document.getElementById(
     "cartTotal"
-  ).textContent = money(total);
+  ).textContent =
+    money(total);
 
-  modal.style.display = "flex";
+
+  modal.style.display =
+    "flex";
 
 }
 
+
+/* FECHAR ORÇAMENTO */
 
 function closeCart(){
 
   document.getElementById(
     "cartModal"
-  ).style.display = "none";
+  ).style.display =
+    "none";
 
 }
 
+
+/* PROTEGER TEXTO DO ENDEREÇO */
 
 function escapeHTML(text){
 
   const div =
     document.createElement("div");
 
+
   div.textContent = text;
+
 
   return div.innerHTML;
 
 }
 
+
+/* ENVIAR WHATSAPP */
 
 function sendWhats(){
 
@@ -1149,21 +1410,23 @@ function sendWhats(){
 
   }
 
-  let message =
-    "Olá! Gostaria de solicitar um orçamento pelo AéreoAlex.%0A%0A";
 
-  message =
+  let message =
     "Olá! Gostaria de solicitar um orçamento pelo AéreoAlex.\n\n";
+
 
   message +=
     "📋 SERVIÇOS:\n";
 
-  cart.forEach((item,index) => {
 
-    message +=
-      `${index + 1}. ${item.name} - ${money(item.price)}\n`;
+  cart.forEach(
+    (item,index) => {
 
-  });
+      message +=
+        `${index + 1}. ${item.name} - ${money(item.price)}\n`;
+
+    }
+  );
 
 
   if(clientAddress){
@@ -1181,14 +1444,23 @@ function sendWhats(){
       0
     );
 
+
   message +=
     `\n💰 TOTAL DOS SERVIÇOS: ${money(total)}\n`;
 
+
   message +=
-    "\n🚗 DESLOCAMENTO:\n" +
-    "Valor mínimo: R$ 30,00\n" +
-    "Valor: R$ 2,00 por km rodado\n" +
+    "\n🚗 DESLOCAMENTO:\n";
+
+  message +=
+    "Valor mínimo: R$ 30,00\n";
+
+  message +=
+    "Valor: R$ 2,00 por km rodado\n";
+
+  message +=
     "Cálculo: distância em km × R$ 2,00, respeitando o valor mínimo de R$ 30,00.\n";
+
 
   message +=
     "\nAguardo o orçamento final. Obrigado!";
@@ -1198,23 +1470,34 @@ function sendWhats(){
     "https://wa.me/5511953169968?text=" +
     encodeURIComponent(message);
 
-  window.open(url,"_blank");
+
+  window.open(
+    url,
+    "_blank"
+  );
 
 }
 
 
+/* FECHAR CLICANDO FORA */
+
 document
   .getElementById("cartModal")
-  .addEventListener("click",function(event){
+  .addEventListener(
+    "click",
+    function(event){
 
-    if(event.target === this){
+      if(event.target === this){
 
-      closeCart();
+        closeCart();
+
+      }
 
     }
+  );
 
-  });
 
+/* INICIALIZA */
 
 renderServices();
 

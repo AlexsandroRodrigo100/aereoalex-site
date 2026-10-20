@@ -1,36 +1,1071 @@
-from pathlib import Path
-p=Path("/mnt/data/index.html")
-html=p.read_text(encoding="utf-8")
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AéreoAlex | Fotos e Vídeos com Drone</title>
 
-# Premium visual improvements and reliable button behavior.
-html=html.replace(
-'background:linear-gradient(rgba(3,12,24,.72),rgba(3,12,24,.92)),',
-'background:linear-gradient(90deg,rgba(3,10,20,.94) 0%,rgba(3,10,20,.68) 48%,rgba(3,10,20,.90) 100%),'
-)
-html=html.replace(
-'.drone-hero{margin-top:40px;width:260px;max-width:90%}',
-'''.drone-hero{
-  width:330px;max-width:90%;margin:0 0 30px;
-  filter:drop-shadow(0 18px 28px rgba(255,210,28,.20));
-  animation:droneVoando 3.8s ease-in-out infinite
+<style>
+*{
+  box-sizing:border-box;
+  margin:0;
+  padding:0;
 }
-.drone-svg{width:100%;height:auto;overflow:visible}
-.propeller{transform-box:fill-box;transform-origin:center;animation:girar .16s linear infinite}
-.drone-light{animation:piscando 1s ease-in-out infinite}
-@keyframes droneVoando{0%,100%{transform:translateY(0) rotate(-1deg)}50%{transform:translateY(-16px) rotate(1deg)}}
-@keyframes girar{to{transform:rotate(360deg)}}
-@keyframes piscando{50%{opacity:.25}}'''
-)
 
-# Remove any visible privacy section/text if present.
-import re
-html=re.sub(r'<[^>]*>[^<]*Privacidade[^<]*</[^>]*>', '', html, flags=re.I)
-html=re.sub(r'[^<]*Privacidade[^<]*', '', html, flags=re.I)
+body{
+  font-family:Arial,Helvetica,sans-serif;
+  background:#07111f;
+  color:#fff;
+  line-height:1.5;
+}
 
-# Ensure addService does not rely on the global `event`; use explicit button.
-html=html.replace('onclick="addService(${service.id})"', 'onclick="addService(${service.id},this)"')
-html=html.replace(
-'''function addService(id){
+header{
+  position:sticky;
+  top:0;
+  z-index:1000;
+  background:rgba(4,12,23,.96);
+  border-bottom:1px solid #26364b;
+  padding:12px 5%;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+}
+
+.logo{
+  display:flex;
+  align-items:center;
+  gap:10px;
+  font-size:22px;
+  font-weight:bold;
+  color:#ffd21c;
+}
+
+.logo svg{
+  width:48px;
+  height:38px;
+}
+
+.cart-btn{
+  border:0;
+  background:#ffd21c;
+  color:#07111f;
+  font-weight:bold;
+  padding:11px 17px;
+  border-radius:10px;
+  cursor:pointer;
+}
+
+.hero{
+  min-height:620px;
+  display:flex;
+  align-items:center;
+  position:relative;
+  overflow:hidden;
+  background:
+    linear-gradient(rgba(3,12,24,.72),rgba(3,12,24,.92)),
+    url("https://images.unsplash.com/photo-1473968512647-3e447244af8f?auto=format&fit=crop&w=1800&q=85")
+    center/cover;
+}
+
+.hero-content{
+  width:90%;
+  max-width:1150px;
+  margin:auto;
+  padding:80px 0;
+}
+
+.hero h1{
+  font-size:clamp(42px,7vw,78px);
+  line-height:1;
+  margin-bottom:20px;
+}
+
+.hero h1 span{
+  color:#ffd21c;
+}
+
+.hero p{
+  max-width:680px;
+  color:#d5deea;
+  font-size:19px;
+  margin-bottom:28px;
+}
+
+.hero-buttons{
+  display:flex;
+  gap:12px;
+  flex-wrap:wrap;
+}
+
+.btn{
+  display:inline-block;
+  padding:14px 21px;
+  border-radius:10px;
+  text-decoration:none;
+  font-weight:bold;
+  cursor:pointer;
+  border:0;
+}
+
+.btn-primary{
+  background:#ffd21c;
+  color:#07111f;
+}
+
+.btn-secondary{
+  background:rgba(255,255,255,.08);
+  color:white;
+  border:1px solid #52657d;
+}
+
+.drone-hero{
+  margin-top:40px;
+  width:260px;
+  max-width:90%;
+}
+
+section{
+  width:90%;
+  max-width:1150px;
+  margin:70px auto;
+}
+
+.section-title{
+  text-align:center;
+  margin-bottom:35px;
+}
+
+.section-title h2{
+  font-size:35px;
+  margin-bottom:8px;
+}
+
+.section-title p{
+  color:#aebdce;
+}
+
+.benefits{
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  gap:18px;
+}
+
+.benefit{
+  background:#0c1a2c;
+  border:1px solid #24364c;
+  padding:24px;
+  border-radius:15px;
+  text-align:center;
+}
+
+.benefit-icon{
+  font-size:34px;
+  margin-bottom:12px;
+}
+
+.benefit h3{
+  margin-bottom:8px;
+  color:#ffd21c;
+}
+
+.benefit p{
+  color:#aebdce;
+  font-size:14px;
+}
+
+.tabs{
+  display:flex;
+  justify-content:center;
+  gap:10px;
+  flex-wrap:wrap;
+  margin-bottom:28px;
+}
+
+.tab{
+  background:#101f33;
+  color:#fff;
+  border:1px solid #30445c;
+  padding:11px 18px;
+  border-radius:9px;
+  cursor:pointer;
+}
+
+.tab.active{
+  background:#ffd21c;
+  color:#07111f;
+  border-color:#ffd21c;
+  font-weight:bold;
+}
+
+.services{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:20px;
+}
+
+.service-card{
+  background:#0c1a2c;
+  border:1px solid #263b54;
+  border-radius:16px;
+  overflow:hidden;
+  transition:.25s;
+}
+
+.service-card:hover{
+  transform:translateY(-4px);
+  border-color:#ffd21c;
+}
+
+.service-image{
+  width:100%;
+  height:190px;
+  object-fit:cover;
+}
+
+.service-content{
+  padding:20px;
+}
+
+.service-content h3{
+  font-size:20px;
+  margin-bottom:9px;
+}
+
+.service-description{
+  color:#b7c4d2;
+  font-size:14px;
+  min-height:42px;
+}
+
+.service-quantity{
+  display:inline-block;
+  margin:13px 0;
+  padding:7px 10px;
+  border-radius:7px;
+  background:#14263d;
+  color:#ffd21c;
+  font-size:13px;
+  font-weight:bold;
+}
+
+.price{
+  font-size:25px;
+  font-weight:bold;
+  color:#ffd21c;
+  margin:8px 0 15px;
+}
+
+.add-btn{
+  width:100%;
+  padding:12px;
+  border:0;
+  border-radius:9px;
+  background:#ffd21c;
+  color:#07111f;
+  font-weight:bold;
+  cursor:pointer;
+}
+
+.address-box{
+  background:linear-gradient(135deg,#0d2138,#091626);
+  border:1px solid #304862;
+  padding:30px;
+  border-radius:18px;
+}
+
+.address-box h2{
+  margin-bottom:8px;
+}
+
+.address-box p{
+  color:#afbdcc;
+  margin-bottom:18px;
+}
+
+.address-input{
+  width:100%;
+  padding:14px;
+  border-radius:9px;
+  border:1px solid #40546b;
+  background:#07111f;
+  color:white;
+  outline:none;
+  margin-bottom:12px;
+}
+
+.address-input:focus{
+  border-color:#ffd21c;
+}
+
+.address-btn{
+  background:#ffd21c;
+  color:#07111f;
+  border:0;
+  padding:13px 18px;
+  border-radius:9px;
+  font-weight:bold;
+  cursor:pointer;
+}
+
+.address-status{
+  margin-top:13px;
+  color:#ffd21c;
+  font-size:14px;
+}
+
+.travel-box{
+  margin-top:20px;
+  padding:25px;
+  background:#0c1a2c;
+  border:1px solid #263b54;
+  border-radius:15px;
+}
+
+.travel-box h3{
+  color:#ffd21c;
+  margin-bottom:10px;
+}
+
+.travel-box p{
+  margin:6px 0;
+  color:#c0ccd8;
+}
+
+.examples{
+  display:flex;
+  flex-wrap:wrap;
+  gap:10px;
+  margin-top:15px;
+}
+
+.example{
+  background:#14263d;
+  padding:9px 12px;
+  border-radius:8px;
+  font-size:13px;
+  color:#fff;
+}
+
+.steps{
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  gap:18px;
+}
+
+.step{
+  text-align:center;
+  background:#0c1a2c;
+  border:1px solid #263b54;
+  padding:25px;
+  border-radius:15px;
+}
+
+.step-number{
+  width:45px;
+  height:45px;
+  margin:0 auto 15px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  background:#ffd21c;
+  color:#07111f;
+  border-radius:50%;
+  font-weight:bold;
+  font-size:20px;
+}
+
+.cta{
+  background:
+    linear-gradient(rgba(5,15,27,.78),rgba(5,15,27,.9)),
+    url("https://images.unsplash.com/photo-1508614589041-895b88931e3e?auto=format&fit=crop&w=1600&q=80")
+    center/cover;
+  border-radius:20px;
+  padding:60px 30px;
+  text-align:center;
+  border:1px solid #334960;
+}
+
+.cta h2{
+  font-size:38px;
+  margin-bottom:12px;
+}
+
+.cta p{
+  color:#d0dae4;
+  margin-bottom:25px;
+}
+
+footer{
+  background:#040b14;
+  border-top:1px solid #1d2c3e;
+  padding:35px 5%;
+  text-align:center;
+  color:#8999aa;
+}
+
+footer strong{
+  color:#ffd21c;
+}
+
+/* MODAL */
+.modal{
+  position:fixed;
+  inset:0;
+  z-index:3000;
+  background:rgba(0,0,0,.75);
+  display:none;
+  align-items:center;
+  justify-content:center;
+  padding:15px;
+}
+
+.modal.active{
+  display:flex;
+}
+
+.modal-box{
+  width:100%;
+  max-width:600px;
+  max-height:90vh;
+  overflow:auto;
+  background:#0b192b;
+  border:1px solid #40546c;
+  border-radius:18px;
+  padding:25px;
+}
+
+.modal-header{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  margin-bottom:20px;
+}
+
+.modal-header h2{
+  color:#ffd21c;
+}
+
+.close{
+  border:0;
+  background:#1b2b3f;
+  color:white;
+  width:38px;
+  height:38px;
+  border-radius:8px;
+  cursor:pointer;
+  font-size:20px;
+}
+
+.quote-item{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  gap:10px;
+  padding:14px 0;
+  border-bottom:1px solid #26384c;
+}
+
+.quote-info{
+  flex:1;
+}
+
+.quote-info strong{
+  display:block;
+}
+
+.quote-price{
+  color:#ffd21c;
+  font-weight:bold;
+}
+
+.delete-btn{
+  background:#a91f2c;
+  color:white;
+  border:0;
+  border-radius:7px;
+  padding:8px 10px;
+  cursor:pointer;
+}
+
+.quote-address{
+  margin-top:18px;
+  padding:14px;
+  background:#14263d;
+  border-radius:9px;
+}
+
+.total{
+  display:flex;
+  justify-content:space-between;
+  margin-top:20px;
+  padding-top:18px;
+  border-top:2px solid #334960;
+  font-size:22px;
+  font-weight:bold;
+}
+
+.total span:last-child{
+  color:#ffd21c;
+}
+
+.whatsapp{
+  width:100%;
+  margin-top:20px;
+  padding:15px;
+  border:0;
+  border-radius:10px;
+  background:#25d366;
+  color:white;
+  font-weight:bold;
+  font-size:16px;
+  cursor:pointer;
+}
+
+.empty{
+  text-align:center;
+  padding:30px;
+  color:#9cabb9;
+}
+
+@media(max-width:900px){
+  .benefits,
+  .steps{
+    grid-template-columns:repeat(2,1fr);
+  }
+
+  .services{
+    grid-template-columns:repeat(2,1fr);
+  }
+}
+
+@media(max-width:600px){
+  .hero{
+    min-height:570px;
+  }
+
+  .benefits,
+  .steps,
+  .services{
+    grid-template-columns:1fr;
+  }
+
+  section{
+    width:92%;
+  }
+
+  .hero-content{
+    width:92%;
+  }
+
+  .hero h1{
+    font-size:48px;
+  }
+
+  .cta h2{
+    font-size:30px;
+  }
+}
+</style>
+</head>
+
+<body>
+
+<header>
+  <div class="logo">
+    <svg viewBox="0 0 160 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <rect x="55" y="32" width="50" height="28" rx="8" fill="#FFD21C"/>
+      <circle cx="66" cy="46" r="5" fill="#07111F"/>
+      <circle cx="94" cy="46" r="5" fill="#07111F"/>
+      <path d="M55 39L27 23M55 52L27 67M105 39L133 23M105 52L133 67" stroke="#FFD21C" stroke-width="7" stroke-linecap="round"/>
+      <circle cx="22" cy="20" r="12" stroke="#FFD21C" stroke-width="5"/>
+      <circle cx="22" cy="70" r="12" stroke="#FFD21C" stroke-width="5"/>
+      <circle cx="138" cy="20" r="12" stroke="#FFD21C" stroke-width="5"/>
+      <circle cx="138" cy="70" r="12" stroke="#FFD21C" stroke-width="5"/>
+    </svg>
+    <span>AéreoAlex</span>
+  </div>
+
+  <button class="cart-btn" onclick="openCart()">
+    🛒 Orçamento <span id="cartCount">0</span>
+  </button>
+</header>
+
+<section class="hero">
+  <div class="hero-content">
+
+    <div class="drone-hero">
+      <svg viewBox="0 0 600 240" xmlns="http://www.w3.org/2000/svg">
+        <g fill="none" stroke="#FFD21C" stroke-width="7">
+          <rect x="225" y="80" width="150" height="75" rx="25" fill="#FFD21C"/>
+          <circle cx="270" cy="117" r="10" fill="#07111F" stroke="#07111F"/>
+          <circle cx="330" cy="117" r="10" fill="#07111F" stroke="#07111F"/>
+          <path d="M225 90L105 45M225 140L105 195M375 90L495 45M375 140L495 195"/>
+          <circle cx="85" cy="38" r="27"/>
+          <circle cx="85" cy="202" r="27"/>
+          <circle cx="515" cy="38" r="27"/>
+          <circle cx="515" cy="202" r="27"/>
+        </g>
+      </svg>
+    </div>
+
+    <h1>Imagens que colocam seu projeto <span>no alto.</span></h1>
+
+    <p>
+      Fotos aéreas, vídeos brutos e vídeos profissionais com drone
+      para imóveis, terrenos, obras, chácaras, sítios e eventos.
+    </p>
+
+    <div class="hero-buttons">
+      <a href="#servicos" class="btn btn-primary">Ver serviços</a>
+      <button class="btn btn-secondary" onclick="openCart()">Ver orçamento</button>
+    </div>
+
+  </div>
+</section>
+
+<section>
+  <div class="section-title">
+    <h2>Por que escolher a AéreoAlex?</h2>
+    <p>Imagens aéreas para valorizar o seu projeto.</p>
+  </div>
+
+  <div class="benefits">
+
+    <div class="benefit">
+      <div class="benefit-icon">📷</div>
+      <h3>Fotos aéreas</h3>
+      <p>Registros de alta qualidade para apresentar seu imóvel ou projeto.</p>
+    </div>
+
+    <div class="benefit">
+      <div class="benefit-icon">🎬</div>
+      <h3>Vídeos</h3>
+      <p>Vídeos brutos ou editados de acordo com sua necessidade.</p>
+    </div>
+
+    <div class="benefit">
+      <div class="benefit-icon">📍</div>
+      <h3>Atendimento</h3>
+      <p>Atendimento para diferentes locais e tipos de projetos.</p>
+    </div>
+
+    <div class="benefit">
+      <div class="benefit-icon">⭐</div>
+      <h3>Orçamento fácil</h3>
+      <p>Monte seu orçamento e envie diretamente pelo WhatsApp.</p>
+    </div>
+
+  </div>
+</section>
+
+<section id="servicos">
+
+  <div class="section-title">
+    <h2>Serviços</h2>
+    <p>Escolha os serviços que deseja adicionar ao orçamento.</p>
+  </div>
+
+  <div class="tabs">
+    <button class="tab active" onclick="filterServices('todos',this)">Todos</button>
+    <button class="tab" onclick="filterServices('fotos',this)">Fotos</button>
+    <button class="tab" onclick="filterServices('videos',this)">Vídeos</button>
+    <button class="tab" onclick="filterServices('pacotes',this)">Pacotes</button>
+  </div>
+
+  <div class="services" id="services"></div>
+
+</section>
+
+<section>
+
+  <div class="address-box">
+
+    <h2>📍 Endereço do serviço</h2>
+
+    <p>
+      Informe o endereço onde deseja realizar a filmagem ou fotografias.
+    </p>
+
+    <input
+      id="addressInput"
+      class="address-input"
+      type="text"
+      placeholder="Digite o endereço do serviço"
+    >
+
+    <button class="address-btn" onclick="addAddressToBudget()">
+      ➕ Anexar endereço ao orçamento
+    </button>
+
+    <div id="addressStatus" class="address-status"></div>
+
+  </div>
+
+  <div class="travel-box">
+
+    <h3>🚗 Deslocamento</h3>
+
+    <p><strong>Valor mínimo:</strong> R$ 30,00</p>
+    <p><strong>Valor por distância:</strong> R$ 2,00 por km rodado</p>
+    <p>
+      O valor do deslocamento é considerado conforme a distância
+      entre a origem do atendimento e o endereço informado.
+    </p>
+
+    <div class="examples">
+      <div class="example">5 km → R$ 30</div>
+      <div class="example">10 km → R$ 30</div>
+      <div class="example">15 km → R$ 30</div>
+      <div class="example">20 km → R$ 40</div>
+      <div class="example">30 km → R$ 60</div>
+    </div>
+
+    <p style="margin-top:15px;font-size:13px;">
+      O deslocamento será confirmado no orçamento. Ele não é somado
+      automaticamente ao total dos serviços.
+    </p>
+
+  </div>
+
+</section>
+
+<section>
+
+  <div class="section-title">
+    <h2>Como funciona?</h2>
+    <p>Faça seu orçamento em poucos passos.</p>
+  </div>
+
+  <div class="steps">
+
+    <div class="step">
+      <div class="step-number">1</div>
+      <h3>Escolha</h3>
+      <p>Selecione os serviços desejados.</p>
+    </div>
+
+    <div class="step">
+      <div class="step-number">2</div>
+      <h3>Endereço</h3>
+      <p>Informe onde será realizado o serviço.</p>
+    </div>
+
+    <div class="step">
+      <div class="step-number">3</div>
+      <h3>Orçamento</h3>
+      <p>Confira os serviços selecionados.</p>
+    </div>
+
+    <div class="step">
+      <div class="step-number">4</div>
+      <h3>WhatsApp</h3>
+      <p>Envie o orçamento diretamente.</p>
+    </div>
+
+  </div>
+
+</section>
+
+<section>
+
+  <div class="cta">
+
+    <h2>Seu projeto merece uma visão diferente.</h2>
+
+    <p>
+      Solicite seu orçamento para fotos e vídeos com drone.
+    </p>
+
+    <button class="btn btn-primary" onclick="openCart()">
+      Montar meu orçamento
+    </button>
+
+  </div>
+
+</section>
+
+<footer>
+
+  <p>
+    <strong>AéreoAlex</strong> — Fotos e vídeos profissionais com drone.
+  </p>
+
+  <p style="margin-top:8px;">
+    São Paulo - SP
+  </p>
+
+</footer>
+
+
+<!-- MODAL DO ORÇAMENTO -->
+
+<div class="modal" id="cartModal">
+
+  <div class="modal-box">
+
+    <div class="modal-header">
+
+      <h2>🛒 Meu orçamento</h2>
+
+      <button class="close" onclick="closeCart()">×</button>
+
+    </div>
+
+    <div id="quoteItems"></div>
+
+    <div id="quoteAddress"></div>
+
+    <div class="total">
+      <span>Total dos serviços</span>
+      <span id="total">R$ 0,00</span>
+    </div>
+
+    <button class="whatsapp" onclick="sendWhats()">
+      Enviar orçamento pelo WhatsApp
+    </button>
+
+  </div>
+
+</div>
+
+
+<script>
+
+const WHATSAPP = "5511953169968";
+
+let cart = [];
+
+let clientAddress = "";
+
+const services = [
+
+  {
+    id:1,
+    category:"fotos",
+    name:"10 fotos aéreas",
+    description:"Registro aéreo profissional.",
+    quantity:"📷 Até 10 fotos",
+    price:180,
+    image:"https://images.unsplash.com/photo-1473968512647-3e447244af8f?auto=format&fit=crop&w=900&q=80"
+  },
+
+  {
+    id:2,
+    category:"fotos",
+    name:"20 fotos aéreas",
+    description:"Mais imagens para apresentar seu projeto.",
+    quantity:"📷 Até 20 fotos",
+    price:250,
+    image:"https://images.unsplash.com/photo-1508614589041-895b88931e3e?auto=format&fit=crop&w=900&q=80"
+  },
+
+  {
+    id:3,
+    category:"fotos",
+    name:"30 fotos aéreas",
+    description:"Pacote completo de fotografias aéreas.",
+    quantity:"📷 Até 30 fotos",
+    price:300,
+    image:"https://images.unsplash.com/photo-1526778548025-fa2f459cd5c1?auto=format&fit=crop&w=900&q=80"
+  },
+
+  {
+    id:4,
+    category:"fotos",
+    name:"Foto extra",
+    description:"Adicione fotografias além do pacote.",
+    quantity:"📷 1 foto adicional",
+    price:4,
+    image:"https://images.unsplash.com/photo-1452587925148-ce544e77e70d?auto=format&fit=crop&w=900&q=80"
+  },
+
+  {
+    id:5,
+    category:"videos",
+    name:"Vídeo bruto até 1 minuto",
+    description:"Vídeo original captado pelo drone.",
+    quantity:"🎬 Até 1 minuto",
+    price:180,
+    image:"https://images.unsplash.com/photo-1478436127897-769e1b3f0f36?auto=format&fit=crop&w=900&q=80"
+  },
+
+  {
+    id:6,
+    category:"videos",
+    name:"Vídeo bruto até 3 minutos",
+    description:"Vídeo bruto com maior duração.",
+    quantity:"🎬 Até 3 minutos",
+    price:280,
+    image:"https://images.unsplash.com/photo-1497366754035-f200968a6e72?auto=format&fit=crop&w=900&q=80"
+  },
+
+  {
+    id:7,
+    category:"videos",
+    name:"Vídeo bruto até 5 minutos",
+    description:"Vídeo bruto de longa duração.",
+    quantity:"🎬 Até 5 minutos",
+    price:350,
+    image:"https://images.unsplash.com/photo-1519608487953-e999c86e7455?auto=format&fit=crop&w=900&q=80"
+  },
+
+  {
+    id:8,
+    category:"videos",
+    name:"Vídeo editado até 1 minuto",
+    description:"Vídeo com edição profissional.",
+    quantity:"🎬 Até 1 minuto editado",
+    price:280,
+    image:"https://images.unsplash.com/photo-1492724441997-5dc865305da7?auto=format&fit=crop&w=900&q=80"
+  },
+
+  {
+    id:9,
+    category:"videos",
+    name:"Vídeo editado até 3 minutos",
+    description:"Edição profissional para apresentação.",
+    quantity:"🎬 Até 3 minutos editados",
+    price:400,
+    image:"https://images.unsplash.com/photo-1485846234645-a62644f84728?auto=format&fit=crop&w=900&q=80"
+  },
+
+  {
+    id:10,
+    category:"videos",
+    name:"Vídeo editado até 5 minutos",
+    description:"Vídeo completo com edição.",
+    quantity:"🎬 Até 5 minutos editados",
+    price:550,
+    image:"https://images.unsplash.com/photo-1574717024653-61fd2cf4d44d?auto=format&fit=crop&w=900&q=80"
+  },
+
+  {
+    id:11,
+    category:"pacotes",
+    name:"Imóveis e terrenos",
+    description:"Pacote para apresentação de propriedades.",
+    quantity:"📷 20 fotos + 🎬 vídeo até 1 min",
+    price:350,
+    image:"https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?auto=format&fit=crop&w=900&q=80"
+  },
+
+  {
+    id:12,
+    category:"pacotes",
+    name:"Obras e construções",
+    description:"Registro aéreo para acompanhamento e divulgação.",
+    quantity:"📷 20 fotos + 🎬 vídeo até 2 min",
+    price:380,
+    image:"https://images.unsplash.com/photo-1504307651254-35680f356dfd?auto=format&fit=crop&w=900&q=80"
+  },
+
+  {
+    id:13,
+    category:"pacotes",
+    name:"Chácaras e sítios",
+    description:"Apresentação completa da propriedade.",
+    quantity:"📷 30 fotos + 🎬 vídeo até 3 min",
+    price:450,
+    image:"https://images.unsplash.com/photo-1500382017468-9049fed747ef?auto=format&fit=crop&w=900&q=80"
+  },
+
+  {
+    id:14,
+    category:"pacotes",
+    name:"Pequenos eventos",
+    description:"Registro aéreo para momentos especiais.",
+    quantity:"📷 30 fotos + 🎬 vídeo até 3 min",
+    price:500,
+    image:"https://images.unsplash.com/photo-1519741497674-611481863552?auto=format&fit=crop&w=900&q=80"
+  }
+
+];
+
+
+function money(value){
+
+  return value.toLocaleString("pt-BR",{
+    style:"currency",
+    currency:"BRL"
+  });
+
+}
+
+
+function renderServices(category="todos"){
+
+  const container = document.getElementById("services");
+
+  container.innerHTML = "";
+
+  let list = services;
+
+  if(category !== "todos"){
+    list = services.filter(service => service.category === category);
+  }
+
+  list.forEach(service => {
+
+    const card = document.createElement("div");
+
+    card.className = "service-card";
+
+    card.innerHTML = `
+
+      <img
+        class="service-image"
+        src="${service.image}"
+        alt="${service.name}"
+      >
+
+      <div class="service-content">
+
+        <h3>${service.name}</h3>
+
+        <p class="service-description">
+          ${service.description}
+        </p>
+
+        <div class="service-quantity">
+          ${service.quantity}
+        </div>
+
+        <div class="price">
+          ${money(service.price)}
+        </div>
+
+        <button
+          class="add-btn"
+          onclick="addService(${service.id})"
+        >
+          ➕ Adicionar ao orçamento
+        </button>
+
+      </div>
+
+    `;
+
+    container.appendChild(card);
+
+  });
+
+}
+
+
+function filterServices(category,button){
+
+  document.querySelectorAll(".tab").forEach(tab=>{
+    tab.classList.remove("active");
+  });
+
+  button.classList.add("active");
+
+  renderServices(category);
+
+}
+
+
+function addService(id){
 
   const service = services.find(item => item.id === id);
 
@@ -67,67 +1102,285 @@ html=html.replace(
 
   }
 
-}''',
-'''function addService(id,button){
+}
 
-  const service = services.find(item => item.id === id);
-  if(!service) return;
 
-  cart.push(service);
+function updateCartCount(){
+
+  document.getElementById("cartCount").textContent = cart.length;
+
+}
+
+
+function openCart(){
+
+  document.getElementById("cartModal").classList.add("active");
+
+  renderCart();
+
+}
+
+
+function closeCart(){
+
+  document.getElementById("cartModal").classList.remove("active");
+
+}
+
+
+function renderCart(){
+
+  const items = document.getElementById("quoteItems");
+
+  if(cart.length === 0){
+
+    items.innerHTML = `
+      <div class="empty">
+        Nenhum serviço adicionado ao orçamento.
+      </div>
+    `;
+
+  }else{
+
+    items.innerHTML = "";
+
+    cart.forEach((service,index)=>{
+
+      const item = document.createElement("div");
+
+      item.className = "quote-item";
+
+      item.innerHTML = `
+
+        <div class="quote-info">
+
+          <strong>${service.name}</strong>
+
+          <small style="color:#aab8c7;">
+            ${service.quantity}
+          </small>
+
+          <div class="quote-price">
+            ${money(service.price)}
+          </div>
+
+        </div>
+
+        <button
+          class="delete-btn"
+          onclick="removeItem(${index})"
+        >
+          🗑️
+        </button>
+
+      `;
+
+      items.appendChild(item);
+
+    });
+
+  }
+
+
+  const addressBox = document.getElementById("quoteAddress");
+
+  if(clientAddress){
+
+    addressBox.innerHTML = `
+
+      <div class="quote-address">
+
+        <strong>📍 Endereço do serviço</strong>
+
+        <p style="margin-top:6px;color:#c5d0dc;">
+          ${escapeHtml(clientAddress)}
+        </p>
+
+        <button
+          class="delete-btn"
+          onclick="removeAddress()"
+          style="margin-top:10px;"
+        >
+          🗑️ Excluir endereço
+        </button>
+
+      </div>
+
+    `;
+
+  }else{
+
+    addressBox.innerHTML = "";
+
+  }
+
+
+  const total = cart.reduce(
+    (sum,service)=>sum + service.price,
+    0
+  );
+
+  document.getElementById("total").textContent = money(total);
+
+}
+
+
+function removeItem(index){
+
+  cart.splice(index,1);
+
   updateCartCount();
 
-  const original = button.innerHTML;
-  button.innerHTML = "✓ Adicionado";
-  button.style.background = "#25d366";
-  button.style.color = "#fff";
+  renderCart();
 
-  setTimeout(()=>{
-    button.innerHTML = original;
-    button.style.background = "";
-    button.style.color = "";
-  },1000);
-}'''
-)
+}
 
-# Keep origin address out of client-side code: no origin/address value is introduced.
-# Make hero drone use the richer SVG if the simpler one exists.
-old_start='''<div class="drone-hero">
-      <svg viewBox="0 0 600 240" xmlns="http://www.w3.org/2000/svg">'''
-if old_start in html:
-    old_block=re.search(r'<div class="drone-hero">.*?</div>\s*\n\s*<h1>', html, flags=re.S)
-    if old_block:
-        replacement='''<div class="drone-hero">
-      <svg class="drone-svg" viewBox="0 0 700 330" xmlns="http://www.w3.org/2000/svg">
-        <g stroke="#FFD21C" stroke-width="12" stroke-linecap="round" fill="none">
-          <path d="M290 125 L145 65"/><path d="M290 175 L145 235"/>
-          <path d="M410 125 L555 65"/><path d="M410 175 L555 235"/>
-        </g>
-        <g transform="translate(0 0)"><g class="propeller" stroke="#FFD21C" stroke-width="7" stroke-linecap="round">
-          <path d="M90 45 L200 85"/><path d="M200 45 L90 85"/>
-        </g></g>
-        <g transform="translate(0 170)"><g class="propeller" stroke="#FFD21C" stroke-width="7" stroke-linecap="round">
-          <path d="M90 45 L200 85"/><path d="M200 45 L90 85"/>
-        </g></g>
-        <g transform="translate(410 0)"><g class="propeller" stroke="#FFD21C" stroke-width="7" stroke-linecap="round">
-          <path d="M90 45 L200 85"/><path d="M200 45 L90 85"/>
-        </g></g>
-        <g transform="translate(410 170)"><g class="propeller" stroke="#FFD21C" stroke-width="7" stroke-linecap="round">
-          <path d="M90 45 L200 85"/><path d="M200 45 L90 85"/>
-        </g></g>
-        <circle cx="145" cy="65" r="18" fill="#FFD21C"/><circle cx="145" cy="235" r="18" fill="#FFD21C"/>
-        <circle cx="555" cy="65" r="18" fill="#FFD21C"/><circle cx="555" cy="235" r="18" fill="#FFD21C"/>
-        <rect x="270" y="105" width="160" height="95" rx="30" fill="#FFD21C"/>
-        <rect x="300" y="125" width="100" height="55" rx="18" fill="#07111F"/>
-        <circle cx="350" cy="190" r="20" fill="#FFD21C"/><circle cx="350" cy="190" r="12" fill="#07111F"/>
-        <circle cx="346" cy="186" r="4" fill="#fff"/>
-        <circle class="drone-light" cx="285" cy="115" r="6" fill="#fff"/>
-        <circle class="drone-light" cx="415" cy="115" r="6" fill="#fff" style="animation-delay:.5s"/>
-      </svg>
-    </div>
-    <h1>'''
-        html=html[:old_block.start()]+replacement+html[old_block.end()-len('<h1>'):]
-# Fix accidental duplicate h1 opening if any.
-html=html.replace('<h1><h1>', '<h1>')
 
-p.write_text(html, encoding="utf-8")
-print(f"Versão final criada em {p}")
+function removeAddress(){
+
+  clientAddress = "";
+
+  document.getElementById("addressInput").value = "";
+
+  document.getElementById("addressStatus").textContent = "";
+
+  renderCart();
+
+}
+
+
+function addAddressToBudget(){
+
+  const input = document.getElementById("addressInput");
+
+  const address = input.value.trim();
+
+  if(!address){
+
+    alert("Digite o endereço do serviço.");
+
+    input.focus();
+
+    return;
+
+  }
+
+  clientAddress = address;
+
+  document.getElementById("addressStatus").textContent =
+    "✓ Endereço anexado ao orçamento.";
+
+  /*
+    Ao anexar o endereço, o orçamento é aberto automaticamente.
+  */
+
+  openCart();
+
+}
+
+
+function escapeHtml(text){
+
+  const div = document.createElement("div");
+
+  div.textContent = text;
+
+  return div.innerHTML;
+
+}
+
+
+function sendWhats(){
+
+  if(cart.length === 0){
+
+    alert("Adicione pelo menos um serviço ao orçamento.");
+
+    return;
+
+  }
+
+
+  let message =
+`Olá! Gostaria de solicitar um orçamento com a AéreoAlex.
+
+SERVIÇOS:
+
+`;
+
+  cart.forEach((service,index)=>{
+
+    message +=
+`${index + 1}. ${service.name}
+Quantidade: ${service.quantity}
+Valor: ${money(service.price)}
+
+`;
+
+  });
+
+
+  const total = cart.reduce(
+    (sum,service)=>sum + service.price,
+    0
+  );
+
+
+  message +=
+`TOTAL DOS SERVIÇOS: ${money(total)}
+
+`;
+
+
+  if(clientAddress){
+
+    message +=
+`ENDEREÇO DO SERVIÇO:
+${clientAddress}
+
+`;
+
+  }
+
+
+  message +=
+`DESLOCAMENTO:
+Mínimo de R$ 30,00
+R$ 2,00 por km rodado.
+O valor será confirmado conforme a distância.
+
+Gostaria de confirmar este orçamento e verificar a disponibilidade da data.`;
+
+
+
+  const url =
+    "https://wa.me/" +
+    WHATSAPP +
+    "?text=" +
+    encodeURIComponent(message);
+
+
+  window.open(url,"_blank");
+
+}
+
+
+document.getElementById("cartModal").addEventListener("click",function(event){
+
+  if(event.target === this){
+
+    closeCart();
+
+  }
+
+});
+
+
+renderServices();
+
+updateCartCount();
+
+</script>
+
+</body>
+</html>

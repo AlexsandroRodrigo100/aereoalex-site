@@ -7,395 +7,1089 @@
 <title>AéreoAlex | Fotos e Vídeos com Drone</title>
 
 <style>
+:root{
+  --bg:#020a12;
+  --bg2:#061522;
+  --card:#0a1d2d;
+  --card2:#0e263b;
+  --line:#194665;
+  --yellow:#ffd21c;
+  --yellow2:#ffb800;
+  --white:#fff;
+  --muted:#aebdca;
+  --green:#25d366;
+  --red:#d62828;
+}
+
 *{
   box-sizing:border-box;
   margin:0;
   padding:0;
 }
 
+html{
+  scroll-behavior:smooth;
+}
+
 body{
   font-family:Arial,Helvetica,sans-serif;
-  background:#071426;
+  background:var(--bg);
   color:#fff;
   line-height:1.5;
+  overflow-x:hidden;
 }
+
+button,
+input{
+  font-family:inherit;
+}
+
+button{
+  cursor:pointer;
+}
+
+
+/* =========================
+   HEADER
+========================= */
 
 header{
   position:sticky;
   top:0;
-  z-index:1000;
-  background:#081a30;
-  border-bottom:1px solid #183653;
-  padding:14px 20px;
+  z-index:9999;
+
+  background:rgba(2,10,18,.96);
+  backdrop-filter:blur(15px);
+
+  border-bottom:1px solid rgba(255,210,28,.18);
+
+  padding:10px 20px;
 }
 
 .header-content{
-  max-width:1200px;
+  max-width:1300px;
   margin:auto;
+
   display:flex;
   align-items:center;
   justify-content:space-between;
-  gap:15px;
+
+  gap:20px;
 }
 
 .logo{
-  font-size:27px;
+  display:flex;
+  align-items:center;
+  gap:10px;
+
+  font-size:28px;
   font-weight:900;
-  color:#ffd21c;
+}
+
+.logo-drone{
+  width:55px;
+  height:35px;
+}
+
+.logo-drone svg{
+  width:100%;
+  height:100%;
 }
 
 .logo span{
-  color:#fff;
+  color:var(--yellow);
+}
+
+.nav{
+  display:flex;
+  align-items:center;
+  gap:27px;
+}
+
+.nav a{
+  color:#e2e8ed;
+  text-decoration:none;
+  font-size:14px;
+
+  transition:.2s;
+}
+
+.nav a:hover{
+  color:var(--yellow);
 }
 
 .cart-button{
-  background:#ffd21c;
-  color:#071426;
-  border:0;
-  border-radius:12px;
-  padding:11px 16px;
-  font-weight:800;
-  cursor:pointer;
-}
-
-.hero{
-  min-height:440px;
-  display:flex;
-  align-items:center;
+  border:1px solid var(--yellow);
 
   background:
     linear-gradient(
-      rgba(3,15,30,.75),
-      rgba(3,15,30,.88)
+      135deg,
+      var(--yellow),
+      var(--yellow2)
+    );
+
+  color:#06111b;
+
+  border-radius:12px;
+
+  padding:11px 16px;
+
+  font-weight:900;
+
+  box-shadow:
+    0 5px 20px rgba(255,210,28,.15);
+}
+
+.cart-button:hover{
+  transform:translateY(-2px);
+}
+
+
+/* =========================
+   HERO
+========================= */
+
+.hero{
+  position:relative;
+
+  min-height:650px;
+
+  display:flex;
+  align-items:center;
+
+  overflow:hidden;
+
+  background:
+    linear-gradient(
+      90deg,
+      rgba(2,10,18,.98) 0%,
+      rgba(2,10,18,.90) 35%,
+      rgba(2,10,18,.45) 68%,
+      rgba(2,10,18,.72) 100%
     ),
-    url("https://images.unsplash.com/photo-1473968512647-3e447244af8f?auto=format&fit=crop&w=1800&q=80")
+    url("https://images.unsplash.com/photo-1473968512647-3e447244af8f?auto=format&fit=crop&w=2200&q=90")
     center/cover;
 }
 
+.hero:after{
+  content:"";
+
+  position:absolute;
+  left:0;
+  right:0;
+  bottom:0;
+
+  height:150px;
+
+  background:
+    linear-gradient(
+      transparent,
+      var(--bg)
+    );
+}
+
 .hero-content{
+  position:relative;
+  z-index:2;
+
+  max-width:1300px;
   width:100%;
-  max-width:1200px;
+
   margin:auto;
-  padding:60px 20px;
+
+  padding:90px 25px;
+}
+
+.hero-small{
+  color:var(--yellow);
+
+  font-size:14px;
+  font-weight:900;
+
+  letter-spacing:1.8px;
+
+  margin-bottom:12px;
 }
 
 .hero h1{
-  font-size:48px;
-  max-width:750px;
-  margin-bottom:15px;
+  max-width:760px;
+
+  font-size:62px;
+  line-height:1.02;
+
+  margin-bottom:20px;
 }
 
 .hero h1 span{
-  color:#ffd21c;
+  color:var(--yellow);
 }
 
 .hero p{
-  max-width:680px;
-  color:#d7e1ec;
-  font-size:18px;
-  margin-bottom:25px;
+  max-width:650px;
+
+  color:#d7e0e7;
+
+  font-size:19px;
+
+  margin-bottom:27px;
+}
+
+.hero-buttons{
+  display:flex;
+  flex-wrap:wrap;
+  gap:12px;
 }
 
 .whatsapp-button{
-  display:inline-block;
-  background:#25d366;
-  color:#fff;
+  display:inline-flex;
+
+  align-items:center;
+  justify-content:center;
+
+  gap:9px;
+
   text-decoration:none;
-  padding:14px 20px;
-  border-radius:12px;
-  font-weight:800;
+
+  background:var(--green);
+
+  color:#fff;
+
+  padding:15px 23px;
+
+  border-radius:13px;
+
+  font-weight:900;
+
+  box-shadow:
+    0 8px 25px rgba(37,211,102,.20);
+
+  transition:.25s;
 }
 
+.whatsapp-button:hover{
+  transform:translateY(-3px);
+}
+
+.outline-button{
+  display:inline-flex;
+
+  align-items:center;
+  justify-content:center;
+
+  padding:15px 23px;
+
+  border:1px solid var(--yellow);
+
+  border-radius:13px;
+
+  color:var(--yellow);
+
+  background:rgba(2,10,18,.55);
+
+  text-decoration:none;
+
+  font-weight:900;
+}
+
+.hero-features{
+  display:flex;
+  flex-wrap:wrap;
+  gap:12px;
+
+  margin-top:32px;
+}
+
+.hero-feature{
+  background:rgba(5,20,32,.78);
+
+  border:1px solid rgba(255,210,28,.35);
+
+  border-radius:11px;
+
+  padding:10px 14px;
+
+  font-size:13px;
+}
+
+.hero-feature strong{
+  color:var(--yellow);
+}
+
+
+/* =========================
+   DRONE SVG
+========================= */
+
+.drone-svg{
+  width:100%;
+  height:100%;
+}
+
+.hero-drone{
+  position:absolute;
+
+  z-index:2;
+
+  right:7%;
+  top:29%;
+
+  width:360px;
+
+  filter:
+    drop-shadow(0 0 15px rgba(255,210,28,.35))
+    drop-shadow(0 25px 30px rgba(0,0,0,.7));
+
+  animation:floatDrone 4s ease-in-out infinite;
+}
+
+@keyframes floatDrone{
+  0%,100%{
+    transform:translateY(0) rotate(-1deg);
+  }
+
+  50%{
+    transform:translateY(-14px) rotate(1deg);
+  }
+}
+
+
+/* =========================
+   CONTAINER
+========================= */
+
 .container{
-  max-width:1200px;
+  max-width:1300px;
   margin:auto;
-  padding:45px 20px;
+
+  padding:65px 20px;
+}
+
+.section-small{
+  color:var(--yellow);
+
+  font-size:13px;
+
+  font-weight:900;
+
+  letter-spacing:2px;
+
+  margin-bottom:7px;
 }
 
 .section-title{
-  font-size:32px;
-  margin-bottom:25px;
+  font-size:40px;
+
+  line-height:1.1;
 }
 
 .section-title span{
-  color:#ffd21c;
+  color:var(--yellow);
 }
+
+.section-description{
+  color:var(--muted);
+
+  max-width:700px;
+
+  margin-top:10px;
+
+  margin-bottom:28px;
+}
+
+
+/* =========================
+   BENEFÍCIOS
+========================= */
+
+.benefits{
+  display:grid;
+
+  grid-template-columns:
+    repeat(4,1fr);
+
+  gap:15px;
+
+  margin-top:-10px;
+}
+
+.benefit{
+  background:
+    linear-gradient(
+      145deg,
+      #0b2135,
+      #061522
+    );
+
+  border:1px solid #1a435e;
+
+  border-radius:17px;
+
+  padding:23px;
+
+  transition:.25s;
+}
+
+.benefit:hover{
+  transform:translateY(-5px);
+
+  border-color:var(--yellow);
+}
+
+.benefit-icon{
+  font-size:30px;
+
+  margin-bottom:10px;
+}
+
+.benefit h3{
+  margin-bottom:6px;
+}
+
+.benefit p{
+  color:var(--muted);
+
+  font-size:14px;
+}
+
+
+/* =========================
+   TABS
+========================= */
 
 .tabs{
   display:flex;
   flex-wrap:wrap;
-  gap:10px;
+  gap:9px;
+
   margin-bottom:25px;
 }
 
 .tab{
-  border:1px solid #31506c;
-  background:#0c2038;
+  border:1px solid #24506a;
+
+  background:#091b2a;
+
   color:#fff;
-  padding:10px 16px;
+
+  padding:11px 19px;
+
   border-radius:10px;
-  cursor:pointer;
 }
 
 .tab.active{
-  background:#ffd21c;
-  color:#071426;
-  border-color:#ffd21c;
-  font-weight:800;
+  background:var(--yellow);
+
+  border-color:var(--yellow);
+
+  color:#06111a;
+
+  font-weight:900;
 }
+
+
+/* =========================
+   SERVIÇOS
+========================= */
 
 .services{
   display:grid;
+
   grid-template-columns:
-    repeat(auto-fit,minmax(250px,1fr));
-  gap:18px;
+    repeat(4,1fr);
+
+  gap:17px;
 }
 
 .card{
-  background:#0c2038;
-  border:1px solid #183d5b;
-  border-radius:16px;
-  padding:20px;
+  background:
+    linear-gradient(
+      145deg,
+      #0d2438,
+      #061522
+    );
+
+  border:1px solid #1b4560;
+
+  border-radius:17px;
+
+  overflow:hidden;
+
+  min-height:350px;
+
   display:flex;
   flex-direction:column;
+
   justify-content:space-between;
-  min-height:210px;
+
+  transition:.3s;
+
+  box-shadow:
+    0 10px 30px rgba(0,0,0,.2);
 }
 
-.card h3{
-  margin-bottom:10px;
-  font-size:19px;
+.card:hover{
+  transform:translateY(-6px);
+
+  border-color:var(--yellow);
+
+  box-shadow:
+    0 18px 35px rgba(0,0,0,.35);
 }
 
-.card p{
-  color:#b9c7d6;
-  font-size:14px;
-  margin-bottom:18px;
+.card-image{
+  position:relative;
+
+  height:150px;
+
+  overflow:hidden;
+
+  background:#102b40;
 }
 
-.price{
-  font-size:25px;
-  color:#ffd21c;
-  font-weight:900;
-  margin-bottom:15px;
-}
-
-.card button{
+.card-image img{
   width:100%;
-  border:0;
-  background:#ffd21c;
-  color:#071426;
-  padding:12px;
-  border-radius:10px;
-  font-weight:900;
-  cursor:pointer;
+  height:100%;
+
+  object-fit:cover;
+
+  display:block;
+
+  transition:.4s;
+}
+
+.card:hover .card-image img{
+  transform:scale(1.06);
+}
+
+.card-image:after{
+  content:"";
+
+  position:absolute;
+
+  inset:0;
+
+  background:
+    linear-gradient(
+      transparent 45%,
+      rgba(3,11,18,.65)
+    );
 }
 
 .badge{
-  display:inline-block;
-  background:#25d366;
-  color:#071426;
-  padding:4px 8px;
+  position:absolute;
+
+  z-index:3;
+
+  top:10px;
+  right:10px;
+
+  background:var(--yellow);
+
+  color:#07121d;
+
+  padding:5px 8px;
+
   border-radius:7px;
-  font-size:11px;
+
+  font-size:10px;
+
   font-weight:900;
-  margin-bottom:8px;
 }
 
-.address-box{
-  margin-top:35px;
-  background:#0c2038;
-  border:1px solid #244c6d;
-  border-radius:16px;
-  padding:22px;
+.card-content{
+  padding:16px;
 }
 
-.address-box h2{
+.card h3{
+  font-size:18px;
+
   margin-bottom:7px;
 }
 
-.address-box p{
-  color:#b9c7d6;
-  margin-bottom:15px;
+.card p{
+  color:var(--muted);
+
+  font-size:13px;
+
+  min-height:42px;
+}
+
+.price{
+  color:var(--yellow);
+
+  font-size:23px;
+
+  font-weight:900;
+
+  margin-top:12px;
+}
+
+.add-button{
+  width:calc(100% - 30px);
+
+  margin:
+    0 15px 15px;
+
+  border:0;
+
+  border-radius:10px;
+
+  padding:12px;
+
+  background:
+    linear-gradient(
+      135deg,
+      var(--yellow),
+      var(--yellow2)
+    );
+
+  color:#06111b;
+
+  font-weight:900;
+}
+
+.add-button:hover{
+  filter:brightness(1.08);
+}
+
+
+/* =========================
+   ENDEREÇO
+========================= */
+
+.quote-area{
+  display:grid;
+
+  grid-template-columns:
+    1.05fr .95fr;
+
+  gap:20px;
+
+  margin-top:45px;
+}
+
+.address-box,
+.travel-box{
+  background:
+    linear-gradient(
+      145deg,
+      #0b2236,
+      #061522
+    );
+
+  border:1px solid #1d4862;
+
+  border-radius:18px;
+
+  padding:24px;
+}
+
+.box-title{
+  font-size:23px;
+
+  margin-bottom:7px;
+}
+
+.box-title span{
+  color:var(--yellow);
+}
+
+.box-description{
+  color:var(--muted);
+
+  margin-bottom:17px;
 }
 
 .address-input{
   width:100%;
-  padding:14px;
-  background:#071426;
-  border:1px solid #31506c;
-  border-radius:10px;
+
+  background:#020d17;
+
+  border:1px solid #2b5873;
+
+  border-radius:11px;
+
   color:#fff;
+
+  padding:15px;
+
+  font-size:15px;
+
   outline:none;
-  font-size:16px;
 }
 
-.address-actions{
-  margin-top:12px;
+.address-input:focus{
+  border-color:var(--yellow);
+
+  box-shadow:
+    0 0 0 3px rgba(255,210,28,.08);
 }
 
 .add-address-btn{
   width:100%;
-  padding:13px;
+
+  margin-top:12px;
+
+  padding:14px;
+
   border:0;
-  border-radius:10px;
-  background:#ffd21c;
-  color:#071426;
-  font-weight:900;
-  cursor:pointer;
-}
 
-.address-status{
-  margin-top:12px;
-  color:#b9c7d6;
-  font-size:14px;
-}
+  border-radius:11px;
 
-/* DESLOCAMENTO */
-
-.travel-info{
-  margin-top:18px;
-  background:#081a30;
-  border:1px solid #31506c;
-  border-radius:12px;
-  padding:16px;
-}
-
-.travel-info h3{
-  color:#ffd21c;
-  margin-bottom:10px;
-}
-
-.travel-info p{
-  margin:6px 0;
-  color:#d8e2ed;
-}
-
-.travel-info strong{
-  color:#fff;
-}
-
-.example-box{
-  margin-top:12px;
-  padding:12px;
-  border-radius:10px;
-  background:#102a45;
-  color:#d8e2ed;
-  font-size:14px;
-}
-
-.example-box b{
-  color:#ffd21c;
-}
-
-.how{
-  margin-top:45px;
-}
-
-.steps{
-  display:grid;
-  grid-template-columns:
-    repeat(auto-fit,minmax(220px,1fr));
-  gap:18px;
-}
-
-.step{
-  background:#0c2038;
-  border:1px solid #183d5b;
-  padding:20px;
-  border-radius:14px;
-}
-
-.step strong{
-  color:#ffd21c;
-  display:block;
-  margin-bottom:8px;
-}
-
-.cta{
-  margin-top:45px;
   background:
     linear-gradient(
       135deg,
-      #102b48,
-      #081a30
+      var(--yellow),
+      var(--yellow2)
     );
-  border:1px solid #244c6d;
-  border-radius:18px;
-  padding:35px 25px;
-  text-align:center;
+
+  color:#06111b;
+
+  font-weight:900;
 }
 
-.cta h2{
-  font-size:30px;
-  margin-bottom:10px;
+.address-status{
+  color:#8fa4b5;
+
+  font-size:13px;
+
+  margin-top:11px;
 }
 
-.cta p{
-  color:#c3d0dd;
-  margin-bottom:20px;
+
+/* =========================
+   DESLOCAMENTO
+========================= */
+
+.travel-values{
+  display:grid;
+
+  grid-template-columns:1fr 1fr;
+
+  gap:12px;
+
+  margin-top:16px;
 }
 
-footer{
-  margin-top:45px;
-  padding:25px 20px;
-  text-align:center;
-  background:#04101f;
-  color:#91a4b8;
+.travel-value{
+  background:#061522;
+
+  border:1px solid #214963;
+
+  border-radius:12px;
+
+  padding:15px;
+}
+
+.travel-value small{
+  display:block;
+
+  color:var(--muted);
+
+  margin-bottom:3px;
+}
+
+.travel-value strong{
+  color:var(--yellow);
+
+  font-size:21px;
+}
+
+.travel-text{
+  color:#d1dce4;
+
+  font-size:14px;
+
+  margin-top:17px;
+}
+
+.example-box{
+  background:#102c42;
+
+  border-radius:12px;
+
+  padding:13px;
+
+  margin-top:13px;
+
+  color:#c9d5de;
+
+  font-size:13px;
+}
+
+.example-box b{
+  color:var(--yellow);
+}
+
+
+/* =========================
+   COMO FUNCIONA
+========================= */
+
+.steps{
+  display:grid;
+
+  grid-template-columns:
+    repeat(4,1fr);
+
+  gap:16px;
+}
+
+.step{
+  background:#091d2d;
+
+  border:1px solid #1c425a;
+
+  border-radius:16px;
+
+  padding:24px;
+}
+
+.step-number{
+  color:var(--yellow);
+
+  font-size:34px;
+
+  font-weight:900;
+
+  margin-bottom:7px;
+}
+
+.step h3{
+  margin-bottom:8px;
+}
+
+.step p{
+  color:var(--muted);
+
   font-size:14px;
 }
 
-/* MODAL */
+
+/* =========================
+   BANNER
+========================= */
+
+.banner{
+  position:relative;
+
+  overflow:hidden;
+
+  margin-top:50px;
+
+  min-height:270px;
+
+  display:flex;
+
+  align-items:center;
+
+  padding:40px;
+
+  border-radius:22px;
+
+  border:1px solid #28516b;
+
+  background:
+    linear-gradient(
+      90deg,
+      rgba(4,15,24,.96),
+      rgba(4,15,24,.65)
+    ),
+    url("https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?auto=format&fit=crop&w=1800&q=80")
+    center/cover;
+}
+
+.banner-content{
+  position:relative;
+  z-index:2;
+}
+
+.banner h2{
+  font-size:35px;
+
+  max-width:680px;
+}
+
+.banner h2 span{
+  color:var(--yellow);
+}
+
+.banner p{
+  color:#cbd6df;
+
+  max-width:600px;
+
+  margin:
+    10px 0 20px;
+}
+
+
+/* =========================
+   CTA
+========================= */
+
+.cta{
+  text-align:center;
+
+  margin-top:50px;
+
+  padding:45px 20px;
+
+  border-radius:20px;
+
+  border:1px solid #234b65;
+
+  background:
+    radial-gradient(
+      circle at center,
+      rgba(255,210,28,.10),
+      transparent 55%
+    ),
+    #071725;
+}
+
+.cta-drone{
+  width:110px;
+  height:65px;
+
+  margin:0 auto 10px;
+}
+
+.cta h2{
+  font-size:35px;
+}
+
+.cta h2 span{
+  color:var(--yellow);
+}
+
+.cta p{
+  color:var(--muted);
+
+  margin:
+    8px auto 20px;
+}
+
+
+/* =========================
+   FOOTER
+========================= */
+
+footer{
+  margin-top:50px;
+
+  padding:30px 20px;
+
+  text-align:center;
+
+  background:#01070d;
+
+  border-top:1px solid #122e42;
+
+  color:#8195a5;
+
+  font-size:13px;
+}
+
+.footer-logo{
+  font-size:25px;
+
+  font-weight:900;
+
+  color:#fff;
+
+  margin-bottom:4px;
+}
+
+.footer-logo span{
+  color:var(--yellow);
+}
+
+
+/* =========================
+   MODAL
+========================= */
 
 .modal{
   display:none;
+
   position:fixed;
+
   inset:0;
-  background:rgba(0,0,0,.75);
-  z-index:2000;
+
+  z-index:10000;
+
+  background:rgba(0,0,0,.80);
+
   align-items:center;
+
   justify-content:center;
+
   padding:15px;
 }
 
 .modal-box{
   width:100%;
-  max-width:600px;
+
+  max-width:620px;
+
   max-height:90vh;
+
   overflow:auto;
-  background:#0b1d33;
-  border:1px solid #31506c;
-  border-radius:18px;
-  padding:22px;
+
+  background:#081b2c;
+
+  border:1px solid #315a74;
+
+  border-radius:20px;
+
+  padding:23px;
+
+  box-shadow:
+    0 25px 80px rgba(0,0,0,.7);
 }
 
 .modal-header{
   display:flex;
+
   align-items:center;
+
   justify-content:space-between;
-  margin-bottom:18px;
+
+  margin-bottom:20px;
 }
 
 .modal-header h2{
-  color:#ffd21c;
+  color:var(--yellow);
 }
 
 .close{
-  background:none;
   border:0;
+
+  background:none;
+
   color:#fff;
-  font-size:28px;
-  cursor:pointer;
+
+  font-size:30px;
 }
 
 .cart-item{
   display:flex;
+
   align-items:center;
+
   justify-content:space-between;
+
   gap:12px;
-  background:#102a45;
-  padding:13px;
-  border-radius:10px;
+
+  background:#102a40;
+
+  border:1px solid #234b64;
+
+  border-radius:12px;
+
+  padding:14px;
+
   margin-bottom:10px;
 }
 
@@ -404,114 +1098,352 @@ footer{
 }
 
 .cart-name{
-  font-weight:800;
+  font-weight:900;
 }
 
 .cart-price{
-  color:#ffd21c;
-  font-weight:800;
+  color:var(--yellow);
+
+  font-weight:900;
+
   margin-top:3px;
 }
 
 .remove-btn,
 .remove-address{
-  border:0;
-  background:#b42318;
+  background:var(--red);
+
   color:#fff;
-  padding:8px 10px;
+
+  border:0;
+
   border-radius:8px;
-  cursor:pointer;
-  font-weight:800;
+
+  padding:8px 10px;
+
+  font-weight:900;
 }
 
 .address-cart{
   margin-top:15px;
-  background:#102a45;
-  border:1px solid #31506c;
+
+  background:#102a40;
+
+  border:1px solid #315a74;
+
   border-radius:12px;
+
   padding:15px;
 }
 
 .address-cart-title{
-  color:#ffd21c;
+  color:var(--yellow);
+
   font-weight:900;
+
   margin-bottom:6px;
 }
 
 .address-cart-text{
-  color:#d9e3ec;
+  color:#d5e0e8;
+
   margin-bottom:12px;
+
   word-break:break-word;
 }
 
 .total{
   display:flex;
+
   justify-content:space-between;
+
   align-items:center;
+
   margin-top:18px;
+
   padding-top:18px;
-  border-top:1px solid #31506c;
-  font-size:21px;
+
+  border-top:1px solid #315a74;
+
+  font-size:20px;
+
   font-weight:900;
 }
 
 .total-value{
-  color:#ffd21c;
+  color:var(--yellow);
 }
 
 .send-whatsapp{
   width:100%;
+
   margin-top:18px;
-  border:0;
-  background:#25d366;
-  color:#fff;
+
   padding:15px;
+
+  border:0;
+
   border-radius:12px;
+
+  background:var(--green);
+
+  color:#fff;
+
   font-weight:900;
+
   font-size:16px;
-  cursor:pointer;
 }
 
 .empty{
   text-align:center;
-  color:#9eb0c2;
-  padding:25px 5px;
+
+  color:#92a6b6;
+
+  padding:30px;
+}
+
+
+/* =========================
+   RESPONSIVO
+========================= */
+
+@media(max-width:1100px){
+
+  .services{
+    grid-template-columns:
+      repeat(3,1fr);
+  }
+
+  .benefits{
+    grid-template-columns:
+      repeat(2,1fr);
+  }
+
+  .steps{
+    grid-template-columns:
+      repeat(2,1fr);
+  }
+
+  .hero-drone{
+    right:-40px;
+    opacity:.55;
+  }
+}
+
+@media(max-width:850px){
+
+  .nav{
+    display:none;
+  }
+
+  .hero{
+    min-height:590px;
+  }
+
+  .hero h1{
+    font-size:48px;
+  }
+
+  .services{
+    grid-template-columns:
+      repeat(2,1fr);
+  }
+
+  .quote-area{
+    grid-template-columns:1fr;
+  }
 }
 
 @media(max-width:600px){
 
-  .hero h1{
-    font-size:35px;
-  }
-
-  .hero{
-    min-height:400px;
+  header{
+    padding:9px 12px;
   }
 
   .logo{
-    font-size:23px;
+    font-size:21px;
   }
 
+  .logo-drone{
+    width:43px;
+    height:29px;
+  }
+
+  .cart-button{
+    font-size:12px;
+
+    padding:10px 11px;
+  }
+
+  .hero{
+    min-height:650px;
+  }
+
+  .hero-content{
+    padding:
+      80px 18px;
+  }
+
+  .hero h1{
+    font-size:38px;
+  }
+
+  .hero p{
+    font-size:16px;
+  }
+
+  .hero-drone{
+    width:240px;
+
+    top:12%;
+    right:-45px;
+
+    opacity:.48;
+  }
+
+  .container{
+    padding:
+      48px 15px;
+  }
+
+  .section-title{
+    font-size:31px;
+  }
+
+  .benefits{
+    grid-template-columns:1fr;
+  }
+
+  .services{
+    grid-template-columns:1fr;
+  }
+
+  .steps{
+    grid-template-columns:1fr;
+  }
+
+  .travel-values{
+    grid-template-columns:1fr;
+  }
+
+  .banner{
+    padding:30px 22px;
+  }
+
+  .banner h2{
+    font-size:29px;
+  }
+
+  .cta h2{
+    font-size:29px;
+  }
+
+  .cart-item{
+    flex-direction:column;
+
+    align-items:stretch;
+  }
+
+  .remove-btn{
+    width:100%;
+  }
 }
 </style>
 </head>
 
+
 <body>
+
+
+<!-- =====================================================
+     HEADER
+===================================================== -->
 
 <header>
 
   <div class="header-content">
 
     <div class="logo">
+
+      <div class="logo-drone">
+
+        <svg viewBox="0 0 240 120"
+             xmlns="http://www.w3.org/2000/svg">
+
+          <g fill="none"
+             stroke="#ffd21c"
+             stroke-width="7"
+             stroke-linecap="round"
+             stroke-linejoin="round">
+
+            <path d="M90 50 L45 25"/>
+            <path d="M150 50 L195 25"/>
+
+            <path d="M90 70 L45 95"/>
+            <path d="M150 70 L195 95"/>
+
+            <circle cx="40" cy="23" r="11"/>
+            <circle cx="200" cy="23" r="11"/>
+            <circle cx="40" cy="97" r="11"/>
+            <circle cx="200" cy="97" r="11"/>
+
+            <path d="M17 23 H63"/>
+            <path d="M177 23 H223"/>
+            <path d="M17 97 H63"/>
+            <path d="M177 97 H223"/>
+
+            <path d="M91 43 Q120 27 149 43 L159 74 Q120 91 81 74 Z"/>
+
+            <rect x="106"
+                  y="58"
+                  width="28"
+                  height="22"
+                  rx="5"/>
+
+            <circle cx="120"
+                    cy="69"
+                    r="7"/>
+
+          </g>
+
+        </svg>
+
+      </div>
+
       Aéreo<span>Alex</span>
+
     </div>
+
+
+    <nav class="nav">
+
+      <a href="#inicio">
+        Início
+      </a>
+
+      <a href="#servicos">
+        Serviços
+      </a>
+
+      <a href="#como">
+        Como funciona
+      </a>
+
+      <a href="#contato">
+        Contato
+      </a>
+
+    </nav>
+
 
     <button
       class="cart-button"
       onclick="openCart()"
     >
+
       🛒 Orçamento
       <span id="cartCount">0</span>
+
     </button>
 
   </div>
@@ -519,39 +1451,250 @@ footer{
 </header>
 
 
-<section class="hero">
+
+<!-- =====================================================
+     HERO
+===================================================== -->
+
+<section
+  class="hero"
+  id="inicio"
+>
+
+
+  <div class="hero-drone">
+
+    <svg class="drone-svg"
+         viewBox="0 0 240 120"
+         xmlns="http://www.w3.org/2000/svg">
+
+      <g fill="none"
+         stroke="#ffd21c"
+         stroke-width="7"
+         stroke-linecap="round"
+         stroke-linejoin="round">
+
+        <path d="M90 50 L45 25"/>
+        <path d="M150 50 L195 25"/>
+
+        <path d="M90 70 L45 95"/>
+        <path d="M150 70 L195 95"/>
+
+        <circle cx="40" cy="23" r="11"/>
+        <circle cx="200" cy="23" r="11"/>
+        <circle cx="40" cy="97" r="11"/>
+        <circle cx="200" cy="97" r="11"/>
+
+        <path d="M17 23 H63"/>
+        <path d="M177 23 H223"/>
+        <path d="M17 97 H63"/>
+        <path d="M177 97 H223"/>
+
+        <path d="M91 43 Q120 27 149 43 L159 74 Q120 91 81 74 Z"/>
+
+        <rect x="106"
+              y="58"
+              width="28"
+              height="22"
+              rx="5"/>
+
+        <circle cx="120"
+                cy="69"
+                r="7"/>
+
+      </g>
+
+    </svg>
+
+  </div>
+
 
   <div class="hero-content">
 
+    <div class="hero-small">
+
+      IMAGENS AÉREAS QUE VALORIZAM SEU PROJETO
+
+    </div>
+
+
     <h1>
-      Imagens que mostram seu projeto
-      de um novo <span>ângulo.</span>
+
+      Seu projeto em um
+      <span>novo ângulo.</span>
+
     </h1>
 
+
     <p>
+
       Fotos e vídeos profissionais com drone
       para imóveis, terrenos, obras, chácaras,
-      sítios, eventos e diversos tipos de projetos.
+      sítios, eventos e muito mais.
+
     </p>
 
-    <a
-      class="whatsapp-button"
-      href="https://wa.me/5511953169968"
-      target="_blank"
-    >
-      💬 Falar pelo WhatsApp
-    </a>
+
+    <div class="hero-buttons">
+
+      <a
+        href="https://wa.me/5511953169968"
+        target="_blank"
+        class="whatsapp-button"
+      >
+
+        💬 Falar pelo WhatsApp
+
+      </a>
+
+
+      <a
+        href="#servicos"
+        class="outline-button"
+      >
+
+        ➜ Ver serviços
+
+      </a>
+
+    </div>
+
+
+    <div class="hero-features">
+
+      <div class="hero-feature">
+        📷 <strong>Alta qualidade</strong>
+      </div>
+
+      <div class="hero-feature">
+        📍 <strong>Perspectiva única</strong>
+      </div>
+
+      <div class="hero-feature">
+        🛡️ <strong>Profissionalismo</strong>
+      </div>
+
+    </div>
 
   </div>
 
 </section>
 
 
-<main class="container">
+
+<!-- =====================================================
+     BENEFÍCIOS
+===================================================== -->
+
+<section class="container">
+
+  <div class="benefits">
+
+    <div class="benefit">
+
+      <div class="benefit-icon">
+        🚁
+      </div>
+
+      <h3>
+        Imagens aéreas
+      </h3>
+
+      <p>
+        Mostre seu projeto de uma perspectiva
+        que chama atenção.
+      </p>
+
+    </div>
+
+
+    <div class="benefit">
+
+      <div class="benefit-icon">
+        📸
+      </div>
+
+      <h3>
+        Fotos profissionais
+      </h3>
+
+      <p>
+        Registros aéreos para divulgação,
+        apresentação e acompanhamento.
+      </p>
+
+    </div>
+
+
+    <div class="benefit">
+
+      <div class="benefit-icon">
+        🎬
+      </div>
+
+      <h3>
+        Vídeos com drone
+      </h3>
+
+      <p>
+        Captação bruta ou vídeos editados
+        para valorizar seu negócio.
+      </p>
+
+    </div>
+
+
+    <div class="benefit">
+
+      <div class="benefit-icon">
+        📲
+      </div>
+
+      <h3>
+        Orçamento rápido
+      </h3>
+
+      <p>
+        Monte seu orçamento e envie
+        diretamente pelo WhatsApp.
+      </p>
+
+    </div>
+
+  </div>
+
+</section>
+
+
+
+<!-- =====================================================
+     SERVIÇOS
+===================================================== -->
+
+<section
+  class="container"
+  id="servicos"
+>
+
+  <div class="section-small">
+    AÉREOALEX
+  </div>
+
 
   <h2 class="section-title">
-    Nossos <span>serviços</span>
+
+    Nossos
+    <span>serviços</span>
+
   </h2>
+
+
+  <p class="section-description">
+
+    Escolha os serviços que deseja contratar
+    e monte seu orçamento.
+
+  </p>
 
 
   <div class="tabs">
@@ -567,21 +1710,21 @@ footer{
       class="tab"
       onclick="filterServices('fotos',this)"
     >
-      Fotos
+      📷 Fotos
     </button>
 
     <button
       class="tab"
       onclick="filterServices('videos',this)"
     >
-      Vídeos
+      🎬 Vídeos
     </button>
 
     <button
       class="tab"
       onclick="filterServices('pacotes',this)"
     >
-      Pacotes
+      📦 Pacotes
     </button>
 
   </div>
@@ -593,64 +1736,109 @@ footer{
   ></div>
 
 
-  <!-- ENDEREÇO -->
 
-  <section class="address-box">
+  <!-- ENDEREÇO / DESLOCAMENTO -->
 
-    <h2>📍 Local do serviço</h2>
-
-    <p>
-      Informe o endereço onde o serviço será realizado.
-    </p>
-
-    <input
-      id="clientAddress"
-      class="address-input"
-      type="text"
-      placeholder="Digite o endereço do serviço"
-    >
+  <div class="quote-area">
 
 
-    <div class="address-actions">
+    <div class="address-box">
+
+      <h2 class="box-title">
+
+        📍
+        <span>Local do serviço</span>
+
+      </h2>
+
+
+      <p class="box-description">
+
+        Informe o endereço onde o serviço
+        será realizado.
+
+      </p>
+
+
+      <input
+        id="clientAddress"
+        class="address-input"
+        type="text"
+        placeholder="Digite o endereço do serviço"
+      >
+
 
       <button
         id="addAddressBtn"
         class="add-address-btn"
         onclick="addAddressToBudget()"
       >
+
         ➕ Anexar endereço ao orçamento
+
       </button>
 
+
+      <div
+        id="addressStatus"
+        class="address-status"
+      >
+
+        Digite o endereço do local onde
+        o serviço será realizado.
+
+      </div>
+
     </div>
 
 
-    <div
-      id="addressStatus"
-      class="address-status"
-    >
-      Digite o endereço do local onde o serviço será realizado.
-    </div>
+
+    <div class="travel-box">
+
+      <h2 class="box-title">
+
+        🚗
+        <span>Valor do deslocamento</span>
+
+      </h2>
 
 
-    <!-- DESLOCAMENTO -->
+      <div class="travel-values">
 
-    <div class="travel-info">
+        <div class="travel-value">
 
-      <h3>🚗 Valor do deslocamento</h3>
+          <small>
+            Valor mínimo
+          </small>
 
-      <p>
-        <strong>Valor mínimo:</strong>
-        R$ 30,00
-      </p>
+          <strong>
+            R$ 30,00
+          </strong>
 
-      <p>
-        <strong>Valor por km:</strong>
-        R$ 2,00 por km rodado
-      </p>
+        </div>
 
-      <p>
-        <strong>Como o cálculo é feito:</strong>
-        distância em quilômetros × R$ 2,00.
+
+        <div class="travel-value">
+
+          <small>
+            Valor por km rodado
+          </small>
+
+          <strong>
+            R$ 2,00
+          </strong>
+
+        </div>
+
+      </div>
+
+
+      <p class="travel-text">
+
+        Distância em quilômetros × R$ 2,00,
+        respeitando o valor mínimo de
+        R$ 30,00.
+
       </p>
 
 
@@ -659,136 +1847,283 @@ footer{
         <b>Exemplos:</b>
         <br><br>
 
-        5 km × R$ 2,00 = R$ 10,00
-        → <b>cobra R$ 30,00</b>
-        (valor mínimo)
-
-        <br>
-
-        10 km × R$ 2,00 = R$ 20,00
-        → <b>cobra R$ 30,00</b>
-        (valor mínimo)
-
-        <br>
-
-        15 km × R$ 2,00 = R$ 30,00
-        → <b>cobra R$ 30,00</b>
-
-        <br>
-
-        20 km × R$ 2,00 = R$ 40,00
-        → <b>cobra R$ 40,00</b>
-
-        <br>
-
-        30 km × R$ 2,00 = R$ 60,00
-        → <b>cobra R$ 60,00</b>
+        5 km × R$ 2,00 → R$ 30,00<br>
+        10 km × R$ 2,00 → R$ 30,00<br>
+        15 km × R$ 2,00 → R$ 30,00<br>
+        20 km × R$ 2,00 → R$ 40,00<br>
+        30 km × R$ 2,00 → R$ 60,00
 
       </div>
 
     </div>
 
-  </section>
+  </div>
+
+</section>
 
 
-  <!-- COMO FUNCIONA -->
 
-  <section class="how">
+<!-- =====================================================
+     COMO FUNCIONA
+===================================================== -->
 
-    <h2 class="section-title">
-      Como <span>funciona</span>
-    </h2>
+<section
+  class="container"
+  id="como"
+>
+
+  <div class="section-small">
+    SIMPLES E RÁPIDO
+  </div>
 
 
-    <div class="steps">
+  <h2 class="section-title">
 
-      <div class="step">
+    Como
+    <span>funciona</span>
 
-        <strong>
-          01. Escolha o serviço
-        </strong>
+  </h2>
 
-        Selecione as fotos, vídeos
-        ou serviços que deseja contratar.
 
+  <p class="section-description">
+
+    É rápido e fácil montar seu orçamento.
+
+  </p>
+
+
+  <div class="steps">
+
+
+    <div class="step">
+
+      <div class="step-number">
+        01
       </div>
 
+      <h3>
+        Escolha o serviço
+      </h3>
 
-      <div class="step">
-
-        <strong>
-          02. Informe o local
-        </strong>
-
-        Digite o endereço onde será
-        realizada a filmagem.
-
-      </div>
-
-
-      <div class="step">
-
-        <strong>
-          03. Monte seu orçamento
-        </strong>
-
-        Confira os serviços escolhidos
-        e o endereço informado.
-
-      </div>
-
-
-      <div class="step">
-
-        <strong>
-          04. Envie pelo WhatsApp
-        </strong>
-
-        O orçamento será enviado
-        diretamente para nossa equipe.
-
-      </div>
+      <p>
+        Selecione fotos, vídeos ou pacotes.
+      </p>
 
     </div>
 
-  </section>
+
+    <div class="step">
+
+      <div class="step-number">
+        02
+      </div>
+
+      <h3>
+        Informe o local
+      </h3>
+
+      <p>
+        Digite o endereço onde será realizada
+        a filmagem.
+      </p>
+
+    </div>
 
 
-  <!-- CTA -->
+    <div class="step">
 
-  <section class="cta">
+      <div class="step-number">
+        03
+      </div>
+
+      <h3>
+        Monte seu orçamento
+      </h3>
+
+      <p>
+        Confira os serviços e o endereço
+        informado.
+      </p>
+
+    </div>
+
+
+    <div class="step">
+
+      <div class="step-number">
+        04
+      </div>
+
+      <h3>
+        Envie pelo WhatsApp
+      </h3>
+
+      <p>
+        Envie o orçamento diretamente
+        para nossa equipe.
+      </p>
+
+    </div>
+
+  </div>
+
+
+
+  <div class="banner">
+
+    <div class="banner-content">
+
+      <h2>
+
+        Do alto,
+        <span>tudo fica mais impressionante.</span>
+
+      </h2>
+
+
+      <p>
+
+        Valorize imóveis, terrenos,
+        obras, chácaras, sítios e eventos
+        com imagens aéreas.
+
+      </p>
+
+
+      <a
+        href="https://wa.me/5511953169968"
+        target="_blank"
+        class="whatsapp-button"
+      >
+
+        📲 Solicitar orçamento
+
+      </a>
+
+    </div>
+
+  </div>
+
+</section>
+
+
+
+<!-- =====================================================
+     CTA
+===================================================== -->
+
+<section
+  class="container"
+  id="contato"
+>
+
+  <div class="cta">
+
+
+    <div class="cta-drone">
+
+      <svg class="drone-svg"
+           viewBox="0 0 240 120"
+           xmlns="http://www.w3.org/2000/svg">
+
+        <g fill="none"
+           stroke="#ffd21c"
+           stroke-width="7"
+           stroke-linecap="round"
+           stroke-linejoin="round">
+
+          <path d="M90 50 L45 25"/>
+          <path d="M150 50 L195 25"/>
+
+          <path d="M90 70 L45 95"/>
+          <path d="M150 70 L195 95"/>
+
+          <circle cx="40" cy="23" r="11"/>
+          <circle cx="200" cy="23" r="11"/>
+          <circle cx="40" cy="97" r="11"/>
+          <circle cx="200" cy="97" r="11"/>
+
+          <path d="M17 23 H63"/>
+          <path d="M177 23 H223"/>
+          <path d="M17 97 H63"/>
+          <path d="M177 97 H223"/>
+
+          <path d="M91 43 Q120 27 149 43 L159 74 Q120 91 81 74 Z"/>
+
+          <rect x="106"
+                y="58"
+                width="28"
+                height="22"
+                rx="5"/>
+
+          <circle cx="120"
+                  cy="69"
+                  r="7"/>
+
+        </g>
+
+      </svg>
+
+    </div>
+
 
     <h2>
-      Precisa de um orçamento?
+
+      Precisa de um
+      <span>orçamento?</span>
+
     </h2>
 
+
     <p>
-      Escolha os serviços acima ou fale
-      diretamente conosco.
+
+      Escolha os serviços acima
+      ou fale diretamente conosco.
+
     </p>
 
+
     <a
-      class="whatsapp-button"
       href="https://wa.me/5511953169968"
       target="_blank"
+      class="whatsapp-button"
     >
-      📲 Solicitar orçamento
+
+      💬 Falar pelo WhatsApp
+
     </a>
 
-  </section>
+  </div>
 
-</main>
+</section>
 
+
+
+<!-- =====================================================
+     FOOTER
+===================================================== -->
 
 <footer>
 
-  © 2026 AéreoAlex —
+  <div class="footer-logo">
+
+    Aéreo<span>Alex</span>
+
+  </div>
+
   Fotos e vídeos profissionais com drone.
+
+  <br><br>
+
+  © 2026 AéreoAlex — Todos os direitos reservados.
 
 </footer>
 
 
-<!-- MODAL ORÇAMENTO -->
+
+<!-- =====================================================
+     MODAL
+===================================================== -->
 
 <div
   id="cartModal"
@@ -797,11 +2132,13 @@ footer{
 
   <div class="modal-box">
 
+
     <div class="modal-header">
 
       <h2>
         🧾 Seu orçamento
       </h2>
+
 
       <button
         class="close"
@@ -836,7 +2173,9 @@ footer{
       class="send-whatsapp"
       onclick="sendWhats()"
     >
+
       💬 Enviar orçamento pelo WhatsApp
+
     </button>
 
   </div>
@@ -844,7 +2183,12 @@ footer{
 </div>
 
 
+
 <script>
+
+/* =====================================================
+   SERVIÇOS
+===================================================== */
 
 const services = [
 
@@ -854,7 +2198,9 @@ const services = [
     description:
       "Registro aéreo com até 10 fotos profissionais.",
     price:180,
-    category:"fotos"
+    category:"fotos",
+    image:
+      "https://images.unsplash.com/photo-1508614589041-895b88991e3e?auto=format&fit=crop&w=800&q=85"
   },
 
   {
@@ -864,7 +2210,9 @@ const services = [
       "Registro aéreo com até 20 fotos profissionais.",
     price:250,
     category:"fotos",
-    popular:true
+    popular:true,
+    image:
+      "https://images.unsplash.com/photo-1473968512647-3e447244af8f?auto=format&fit=crop&w=800&q=85"
   },
 
   {
@@ -873,7 +2221,9 @@ const services = [
     description:
       "Registro aéreo com até 30 fotos profissionais.",
     price:300,
-    category:"fotos"
+    category:"fotos",
+    image:
+      "https://images.unsplash.com/photo-1527977966376-1c8408f9f108?auto=format&fit=crop&w=800&q=85"
   },
 
   {
@@ -882,7 +2232,9 @@ const services = [
     description:
       "Foto adicional além do pacote contratado.",
     price:4,
-    category:"fotos"
+    category:"fotos",
+    image:
+      "https://images.unsplash.com/photo-1524143986875-3b098d78b363?auto=format&fit=crop&w=800&q=85"
   },
 
   {
@@ -891,7 +2243,9 @@ const services = [
     description:
       "Captação aérea em vídeo, sem edição.",
     price:180,
-    category:"videos"
+    category:"videos",
+    image:
+      "https://images.unsplash.com/photo-1579820010410-c10411aaaa88?auto=format&fit=crop&w=800&q=85"
   },
 
   {
@@ -900,7 +2254,9 @@ const services = [
     description:
       "Captação aérea em vídeo, sem edição.",
     price:280,
-    category:"videos"
+    category:"videos",
+    image:
+      "https://images.unsplash.com/photo-1524143986875-3b098d78b363?auto=format&fit=crop&w=800&q=85"
   },
 
   {
@@ -909,7 +2265,9 @@ const services = [
     description:
       "Captação aérea em vídeo, sem edição.",
     price:350,
-    category:"videos"
+    category:"videos",
+    image:
+      "https://images.unsplash.com/photo-1473968512647-3e447244af8f?auto=format&fit=crop&w=800&q=85"
   },
 
   {
@@ -918,7 +2276,9 @@ const services = [
     description:
       "Captação e edição profissional.",
     price:280,
-    category:"videos"
+    category:"videos",
+    image:
+      "https://images.unsplash.com/photo-1508614589041-895b88991e3e?auto=format&fit=crop&w=800&q=85"
   },
 
   {
@@ -927,7 +2287,9 @@ const services = [
     description:
       "Captação e edição profissional.",
     price:400,
-    category:"videos"
+    category:"videos",
+    image:
+      "https://images.unsplash.com/photo-1579820010410-c10411aaaa88?auto=format&fit=crop&w=800&q=85"
   },
 
   {
@@ -936,7 +2298,9 @@ const services = [
     description:
       "Captação e edição profissional.",
     price:550,
-    category:"videos"
+    category:"videos",
+    image:
+      "https://images.unsplash.com/photo-1527977966376-1c8408f9f108?auto=format&fit=crop&w=800&q=85"
   },
 
   {
@@ -945,7 +2309,9 @@ const services = [
     description:
       "Fotos e vídeos aéreos para imóveis e terrenos.",
     price:350,
-    category:"pacotes"
+    category:"pacotes",
+    image:
+      "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=800&q=85"
   },
 
   {
@@ -954,7 +2320,9 @@ const services = [
     description:
       "Registro aéreo de obras e construções.",
     price:380,
-    category:"pacotes"
+    category:"pacotes",
+    image:
+      "https://images.unsplash.com/photo-1503387762-592deb58ef4e?auto=format&fit=crop&w=800&q=85"
   },
 
   {
@@ -963,7 +2331,9 @@ const services = [
     description:
       "Produção de imagens aéreas para chácaras e sítios.",
     price:450,
-    category:"pacotes"
+    category:"pacotes",
+    image:
+      "https://images.unsplash.com/photo-1500382017468-9049fed747ef?auto=format&fit=crop&w=800&q=85"
   },
 
   {
@@ -972,7 +2342,9 @@ const services = [
     description:
       "Cobertura aérea de pequenos eventos.",
     price:500,
-    category:"pacotes"
+    category:"pacotes",
+    image:
+      "https://images.unsplash.com/photo-1505236858219-8359eb29e329?auto=format&fit=crop&w=800&q=85"
   }
 
 ];
@@ -983,7 +2355,9 @@ let cart = [];
 let clientAddress = "";
 
 
-/* FORMATA DINHEIRO */
+/* =====================================================
+   DINHEIRO
+===================================================== */
 
 function money(value){
 
@@ -998,7 +2372,9 @@ function money(value){
 }
 
 
-/* MOSTRA SERVIÇOS */
+/* =====================================================
+   MOSTRAR SERVIÇOS
+===================================================== */
 
 function renderServices(category="todos"){
 
@@ -1029,40 +2405,56 @@ function renderServices(category="todos"){
 
       <div>
 
-        ${
-          service.popular
-            ? `
-              <span class="badge">
+        <div class="card-image">
+
+          ${
+            service.popular
+              ?
+              `
+              <div class="badge">
                 MAIS ESCOLHIDO
-              </span>
-            `
-            : ""
-        }
+              </div>
+              `
+              :
+              ""
+          }
 
-        <h3>
-          ${service.name}
-        </h3>
+          <img
+            src="${service.image}"
+            alt="${service.name}"
+            loading="lazy"
+          >
 
-        <p>
-          ${service.description}
-        </p>
-
-      </div>
-
-
-      <div>
-
-        <div class="price">
-          ${money(service.price)}
         </div>
 
-        <button
-          onclick="addService(${service.id})"
-        >
-          ➕ Adicionar ao orçamento
-        </button>
+
+        <div class="card-content">
+
+          <h3>
+            ${service.name}
+          </h3>
+
+          <p>
+            ${service.description}
+          </p>
+
+          <div class="price">
+            ${money(service.price)}
+          </div>
+
+        </div>
 
       </div>
+
+
+      <button
+        class="add-button"
+        onclick="addService(${service.id})"
+      >
+
+        ➕ Adicionar ao orçamento
+
+      </button>
 
     `;
 
@@ -1074,14 +2466,17 @@ function renderServices(category="todos"){
 }
 
 
-/* FILTRO */
+/* =====================================================
+   FILTRO
+===================================================== */
 
 function filterServices(category,button){
 
   document
     .querySelectorAll(".tab")
-    .forEach(tab =>
-      tab.classList.remove("active")
+    .forEach(
+      tab =>
+        tab.classList.remove("active")
     );
 
 
@@ -1093,7 +2488,9 @@ function filterServices(category,button){
 }
 
 
-/* ADICIONAR SERVIÇO */
+/* =====================================================
+   ADICIONAR SERVIÇO
+===================================================== */
 
 function addService(id){
 
@@ -1119,16 +2516,12 @@ function addService(id){
 
   updateCartCount();
 
-  /*
-    IMPORTANTE:
-    O carrinho NÃO abre aqui.
-    O cliente continua na página.
-  */
-
 }
 
 
-/* REMOVER SERVIÇO */
+/* =====================================================
+   REMOVER SERVIÇO
+===================================================== */
 
 function removeItem(index){
 
@@ -1141,7 +2534,9 @@ function removeItem(index){
 }
 
 
-/* CONTADOR */
+/* =====================================================
+   CONTADOR
+===================================================== */
 
 function updateCartCount(){
 
@@ -1152,7 +2547,9 @@ function updateCartCount(){
 }
 
 
-/* ANEXAR ENDEREÇO */
+/* =====================================================
+   ENDEREÇO
+===================================================== */
 
 function addAddressToBudget(){
 
@@ -1194,16 +2591,14 @@ function addAddressToBudget(){
     "✅ Endereço anexado ao orçamento";
 
 
-  /*
-    O carrinho SÓ abre neste momento.
-  */
-
   openCart();
 
 }
 
 
-/* REMOVER ENDEREÇO */
+/* =====================================================
+   REMOVER ENDEREÇO
+===================================================== */
 
 function removeAddress(){
 
@@ -1232,7 +2627,9 @@ function removeAddress(){
 }
 
 
-/* ABRIR ORÇAMENTO */
+/* =====================================================
+   ABRIR ORÇAMENTO
+===================================================== */
 
 function openCart(){
 
@@ -1262,15 +2659,19 @@ function openCart(){
     content.innerHTML = `
 
       <div class="empty">
-        Seu orçamento está vazio.
+
+        🚁 Seu orçamento está vazio.
+
+        <br><br>
+
+        Escolha um serviço para começar.
+
       </div>
 
     `;
 
   }
 
-
-  /* SERVIÇOS */
 
   cart.forEach(
     (item,index) => {
@@ -1305,7 +2706,9 @@ function openCart(){
           class="remove-btn"
           onclick="removeItem(${index})"
         >
+
           🗑️ Apagar
+
         </button>
 
       `;
@@ -1316,8 +2719,6 @@ function openCart(){
     }
   );
 
-
-  /* ENDEREÇO */
 
   if(clientAddress){
 
@@ -1332,12 +2733,16 @@ function openCart(){
     addressDiv.innerHTML = `
 
       <div class="address-cart-title">
+
         📍 Endereço do serviço
+
       </div>
 
 
       <div class="address-cart-text">
+
         ${escapeHTML(clientAddress)}
+
       </div>
 
 
@@ -1345,7 +2750,9 @@ function openCart(){
         class="remove-address"
         onclick="removeAddress()"
       >
+
         🗑️ Apagar endereço
+
       </button>
 
     `;
@@ -1362,13 +2769,14 @@ function openCart(){
     money(total);
 
 
-  modal.style.display =
-    "flex";
+  modal.style.display = "flex";
 
 }
 
 
-/* FECHAR ORÇAMENTO */
+/* =====================================================
+   FECHAR ORÇAMENTO
+===================================================== */
 
 function closeCart(){
 
@@ -1380,7 +2788,9 @@ function closeCart(){
 }
 
 
-/* PROTEGER TEXTO DO ENDEREÇO */
+/* =====================================================
+   SEGURANÇA DO TEXTO
+===================================================== */
 
 function escapeHTML(text){
 
@@ -1396,7 +2806,9 @@ function escapeHTML(text){
 }
 
 
-/* ENVIAR WHATSAPP */
+/* =====================================================
+   WHATSAPP
+===================================================== */
 
 function sendWhats(){
 
@@ -1416,7 +2828,7 @@ function sendWhats(){
 
 
   message +=
-    "📋 SERVIÇOS:\n";
+    "🚁 SERVIÇOS:\n";
 
 
   cart.forEach(
@@ -1479,7 +2891,9 @@ function sendWhats(){
 }
 
 
-/* FECHAR CLICANDO FORA */
+/* =====================================================
+   FECHAR CLICANDO FORA
+===================================================== */
 
 document
   .getElementById("cartModal")
@@ -1497,7 +2911,9 @@ document
   );
 
 
-/* INICIALIZA */
+/* =====================================================
+   INICIAR
+===================================================== */
 
 renderServices();
 

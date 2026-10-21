@@ -916,7 +916,7 @@ footer{
     line-height:1.5;
 }
 
-/* DATA NO ORÇAMENTO */
+/* ================= DATA NO ORÇAMENTO ================= */
 
 .quote-schedule{
     margin-top:20px;
@@ -1116,8 +1116,6 @@ footer{
 </head>
 
 <body>
-
-<!-- ================= HEADER ================= -->
 
 <header>
 
@@ -2235,9 +2233,13 @@ document.getElementById("addressStatus")
 .textContent =
 "✓ Endereço anexado ao orçamento.";
 
-renderQuote();
+/*
+IMPORTANTE:
+O endereço é salvo no orçamento,
+mas NÃO abre o orçamento automaticamente.
+*/
 
-openCart();
+renderQuote();
 
 }
 
@@ -2339,6 +2341,12 @@ document.getElementById("scheduleStatus")
 "✓ Data e horário adicionados ao orçamento.";
 
 renderQuote();
+
+/*
+IMPORTANTE:
+Ao adicionar data e horário,
+o orçamento abre automaticamente.
+*/
 
 openCart();
 
@@ -2646,7 +2654,7 @@ ${clientAddress}
 message +=
 `🚗 DESLOCAMENTO:
 Mínimo de R$ 30,00
-Referência ida e volta de R$ 2,00 por km rodado.
+Referência de R$ 2,00 por km rodado.
 O valor será confirmado conforme o endereço.
 
 Gostaria de confirmar a disponibilidade.`;

@@ -594,6 +594,83 @@ header{
     border:1px solid rgba(37,211,102,.20);
 }
 
+/* ================= DATA E HORÁRIO ================= */
+
+.schedule-section{
+    padding:0 5% 85px;
+}
+
+.schedule-box{
+    max-width:950px;
+    margin:auto;
+    padding:30px;
+    border-radius:24px;
+    background:linear-gradient(145deg,#10253a,#071522);
+    border:1px solid var(--border);
+}
+
+.schedule-box h2{
+    margin-bottom:9px;
+}
+
+.schedule-box > p{
+    color:var(--muted);
+    line-height:1.6;
+    margin-bottom:22px;
+}
+
+.schedule-row{
+    display:grid;
+    grid-template-columns:1fr 1fr auto;
+    gap:10px;
+    align-items:end;
+}
+
+.schedule-field{
+    display:flex;
+    flex-direction:column;
+    gap:8px;
+}
+
+.schedule-field label{
+    color:#dce4eb;
+    font-size:13px;
+    font-weight:800;
+}
+
+.schedule-input{
+    width:100%;
+    border:1px solid rgba(255,255,255,.12);
+    border-radius:12px;
+    padding:15px;
+    background:#030c16;
+    color:#fff;
+    outline:none;
+    color-scheme:dark;
+}
+
+.schedule-input:focus{
+    border-color:var(--yellow);
+    box-shadow:0 0 0 3px rgba(255,210,28,.08);
+}
+
+.schedule-button{
+    min-height:50px;
+    white-space:nowrap;
+}
+
+.schedule-status{
+    display:none;
+    margin-top:14px;
+    padding:13px;
+    border-radius:12px;
+    color:#9af1b4;
+    background:rgba(37,211,102,.07);
+    border:1px solid rgba(37,211,102,.20);
+}
+
+/* ================= DESLOCAMENTO ================= */
+
 .travel{
     max-width:950px;
     margin:20px auto 0;
@@ -839,6 +916,35 @@ footer{
     line-height:1.5;
 }
 
+/* DATA NO ORÇAMENTO */
+
+.quote-schedule{
+    margin-top:20px;
+    padding:15px;
+    border-radius:14px;
+    background:rgba(255,210,28,.055);
+    border:1px solid rgba(255,210,28,.18);
+}
+
+.quote-schedule-line{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    gap:10px;
+}
+
+.quote-schedule strong{
+    display:block;
+    color:var(--yellow);
+    margin-bottom:6px;
+}
+
+.quote-schedule-text{
+    color:#c8d1da;
+    font-size:14px;
+    line-height:1.5;
+}
+
 .total{
     display:flex;
     justify-content:space-between;
@@ -922,6 +1028,14 @@ footer{
         flex-direction:column;
     }
 
+    .schedule-row{
+        grid-template-columns:1fr;
+    }
+
+    .schedule-button{
+        width:100%;
+    }
+
     .footer{
         flex-direction:column;
         text-align:center;
@@ -981,7 +1095,8 @@ footer{
     }
 
     .address-box,
-    .travel{
+    .travel,
+    .schedule-box{
         padding:20px;
     }
 
@@ -991,6 +1106,10 @@ footer{
 
     .modal-box{
         border-radius:18px;
+    }
+
+    .quote-schedule-line{
+        align-items:flex-start;
     }
 }
 </style>
@@ -1053,7 +1172,6 @@ Aéreo<span>Alex</span>
 
 </a>
 
-
 <button class="cart-button"
 onclick="openCart()">
 
@@ -1111,15 +1229,10 @@ onclick="openCart()">
 
 </div>
 
-
-<!-- DRONE -->
-
 <div class="drone-container">
 
 <svg class="flying-drone"
 viewBox="0 0 700 330">
-
-<!-- braços -->
 
 <g stroke="#FFD21C"
 stroke-width="12"
@@ -1133,11 +1246,6 @@ fill="none">
 
 </g>
 
-
-<!-- hélices -->
-
-<g transform="translate(0 0)">
-
 <g class="propeller"
 stroke="#FFD21C"
 stroke-width="7"
@@ -1147,12 +1255,8 @@ stroke-linecap="round">
 <path d="M200 45L90 85"/>
 
 </g>
-
-</g>
-
 
 <g transform="translate(0 170)">
-
 <g class="propeller"
 stroke="#FFD21C"
 stroke-width="7"
@@ -1162,12 +1266,9 @@ stroke-linecap="round">
 <path d="M200 45L90 85"/>
 
 </g>
-
 </g>
-
 
 <g transform="translate(410 0)">
-
 <g class="propeller"
 stroke="#FFD21C"
 stroke-width="7"
@@ -1177,12 +1278,9 @@ stroke-linecap="round">
 <path d="M200 45L90 85"/>
 
 </g>
-
 </g>
-
 
 <g transform="translate(410 170)">
-
 <g class="propeller"
 stroke="#FFD21C"
 stroke-width="7"
@@ -1192,19 +1290,12 @@ stroke-linecap="round">
 <path d="M200 45L90 85"/>
 
 </g>
-
 </g>
-
-
-<!-- motores -->
 
 <circle cx="145" cy="65" r="18" fill="#FFD21C"/>
 <circle cx="145" cy="235" r="18" fill="#FFD21C"/>
 <circle cx="555" cy="65" r="18" fill="#FFD21C"/>
 <circle cx="555" cy="235" r="18" fill="#FFD21C"/>
-
-
-<!-- corpo -->
 
 <rect x="270"
 y="105"
@@ -1220,9 +1311,6 @@ height="55"
 rx="18"
 fill="#06111F"/>
 
-
-<!-- câmera -->
-
 <circle cx="350"
 cy="190"
 r="20"
@@ -1237,9 +1325,6 @@ fill="#06111F"/>
 cy="186"
 r="4"
 fill="#fff"/>
-
-
-<!-- luz -->
 
 <circle class="drone-light"
 cx="285"
@@ -1281,7 +1366,6 @@ de uma perspectiva profissional.
 
 </div>
 
-
 <div class="benefits">
 
 <div class="benefit">
@@ -1299,7 +1383,6 @@ redes sociais e apresentação profissional.
 
 </div>
 
-
 <div class="benefit">
 
 <div class="icon">🎬</div>
@@ -1314,7 +1397,6 @@ propriedades, obras e eventos.
 </p>
 
 </div>
-
 
 <div class="benefit">
 
@@ -1359,7 +1441,6 @@ Selecione os serviços e monte seu orçamento.
 
 </div>
 
-
 <div class="tabs">
 
 <button class="tab active"
@@ -1383,7 +1464,6 @@ Pacotes
 </button>
 
 </div>
-
 
 <div class="services-grid"
 id="servicesGrid">
@@ -1411,7 +1491,6 @@ Digite o endereço onde o serviço será realizado
 e clique em <strong>Anexar endereço ao orçamento</strong>.
 </p>
 
-
 <div class="address-row">
 
 <input
@@ -1432,11 +1511,82 @@ onclick="addAddressToBudget()">
 
 </div>
 
-
 <div class="address-status"
 id="addressStatus">
 
 ✓ Endereço anexado ao orçamento.
+
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+
+<!-- ================= DATA E HORÁRIO ================= -->
+
+<section class="schedule-section">
+
+<div class="container">
+
+<div class="schedule-box">
+
+<h2>
+📅 Data e horário do serviço
+</h2>
+
+<p>
+Escolha o dia e o horário desejados para realizar
+o serviço e adicione essas informações ao orçamento.
+</p>
+
+<div class="schedule-row">
+
+<div class="schedule-field">
+
+<label for="serviceDate">
+📅 Data do serviço
+</label>
+
+<input
+id="serviceDate"
+class="schedule-input"
+type="date"
+>
+
+</div>
+
+<div class="schedule-field">
+
+<label for="serviceTime">
+🕐 Horário
+</label>
+
+<input
+id="serviceTime"
+class="schedule-input"
+type="time"
+>
+
+</div>
+
+<button
+class="btn btn-primary schedule-button"
+onclick="addScheduleToBudget()">
+
+➕ Adicionar ao orçamento
+
+</button>
+
+</div>
+
+<div
+class="schedule-status"
+id="scheduleStatus">
+
+✓ Data e horário adicionados ao orçamento.
 
 </div>
 
@@ -1492,7 +1642,6 @@ Seu orçamento em poucos passos
 
 </div>
 
-
 <div class="steps">
 
 <div class="step">
@@ -1509,7 +1658,6 @@ Selecione fotos, vídeos ou pacotes.
 
 </div>
 
-
 <div class="step">
 
 <div class="number">2</div>
@@ -1524,21 +1672,19 @@ Digite o local onde será realizada a filmagem.
 
 </div>
 
-
 <div class="step">
 
 <div class="number">3</div>
 
 <h3>
-Confira o orçamento
+Escolha data e horário
 </h3>
 
 <p>
-Revise os serviços e valores escolhidos.
+Informe quando deseja realizar o serviço.
 </p>
 
 </div>
-
 
 <div class="step">
 
@@ -1628,13 +1774,13 @@ onclick="closeCart()">
 
 </div>
 
-
 <div class="modal-content">
 
 <div id="quoteItems"></div>
 
 <div id="quoteAddress"></div>
 
+<div id="quoteSchedule"></div>
 
 <div class="total">
 
@@ -1647,7 +1793,6 @@ R$ 0,00
 </strong>
 
 </div>
-
 
 <button
 class="whatsapp"
@@ -1810,6 +1955,10 @@ let cart = [];
 
 let clientAddress = "";
 
+let serviceDate = "";
+
+let serviceTime = "";
+
 
 /* =========================================================
 DINHEIRO
@@ -1821,6 +1970,55 @@ return value.toLocaleString("pt-BR",{
 style:"currency",
 currency:"BRL"
 });
+
+}
+
+
+/* =========================================================
+DATA MÍNIMA = HOJE
+========================================================= */
+
+function setMinimumDate(){
+
+const dateInput =
+document.getElementById("serviceDate");
+
+if(!dateInput) return;
+
+const now = new Date();
+
+const year =
+now.getFullYear();
+
+const month =
+String(now.getMonth()+1).padStart(2,"0");
+
+const day =
+String(now.getDate()).padStart(2,"0");
+
+const today =
+`${year}-${month}-${day}`;
+
+dateInput.min = today;
+
+}
+
+
+/* =========================================================
+FORMATAR DATA
+========================================================= */
+
+function formatDate(date){
+
+if(!date) return "";
+
+const parts =
+date.split("-");
+
+if(parts.length !== 3)
+return date;
+
+return `${parts[2]}/${parts[1]}/${parts[0]}`;
 
 }
 
@@ -1844,7 +2042,6 @@ service => service.category === category
 
 }
 
-
 grid.innerHTML = list.map(service => `
 
 <article class="service">
@@ -1865,7 +2062,6 @@ onerror="this.src='https://images.unsplash.com/photo-1473968512647-3e447244af8f?
 >
 
 </div>
-
 
 <div class="service-content">
 
@@ -1917,7 +2113,7 @@ renderServices(category);
 
 
 /* =========================================================
-ADICIONAR
+ADICIONAR SERVIÇO
 ========================================================= */
 
 function addService(id,button){
@@ -2066,6 +2262,114 @@ renderQuote();
 
 
 /* =========================================================
+ADICIONAR DATA E HORÁRIO
+========================================================= */
+
+function addScheduleToBudget(){
+
+const dateInput =
+document.getElementById("serviceDate");
+
+const timeInput =
+document.getElementById("serviceTime");
+
+const date =
+dateInput.value;
+
+const time =
+timeInput.value;
+
+if(!date){
+
+alert(
+"Escolha a data desejada para o serviço."
+);
+
+dateInput.focus();
+
+return;
+
+}
+
+if(!time){
+
+alert(
+"Escolha o horário desejado para o serviço."
+);
+
+timeInput.focus();
+
+return;
+
+}
+
+
+/* verificar data */
+
+const selectedDate =
+new Date(date + "T00:00:00");
+
+const today =
+new Date();
+
+today.setHours(0,0,0,0);
+
+if(selectedDate < today){
+
+alert(
+"A data escolhida não pode ser anterior à data de hoje."
+);
+
+dateInput.focus();
+
+return;
+
+}
+
+
+serviceDate = date;
+
+serviceTime = time;
+
+document.getElementById("scheduleStatus")
+.style.display = "block";
+
+document.getElementById("scheduleStatus")
+.textContent =
+"✓ Data e horário adicionados ao orçamento.";
+
+renderQuote();
+
+openCart();
+
+}
+
+
+/* =========================================================
+REMOVER DATA E HORÁRIO
+========================================================= */
+
+function removeSchedule(){
+
+serviceDate = "";
+
+serviceTime = "";
+
+document.getElementById("serviceDate")
+.value = "";
+
+document.getElementById("serviceTime")
+.value = "";
+
+document.getElementById("scheduleStatus")
+.style.display = "none";
+
+renderQuote();
+
+}
+
+
+/* =========================================================
 ESCAPAR TEXTO
 ========================================================= */
 
@@ -2194,6 +2498,61 @@ addressBox.innerHTML = "";
 }
 
 
+/* =========================================================
+DATA E HORÁRIO NO ORÇAMENTO
+========================================================= */
+
+const scheduleBox =
+document.getElementById("quoteSchedule");
+
+
+if(serviceDate && serviceTime){
+
+scheduleBox.innerHTML = `
+
+<div class="quote-schedule">
+
+<div class="quote-schedule-line">
+
+<div>
+
+<strong>
+📅 Data e horário do serviço
+</strong>
+
+<div class="quote-schedule-text">
+
+📅 ${formatDate(serviceDate)}
+<br>
+
+🕐 ${escapeHtml(serviceTime)}
+
+</div>
+
+</div>
+
+<button
+class="delete"
+onclick="removeSchedule()"
+title="Excluir data e horário">
+
+🗑️
+
+</button>
+
+</div>
+
+</div>
+
+`;
+
+}else{
+
+scheduleBox.innerHTML = "";
+
+}
+
+
 /* total */
 
 const total =
@@ -2224,13 +2583,11 @@ return;
 
 }
 
-
 const total =
 cart.reduce(
 (sum,item)=>sum + item.price,
 0
 );
-
 
 let message =
 `Olá, AéreoAlex! 👋
@@ -2240,7 +2597,6 @@ Gostaria de solicitar um orçamento para serviço com drone.
 SERVIÇOS:
 
 `;
-
 
 cart.forEach((item,index)=>{
 
@@ -2252,12 +2608,29 @@ message +=
 
 });
 
-
 message +=
 `TOTAL DOS SERVIÇOS: ${money(total)}
 
 `;
 
+
+/* DATA E HORÁRIO */
+
+if(serviceDate && serviceTime){
+
+message +=
+`📅 DATA DO SERVIÇO:
+${formatDate(serviceDate)}
+
+🕐 HORÁRIO:
+${serviceTime}
+
+`;
+
+}
+
+
+/* ENDEREÇO */
 
 if(clientAddress){
 
@@ -2278,18 +2651,14 @@ O valor será confirmado conforme o endereço.
 
 Gostaria de confirmar a disponibilidade.`;
 
-
-
 const phone =
 "5511953169968";
-
 
 const url =
 "https://wa.me/" +
 phone +
 "?text=" +
 encodeURIComponent(message);
-
 
 window.open(
 url,
@@ -2342,7 +2711,9 @@ renderServices();
 
 updateCart();
 
+setMinimumDate();
+
 </script>
 
 </body>
-</html>
+</html> 

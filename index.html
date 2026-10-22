@@ -2300,8 +2300,6 @@ return;
 }
 
 
-/* verificar data */
-
 const selectedDate =
 new Date(date + "T00:00:00");
 
@@ -2335,12 +2333,6 @@ document.getElementById("scheduleStatus")
 "✓ Data e horário adicionados ao orçamento.";
 
 renderQuote();
-
-/*
-IMPORTANTE:
-Ao adicionar data e horário,
-o orçamento abre automaticamente.
-*/
 
 openCart();
 
@@ -2500,9 +2492,7 @@ addressBox.innerHTML = "";
 }
 
 
-/* =========================================================
-DATA E HORÁRIO NO ORÇAMENTO
-========================================================= */
+/* DATA E HORÁRIO */
 
 const scheduleBox =
 document.getElementById("quoteSchedule");
@@ -2570,81 +2560,81 @@ document.getElementById("quoteTotal")
 
 
 /* =========================================================
-WHATSAPP
+WHATSAPP — NÚMERO OFICIAL AÉREOALEX
 ========================================================= */
 
 function sendWhats(){
 
-/* VERIFICAR SERVIÇOS */
+    /* VERIFICAR SERVIÇOS */
 
-if(cart.length === 0){
+    if(cart.length === 0){
 
-alert(
-"Adicione pelo menos um serviço ao orçamento."
-);
+        alert(
+            "Adicione pelo menos um serviço ao orçamento."
+        );
 
-return;
+        return;
 
-}
-
-
-/* VERIFICAR ENDEREÇO */
-
-if(!clientAddress){
-
-alert(
-"Para enviar o orçamento pelo WhatsApp, informe e anexe o endereço do local da filmagem."
-);
-
-document.getElementById("clientAddress").focus();
-
-return;
-
-}
+    }
 
 
-/* VERIFICAR DATA */
+    /* VERIFICAR ENDEREÇO */
 
-if(!serviceDate){
+    if(!clientAddress){
 
-alert(
-"Para enviar o orçamento pelo WhatsApp, escolha a data do serviço."
-);
+        alert(
+            "Para enviar o orçamento pelo WhatsApp, informe e anexe o endereço do local da filmagem."
+        );
 
-document.getElementById("serviceDate").focus();
+        document.getElementById("clientAddress").focus();
 
-return;
+        return;
 
-}
-
-
-/* VERIFICAR HORÁRIO */
-
-if(!serviceTime){
-
-alert(
-"Para enviar o orçamento pelo WhatsApp, escolha o horário do serviço."
-);
-
-document.getElementById("serviceTime").focus();
-
-return;
-
-}
+    }
 
 
-/* TOTAL */
+    /* VERIFICAR DATA */
 
-const total =
-cart.reduce(
-(sum,item)=>sum + item.price,
-0
-);
+    if(!serviceDate){
+
+        alert(
+            "Para enviar o orçamento pelo WhatsApp, escolha a data do serviço."
+        );
+
+        document.getElementById("serviceDate").focus();
+
+        return;
+
+    }
 
 
-/* MENSAGEM */
+    /* VERIFICAR HORÁRIO */
 
-let message =
+    if(!serviceTime){
+
+        alert(
+            "Para enviar o orçamento pelo WhatsApp, escolha o horário do serviço."
+        );
+
+        document.getElementById("serviceTime").focus();
+
+        return;
+
+    }
+
+
+    /* TOTAL */
+
+    const total =
+        cart.reduce(
+            (sum,item)=>sum + item.price,
+            0
+        );
+
+
+    /* MENSAGEM */
+
+    let message =
 `Olá, AéreoAlex! 👋
 
 Gostaria de solicitar um orçamento para serviço com drone.
@@ -2654,26 +2644,26 @@ SERVIÇOS:
 `;
 
 
-cart.forEach((item,index)=>{
+    cart.forEach((item,index)=>{
 
-message +=
+        message +=
 `${index+1}. ${item.name} — ${money(item.price)}
    ${item.quantity}
 
 `;
 
-});
+    });
 
 
-message +=
+    message +=
 `TOTAL DOS SERVIÇOS: ${money(total)}
 
 `;
 
 
-/* DATA E HORÁRIO */
+    /* DATA E HORÁRIO */
 
-message +=
+    message +=
 `📅 DATA DO SERVIÇO:
 ${formatDate(serviceDate)}
 
@@ -2683,18 +2673,18 @@ ${serviceTime}
 `;
 
 
-/* ENDEREÇO */
+    /* ENDEREÇO */
 
-message +=
+    message +=
 `📍 LOCAL DA FILMAGEM:
 ${clientAddress}
 
 `;
 
 
-/* DESLOCAMENTO */
+    /* DESLOCAMENTO */
 
-message +=
+    message +=
 `🚗 DESLOCAMENTO:
 Mínimo de R$ 30,00
 Referência "ida e volta" de R$ 2,00 por km rodado.
@@ -2703,22 +2693,25 @@ O valor será confirmado conforme o endereço.
 Gostaria de confirmar a disponibilidade.`;
 
 
-/* WHATSAPP */
+    /* =====================================================
+       NÚMERO FIXO DO WHATSAPP
+       55 + 11 + 953169968
+       ===================================================== */
 
-const phone =
-"5511953169968";
+    const phone = "5511953169968";
 
-const url =
-"https://wa.me/" +
-phone +
-"?text=" +
-encodeURIComponent(message);
+    const url =
+        "https://wa.me/" +
+        phone +
+        "?text=" +
+        encodeURIComponent(message);
 
-window.open(
-url,
-"_blank",
-"noopener"
-);
+
+    window.open(
+        url,
+        "_blank",
+        "noopener,noreferrer"
+    );
 
 }
 

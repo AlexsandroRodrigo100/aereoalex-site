@@ -400,6 +400,40 @@ header{
     line-height:1.55;
 }
 
+/* ================= COMO FUNCIONA ================= */
+
+.steps{
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+    gap:18px;
+}
+
+.step{
+    padding:25px;
+    background:rgba(255,255,255,.035);
+    border:1px solid var(--border);
+    border-radius:20px;
+}
+
+.number{
+    width:43px;
+    height:43px;
+    border-radius:50%;
+    background:var(--yellow);
+    color:#07111d;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    font-weight:1000;
+    margin-bottom:16px;
+}
+
+.step p{
+    color:var(--muted);
+    line-height:1.5;
+    margin-top:8px;
+}
+
 /* ================= SERVIÇOS ================= */
 
 .services{
@@ -703,40 +737,6 @@ header{
     background:rgba(255,255,255,.05);
     color:#dbe2e9;
     font-size:13px;
-}
-
-/* ================= STEPS ================= */
-
-.steps{
-    display:grid;
-    grid-template-columns:repeat(4,1fr);
-    gap:18px;
-}
-
-.step{
-    padding:25px;
-    background:rgba(255,255,255,.035);
-    border:1px solid var(--border);
-    border-radius:20px;
-}
-
-.number{
-    width:43px;
-    height:43px;
-    border-radius:50%;
-    background:var(--yellow);
-    color:#07111d;
-    display:flex;
-    align-items:center;
-    justify-content:center;
-    font-weight:1000;
-    margin-bottom:16px;
-}
-
-.step p{
-    color:var(--muted);
-    line-height:1.5;
-    margin-top:8px;
 }
 
 /* ================= CTA ================= */
@@ -1418,6 +1418,87 @@ seu orçamento diretamente pelo site.
 </section>
 
 
+<!-- ================= COMO FUNCIONA ================= -->
+
+<section class="section">
+
+<div class="container">
+
+<div class="section-title">
+
+<small>COMO FUNCIONA</small>
+
+<h2>
+Seu orçamento em poucos passos
+</h2>
+
+</div>
+
+<div class="steps">
+
+<div class="step">
+
+<div class="number">1</div>
+
+<h3>
+Escolha os serviços
+</h3>
+
+<p>
+Selecione fotos, vídeos ou pacotes.
+</p>
+
+</div>
+
+<div class="step">
+
+<div class="number">2</div>
+
+<h3>
+Informe o endereço
+</h3>
+
+<p>
+Digite o local onde será realizada a filmagem.
+</p>
+
+</div>
+
+<div class="step">
+
+<div class="number">3</div>
+
+<h3>
+Escolha data e horário
+</h3>
+
+<p>
+Informe quando deseja realizar o serviço.
+</p>
+
+</div>
+
+<div class="step">
+
+<div class="number">4</div>
+
+<h3>
+Fale pelo WhatsApp
+</h3>
+
+<p>
+Envie o orçamento diretamente para atendimento.
+</p>
+
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+
 <!-- ================= SERVIÇOS ================= -->
 
 <section class="section services"
@@ -1616,87 +1697,6 @@ O valor final do deslocamento será confirmado conforme o local.
 <p style="margin-top:12px;font-size:13px;">
 O deslocamento não é acrescentado automaticamente ao total dos serviços.
 </p>
-
-</div>
-
-</div>
-
-</section>
-
-
-<!-- ================= COMO FUNCIONA ================= -->
-
-<section class="section">
-
-<div class="container">
-
-<div class="section-title">
-
-<small>COMO FUNCIONA</small>
-
-<h2>
-Seu orçamento em poucos passos
-</h2>
-
-</div>
-
-<div class="steps">
-
-<div class="step">
-
-<div class="number">1</div>
-
-<h3>
-Escolha os serviços
-</h3>
-
-<p>
-Selecione fotos, vídeos ou pacotes.
-</p>
-
-</div>
-
-<div class="step">
-
-<div class="number">2</div>
-
-<h3>
-Informe o endereço
-</h3>
-
-<p>
-Digite o local onde será realizada a filmagem.
-</p>
-
-</div>
-
-<div class="step">
-
-<div class="number">3</div>
-
-<h3>
-Escolha data e horário
-</h3>
-
-<p>
-Informe quando deseja realizar o serviço.
-</p>
-
-</div>
-
-<div class="step">
-
-<div class="number">4</div>
-
-<h3>
-Fale pelo WhatsApp
-</h3>
-
-<p>
-Envie o orçamento diretamente para atendimento.
-</p>
-
-</div>
 
 </div>
 
@@ -2299,7 +2299,6 @@ return;
 
 }
 
-
 const selectedDate =
 new Date(date + "T00:00:00");
 
@@ -2319,7 +2318,6 @@ dateInput.focus();
 return;
 
 }
-
 
 serviceDate = date;
 
@@ -2388,7 +2386,6 @@ function renderQuote(){
 const items =
 document.getElementById("quoteItems");
 
-
 if(cart.length === 0){
 
 items.innerHTML = `
@@ -2449,7 +2446,6 @@ title="Excluir serviço">
 const addressBox =
 document.getElementById("quoteAddress");
 
-
 if(clientAddress){
 
 addressBox.innerHTML = `
@@ -2496,7 +2492,6 @@ addressBox.innerHTML = "";
 
 const scheduleBox =
 document.getElementById("quoteSchedule");
-
 
 if(serviceDate && serviceTime){
 
@@ -2565,76 +2560,59 @@ WHATSAPP — NÚMERO OFICIAL AÉREOALEX
 
 function sendWhats(){
 
-    /* VERIFICAR SERVIÇOS */
+if(cart.length === 0){
 
-    if(cart.length === 0){
+alert(
+"Adicione pelo menos um serviço ao orçamento."
+);
 
-        alert(
-            "Adicione pelo menos um serviço ao orçamento."
-        );
+return;
 
-        return;
+}
 
-    }
+if(!clientAddress){
 
+alert(
+"Para enviar o orçamento pelo WhatsApp, informe e anexe o endereço do local da filmagem."
+);
 
-    /* VERIFICAR ENDEREÇO */
+document.getElementById("clientAddress").focus();
 
-    if(!clientAddress){
+return;
 
-        alert(
-            "Para enviar o orçamento pelo WhatsApp, informe e anexe o endereço do local da filmagem."
-        );
+}
 
-        document.getElementById("clientAddress").focus();
+if(!serviceDate){
 
-        return;
+alert(
+"Para enviar o orçamento pelo WhatsApp, escolha a data do serviço."
+);
 
-    }
+document.getElementById("serviceDate").focus();
 
+return;
 
-    /* VERIFICAR DATA */
+}
 
-    if(!serviceDate){
+if(!serviceTime){
 
-        alert(
-            "Para enviar o orçamento pelo WhatsApp, escolha a data do serviço."
-        );
+alert(
+"Para enviar o orçamento pelo WhatsApp, escolha o horário do serviço."
+);
 
-        document.getElementById("serviceDate").focus();
+document.getElementById("serviceTime").focus();
 
-        return;
+return;
 
-    }
+}
 
+const total =
+cart.reduce(
+(sum,item)=>sum + item.price,
+0
+);
 
-    /* VERIFICAR HORÁRIO */
-
-    if(!serviceTime){
-
-        alert(
-            "Para enviar o orçamento pelo WhatsApp, escolha o horário do serviço."
-        );
-
-        document.getElementById("serviceTime").focus();
-
-        return;
-
-    }
-
-
-    /* TOTAL */
-
-    const total =
-        cart.reduce(
-            (sum,item)=>sum + item.price,
-            0
-        );
-
-
-    /* MENSAGEM */
-
-    let message =
+let message =
 `Olá, AéreoAlex! 👋
 
 Gostaria de solicitar um orçamento para serviço com drone.
@@ -2643,27 +2621,22 @@ SERVIÇOS:
 
 `;
 
+cart.forEach((item,index)=>{
 
-    cart.forEach((item,index)=>{
-
-        message +=
+message +=
 `${index+1}. ${item.name} — ${money(item.price)}
    ${item.quantity}
 
 `;
 
-    });
+});
 
-
-    message +=
+message +=
 `TOTAL DOS SERVIÇOS: ${money(total)}
 
 `;
 
-
-    /* DATA E HORÁRIO */
-
-    message +=
+message +=
 `📅 DATA DO SERVIÇO:
 ${formatDate(serviceDate)}
 
@@ -2672,19 +2645,13 @@ ${serviceTime}
 
 `;
 
-
-    /* ENDEREÇO */
-
-    message +=
+message +=
 `📍 LOCAL DA FILMAGEM:
 ${clientAddress}
 
 `;
 
-
-    /* DESLOCAMENTO */
-
-    message +=
+message +=
 `🚗 DESLOCAMENTO:
 Mínimo de R$ 30,00
 Referência "ida e volta" de R$ 2,00 por km rodado.
@@ -2692,26 +2659,19 @@ O valor será confirmado conforme o endereço.
 
 Gostaria de confirmar a disponibilidade.`;
 
+const phone = "5511953169968";
 
-    /* =====================================================
-       NÚMERO FIXO DO WHATSAPP
-       55 + 11 + 953169968
-       ===================================================== */
+const url =
+"https://wa.me/" +
+phone +
+"?text=" +
+encodeURIComponent(message);
 
-    const phone = "5511953169968";
-
-    const url =
-        "https://wa.me/" +
-        phone +
-        "?text=" +
-        encodeURIComponent(message);
-
-
-    window.open(
-        url,
-        "_blank",
-        "noopener,noreferrer"
-    );
+window.open(
+url,
+"_blank",
+"noopener,noreferrer"
+);
 
 }
 
@@ -2763,4 +2723,4 @@ setMinimumDate();
 </script>
 
 </body>
-</html> 
+</html>

@@ -2233,12 +2233,6 @@ document.getElementById("addressStatus")
 .textContent =
 "✓ Endereço anexado ao orçamento.";
 
-/*
-IMPORTANTE:
-O endereço é salvo no orçamento,
-mas NÃO abre o orçamento automaticamente.
-*/
-
 renderQuote();
 
 }
@@ -2581,6 +2575,8 @@ WHATSAPP
 
 function sendWhats(){
 
+/* VERIFICAR SERVIÇOS */
+
 if(cart.length === 0){
 
 alert(
@@ -2591,11 +2587,62 @@ return;
 
 }
 
+
+/* VERIFICAR ENDEREÇO */
+
+if(!clientAddress){
+
+alert(
+"Para enviar o orçamento pelo WhatsApp, informe e anexe o endereço do local da filmagem."
+);
+
+document.getElementById("clientAddress").focus();
+
+return;
+
+}
+
+
+/* VERIFICAR DATA */
+
+if(!serviceDate){
+
+alert(
+"Para enviar o orçamento pelo WhatsApp, escolha a data do serviço."
+);
+
+document.getElementById("serviceDate").focus();
+
+return;
+
+}
+
+
+/* VERIFICAR HORÁRIO */
+
+if(!serviceTime){
+
+alert(
+"Para enviar o orçamento pelo WhatsApp, escolha o horário do serviço."
+);
+
+document.getElementById("serviceTime").focus();
+
+return;
+
+}
+
+
+/* TOTAL */
+
 const total =
 cart.reduce(
 (sum,item)=>sum + item.price,
 0
 );
+
+
+/* MENSAGEM */
 
 let message =
 `Olá, AéreoAlex! 👋
@@ -2605,6 +2652,7 @@ Gostaria de solicitar um orçamento para serviço com drone.
 SERVIÇOS:
 
 `;
+
 
 cart.forEach((item,index)=>{
 
@@ -2616,6 +2664,7 @@ message +=
 
 });
 
+
 message +=
 `TOTAL DOS SERVIÇOS: ${money(total)}
 
@@ -2623,8 +2672,6 @@ message +=
 
 
 /* DATA E HORÁRIO */
-
-if(serviceDate && serviceTime){
 
 message +=
 `📅 DATA DO SERVIÇO:
@@ -2635,12 +2682,8 @@ ${serviceTime}
 
 `;
 
-}
-
 
 /* ENDEREÇO */
-
-if(clientAddress){
 
 message +=
 `📍 LOCAL DA FILMAGEM:
@@ -2648,8 +2691,8 @@ ${clientAddress}
 
 `;
 
-}
 
+/* DESLOCAMENTO */
 
 message +=
 `🚗 DESLOCAMENTO:
@@ -2658,6 +2701,9 @@ Referência "ida e volta" de R$ 2,00 por km rodado.
 O valor será confirmado conforme o endereço.
 
 Gostaria de confirmar a disponibilidade.`;
+
+
+/* WHATSAPP */
 
 const phone =
 "5511953169968";

@@ -10,6 +10,7 @@
 content="AéreoAlex — fotos e vídeos profissionais com drone em São Paulo. Imóveis, terrenos, obras, chácaras, sítios e eventos.">
 
 <style>
+
 :root{
     --bg:#030912;
     --bg2:#071522;
@@ -56,6 +57,7 @@ img{
     display:block;
     max-width:100%;
 }
+
 
 /* ================= HEADER ================= */
 
@@ -132,6 +134,7 @@ header{
     border-radius:50px;
     font-size:12px;
 }
+
 
 /* ================= HERO ================= */
 
@@ -270,6 +273,7 @@ header{
     transform:translateY(-3px);
 }
 
+
 /* ================= DRONE ================= */
 
 .drone-container{
@@ -321,6 +325,7 @@ header{
     50%{opacity:.2}
 }
 
+
 /* ================= SECTION ================= */
 
 .section{
@@ -356,6 +361,7 @@ header{
     color:var(--muted);
     line-height:1.6;
 }
+
 
 /* ================= BENEFITS ================= */
 
@@ -400,6 +406,110 @@ header{
     line-height:1.55;
 }
 
+
+/* ================= FORMAS DE PAGAMENTO ================= */
+
+.payment-section{
+    padding:20px 5% 90px;
+
+    background:
+        radial-gradient(
+            circle at 50% 0,
+            rgba(255,210,28,.06),
+            transparent 35%
+        ),
+        var(--bg);
+}
+
+.payment-grid{
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+    gap:18px;
+    max-width:1100px;
+    margin:auto;
+}
+
+.payment-card{
+    position:relative;
+    padding:26px 22px;
+    border-radius:20px;
+    background:linear-gradient(145deg,#10253a,#071522);
+    border:1px solid var(--border);
+    box-shadow:var(--shadow);
+    transition:.3s;
+    overflow:hidden;
+}
+
+.payment-card:hover{
+    transform:translateY(-6px);
+    border-color:rgba(255,210,28,.35);
+}
+
+.payment-icon{
+    width:58px;
+    height:58px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    border-radius:16px;
+    background:rgba(255,210,28,.10);
+    border:1px solid rgba(255,210,28,.15);
+    font-size:28px;
+    margin-bottom:18px;
+}
+
+.payment-card h3{
+    font-size:18px;
+    margin-bottom:8px;
+}
+
+.payment-card p{
+    color:var(--muted);
+    font-size:13px;
+    line-height:1.6;
+}
+
+.payment-highlight{
+    display:inline-block;
+    margin-top:13px;
+    padding:6px 10px;
+    border-radius:50px;
+    background:rgba(37,211,102,.09);
+    border:1px solid rgba(37,211,102,.20);
+    color:#9af1b4;
+    font-size:11px;
+    font-weight:900;
+}
+
+.payment-security{
+    max-width:1100px;
+    margin:25px auto 0;
+    padding:20px;
+    border-radius:18px;
+    background:rgba(255,255,255,.035);
+    border:1px solid rgba(255,255,255,.08);
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    gap:12px;
+    text-align:center;
+}
+
+.payment-security-icon{
+    font-size:25px;
+}
+
+.payment-security strong{
+    color:#fff;
+}
+
+.payment-security span{
+    color:var(--muted);
+    font-size:13px;
+    line-height:1.5;
+}
+
+
 /* ================= COMO FUNCIONA ================= */
 
 .steps{
@@ -433,6 +543,7 @@ header{
     line-height:1.5;
     margin-top:8px;
 }
+
 
 /* ================= SERVIÇOS ================= */
 
@@ -572,6 +683,7 @@ header{
     transform:translateY(-2px);
 }
 
+
 /* ================= ENDEREÇO ================= */
 
 .address-section{
@@ -627,6 +739,7 @@ header{
     background:rgba(37,211,102,.07);
     border:1px solid rgba(37,211,102,.20);
 }
+
 
 /* ================= DATA E HORÁRIO ================= */
 
@@ -703,6 +816,7 @@ header{
     border:1px solid rgba(37,211,102,.20);
 }
 
+
 /* ================= DESLOCAMENTO ================= */
 
 .travel{
@@ -739,17 +853,20 @@ header{
     font-size:13px;
 }
 
+
 /* ================= CTA ================= */
 
 .cta{
     padding:100px 5%;
     text-align:center;
+
     background:
         linear-gradient(
             rgba(3,9,18,.90),
             rgba(3,9,18,.94)
         ),
         url("https://images.unsplash.com/photo-1473968512647-3e447244af8f?auto=format&fit=crop&w=2000&q=90");
+
     background-size:cover;
     background-position:center;
 }
@@ -769,6 +886,7 @@ header{
     line-height:1.6;
     margin-bottom:25px;
 }
+
 
 /* ================= FOOTER ================= */
 
@@ -790,6 +908,41 @@ footer{
     color:#778797;
     font-size:13px;
 }
+
+
+/* ================= SELOS DE CONFIANÇA ================= */
+
+.trust-badges{
+    display:flex;
+    justify-content:center;
+    flex-wrap:wrap;
+    gap:12px;
+    margin-top:22px;
+    padding-top:22px;
+    border-top:1px solid rgba(255,255,255,.07);
+}
+
+.trust-badge{
+    display:flex;
+    align-items:center;
+    gap:9px;
+    padding:10px 14px;
+    border-radius:12px;
+    background:rgba(255,255,255,.035);
+    border:1px solid rgba(255,255,255,.08);
+    color:#cbd5df;
+    font-size:11px;
+    line-height:1.4;
+}
+
+.trust-badge:first-child{
+    border-color:rgba(37,211,102,.20);
+}
+
+.trust-badge strong{
+    color:#fff;
+}
+
 
 /* ================= MODAL ================= */
 
@@ -916,6 +1069,7 @@ footer{
     line-height:1.5;
 }
 
+
 /* ================= DATA NO ORÇAMENTO ================= */
 
 .quote-schedule{
@@ -976,6 +1130,7 @@ footer{
     filter:brightness(1.08);
 }
 
+
 /* ================= RESPONSIVO ================= */
 
 @media(max-width:1050px){
@@ -993,6 +1148,15 @@ footer{
         right:-130px;
         opacity:.25;
     }
+
+}
+
+@media(max-width:950px){
+
+    .payment-grid{
+        grid-template-columns:repeat(2,1fr);
+    }
+
 }
 
 @media(max-width:800px){
@@ -1040,6 +1204,7 @@ footer{
         flex-direction:column;
         text-align:center;
     }
+
 }
 
 @media(max-width:520px){
@@ -1086,6 +1251,19 @@ footer{
         padding:65px 5%;
     }
 
+    .payment-section{
+        padding:10px 5% 65px;
+    }
+
+    .payment-grid{
+        grid-template-columns:1fr;
+    }
+
+    .payment-security{
+        align-items:flex-start;
+        text-align:left;
+    }
+
     .services-grid{
         grid-template-columns:1fr;
     }
@@ -1111,11 +1289,24 @@ footer{
     .quote-schedule-line{
         align-items:flex-start;
     }
+
+    .trust-badges{
+        flex-direction:column;
+        align-items:stretch;
+    }
+
+    .trust-badge{
+        justify-content:center;
+    }
+
 }
+
 </style>
 </head>
 
+
 <body>
+
 
 <header>
 
@@ -1126,6 +1317,7 @@ footer{
 <div class="logo-icon">
 
 <svg viewBox="0 0 100 70">
+
 <g fill="none"
 stroke="#FFD21C"
 stroke-width="5"
@@ -1169,6 +1361,7 @@ fill="#FFD21C"/>
 Aéreo<span>Alex</span>
 
 </a>
+
 
 <button class="cart-button"
 onclick="openCart()">
@@ -1227,6 +1420,7 @@ onclick="openCart()">
 
 </div>
 
+
 <div class="drone-container">
 
 <svg class="flying-drone"
@@ -1244,6 +1438,7 @@ fill="none">
 
 </g>
 
+
 <g class="propeller"
 stroke="#FFD21C"
 stroke-width="7"
@@ -1253,8 +1448,10 @@ stroke-linecap="round">
 <path d="M200 45L90 85"/>
 
 </g>
+
 
 <g transform="translate(0 170)">
+
 <g class="propeller"
 stroke="#FFD21C"
 stroke-width="7"
@@ -1264,9 +1461,12 @@ stroke-linecap="round">
 <path d="M200 45L90 85"/>
 
 </g>
+
 </g>
+
 
 <g transform="translate(410 0)">
+
 <g class="propeller"
 stroke="#FFD21C"
 stroke-width="7"
@@ -1276,9 +1476,12 @@ stroke-linecap="round">
 <path d="M200 45L90 85"/>
 
 </g>
+
 </g>
+
 
 <g transform="translate(410 170)">
+
 <g class="propeller"
 stroke="#FFD21C"
 stroke-width="7"
@@ -1288,12 +1491,15 @@ stroke-linecap="round">
 <path d="M200 45L90 85"/>
 
 </g>
+
 </g>
+
 
 <circle cx="145" cy="65" r="18" fill="#FFD21C"/>
 <circle cx="145" cy="235" r="18" fill="#FFD21C"/>
 <circle cx="555" cy="65" r="18" fill="#FFD21C"/>
 <circle cx="555" cy="235" r="18" fill="#FFD21C"/>
+
 
 <rect x="270"
 y="105"
@@ -1364,6 +1570,7 @@ de uma perspectiva profissional.
 
 </div>
 
+
 <div class="benefits">
 
 <div class="benefit">
@@ -1381,6 +1588,7 @@ redes sociais e apresentação profissional.
 
 </div>
 
+
 <div class="benefit">
 
 <div class="icon">🎬</div>
@@ -1396,6 +1604,7 @@ propriedades, obras e eventos.
 
 </div>
 
+
 <div class="benefit">
 
 <div class="icon">📍</div>
@@ -1408,6 +1617,152 @@ Atendimento em São Paulo
 Informe o endereço do trabalho e monte
 seu orçamento diretamente pelo site.
 </p>
+
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+
+<!-- ================= FORMAS DE PAGAMENTO ================= -->
+
+<section class="payment-section">
+
+<div class="container">
+
+<div class="section-title">
+
+<small>FORMAS DE PAGAMENTO</small>
+
+<h2>
+Pague do jeito que for melhor para você
+</h2>
+
+<p>
+A AéreoAlex oferece diferentes formas de pagamento
+para facilitar a contratação do seu serviço.
+</p>
+
+</div>
+
+
+<div class="payment-grid">
+
+
+<div class="payment-card">
+
+<div class="payment-icon">
+📱
+</div>
+
+<h3>
+Pix por aproximação
+</h3>
+
+<p>
+Pague aproximando seu celular de um dispositivo
+compatível com NFC. Uma opção rápida e prática.
+</p>
+
+<span class="payment-highlight">
+⚡ Pagamento rápido
+</span>
+
+</div>
+
+
+<div class="payment-card">
+
+<div class="payment-icon">
+▦
+</div>
+
+<h3>
+Pix via QR Code
+</h3>
+
+<p>
+Escaneie o QR Code Pix utilizando o aplicativo
+do seu banco e confirme o pagamento.
+</p>
+
+<span class="payment-highlight">
+✓ Pix
+</span>
+
+</div>
+
+
+<div class="payment-card">
+
+<div class="payment-icon">
+💳
+</div>
+
+<h3>
+Cartão de crédito
+</h3>
+
+<p>
+Aceitamos cartão de crédito com possibilidade
+de pagamento em até <strong>5 vezes</strong>.
+</p>
+
+<span class="payment-highlight">
+💳 Até 5x
+</span>
+
+</div>
+
+
+<div class="payment-card">
+
+<div class="payment-icon">
+💵
+</div>
+
+<h3>
+Débito ou dinheiro
+</h3>
+
+<p>
+Também aceitamos pagamento no cartão de débito
+ou em dinheiro, conforme combinado para o serviço.
+</p>
+
+<span class="payment-highlight">
+✓ Aceitamos
+</span>
+
+</div>
+
+
+</div>
+
+
+<div class="payment-security">
+
+<div class="payment-security-icon">
+🔒
+</div>
+
+<div>
+
+<strong>
+Pagamento com segurança
+</strong>
+
+<br>
+
+<span>
+Confira sempre o valor e o destinatário antes de
+confirmar qualquer pagamento. O pagamento deverá
+ser confirmado antes ou conforme combinado para
+a realização do serviço.
+</span>
 
 </div>
 
@@ -1434,7 +1789,9 @@ Seu orçamento em poucos passos
 
 </div>
 
+
 <div class="steps">
+
 
 <div class="step">
 
@@ -1450,6 +1807,7 @@ Selecione fotos, vídeos ou pacotes.
 
 </div>
 
+
 <div class="step">
 
 <div class="number">2</div>
@@ -1463,6 +1821,7 @@ Digite o local onde será realizada a filmagem.
 </p>
 
 </div>
+
 
 <div class="step">
 
@@ -1478,6 +1837,7 @@ Informe quando deseja realizar o serviço.
 
 </div>
 
+
 <div class="step">
 
 <div class="number">4</div>
@@ -1491,6 +1851,7 @@ Envie o orçamento diretamente para atendimento.
 </p>
 
 </div>
+
 
 </div>
 
@@ -1520,6 +1881,7 @@ Selecione os serviços e monte seu orçamento.
 
 </div>
 
+
 <div class="tabs">
 
 <button class="tab active"
@@ -1543,6 +1905,7 @@ Pacotes
 </button>
 
 </div>
+
 
 <div class="services-grid"
 id="servicesGrid">
@@ -1590,6 +1953,7 @@ onclick="addAddressToBudget()">
 
 </div>
 
+
 <div class="address-status"
 id="addressStatus">
 
@@ -1621,7 +1985,9 @@ Escolha o dia e o horário desejados para realizar
 o serviço e adicione essas informações ao orçamento.
 </p>
 
+
 <div class="schedule-row">
+
 
 <div class="schedule-field">
 
@@ -1637,6 +2003,7 @@ type="date"
 
 </div>
 
+
 <div class="schedule-field">
 
 <label for="serviceTime">
@@ -1651,6 +2018,7 @@ type="time"
 
 </div>
 
+
 <button
 class="btn btn-primary schedule-button"
 onclick="addScheduleToBudget()">
@@ -1660,6 +2028,7 @@ onclick="addScheduleToBudget()">
 </button>
 
 </div>
+
 
 <div
 class="schedule-status"
@@ -1684,15 +2053,31 @@ com referência ida e volta de <strong>R$ 2,00 por km rodado</strong>.
 O valor final do deslocamento será confirmado conforme o local.
 </p>
 
+
 <div class="examples">
 
-<span class="example">5 km → R$ 30</span>
-<span class="example">10 km → R$ 30</span>
-<span class="example">15 km → R$ 30</span>
-<span class="example">20 km → R$ 40</span>
-<span class="example">30 km → R$ 60</span>
+<span class="example">
+5 km → R$ 30
+</span>
+
+<span class="example">
+10 km → R$ 30
+</span>
+
+<span class="example">
+15 km → R$ 30
+</span>
+
+<span class="example">
+20 km → R$ 40
+</span>
+
+<span class="example">
+30 km → R$ 60
+</span>
 
 </div>
+
 
 <p style="margin-top:12px;font-size:13px;">
 O deslocamento não é acrescentado automaticamente ao total dos serviços.
@@ -1748,6 +2133,75 @@ São Paulo - SP
 
 </div>
 
+
+<div class="trust-badges">
+
+
+<div class="trust-badge">
+
+<span style="font-size:22px;">
+🔒
+</span>
+
+<span>
+
+<strong>
+Site seguro
+</strong>
+
+<br>
+
+Conexão protegida
+
+</span>
+
+</div>
+
+
+<div class="trust-badge">
+
+<span style="font-size:22px;">
+⚡
+</span>
+
+<span>
+
+<strong>
+Pix
+</strong>
+
+<br>
+
+Pagamento instantâneo
+
+</span>
+
+</div>
+
+
+<div class="trust-badge">
+
+<span style="font-size:22px;">
+💳
+</span>
+
+<span>
+
+<strong>
+Pagamento facilitado
+</strong>
+
+<br>
+
+Crédito, débito ou dinheiro
+
+</span>
+
+</div>
+
+
+</div>
+
 </footer>
 
 
@@ -1772,6 +2226,7 @@ onclick="closeCart()">
 
 </div>
 
+
 <div class="modal-content">
 
 <div id="quoteItems"></div>
@@ -1779,6 +2234,7 @@ onclick="closeCart()">
 <div id="quoteAddress"></div>
 
 <div id="quoteSchedule"></div>
+
 
 <div class="total">
 
@@ -1791,6 +2247,7 @@ R$ 0,00
 </strong>
 
 </div>
+
 
 <button
 class="whatsapp"
@@ -1808,6 +2265,7 @@ onclick="sendWhats()">
 
 
 <script>
+
 
 /* =========================================================
 SERVIÇOS
@@ -2441,7 +2899,7 @@ title="Excluir serviço">
 }
 
 
-/* endereço */
+/* ENDEREÇO */
 
 const addressBox =
 document.getElementById("quoteAddress");
@@ -2510,6 +2968,7 @@ scheduleBox.innerHTML = `
 <div class="quote-schedule-text">
 
 📅 ${formatDate(serviceDate)}
+
 <br>
 
 🕐 ${escapeHtml(serviceTime)}
@@ -2540,7 +2999,7 @@ scheduleBox.innerHTML = "";
 }
 
 
-/* total */
+/* TOTAL */
 
 const total =
 cart.reduce(
@@ -2570,6 +3029,7 @@ return;
 
 }
 
+
 if(!clientAddress){
 
 alert(
@@ -2581,6 +3041,7 @@ document.getElementById("clientAddress").focus();
 return;
 
 }
+
 
 if(!serviceDate){
 
@@ -2594,6 +3055,7 @@ return;
 
 }
 
+
 if(!serviceTime){
 
 alert(
@@ -2606,11 +3068,13 @@ return;
 
 }
 
+
 const total =
 cart.reduce(
 (sum,item)=>sum + item.price,
 0
 );
+
 
 let message =
 `Olá, AéreoAlex! 👋
@@ -2620,6 +3084,7 @@ Gostaria de solicitar um orçamento para serviço com drone.
 SERVIÇOS:
 
 `;
+
 
 cart.forEach((item,index)=>{
 
@@ -2631,10 +3096,12 @@ message +=
 
 });
 
+
 message +=
 `TOTAL DOS SERVIÇOS: ${money(total)}
 
 `;
+
 
 message +=
 `📅 DATA DO SERVIÇO:
@@ -2645,11 +3112,24 @@ ${serviceTime}
 
 `;
 
+
 message +=
 `📍 LOCAL DA FILMAGEM:
 ${clientAddress}
 
 `;
+
+
+message +=
+`💳 FORMAS DE PAGAMENTO DISPONÍVEIS:
+• Pix por aproximação
+• Pix via QR Code
+• Cartão de crédito em até 5 vezes
+• Cartão de débito
+• Dinheiro
+
+`;
+
 
 message +=
 `🚗 DESLOCAMENTO:
@@ -2659,13 +3139,16 @@ O valor será confirmado conforme o endereço.
 
 Gostaria de confirmar a disponibilidade.`;
 
+
 const phone = "5511953169968";
+
 
 const url =
 "https://wa.me/" +
 phone +
 "?text=" +
 encodeURIComponent(message);
+
 
 window.open(
 url,

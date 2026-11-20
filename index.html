@@ -1,313 +1,3223 @@
-<!-- ALEX IA - AÉREOALEX -->
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<!-- Google Tag Manager -->
+<script>
+(function(w,d,s,l,i){
+  w[l]=w[l]||[];
+  w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});
+  var f=d.getElementsByTagName(s)[0],
+      j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';
+  j.async=true;
+  j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;
+  f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-NCK9GNJN');
+</script>
+<!-- End Google Tag Manager -->
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>AéreoAlex | Fotos e Vídeos com Drone</title>
+
+<meta name="description"
+content="AéreoAlex — fotos e vídeos profissionais com drone em São Paulo. Imóveis, terrenos, obras, chácaras, sítios e eventos.">
+
 <style>
-#alex-launch {
-  position: fixed;
-  right: 20px;
-  bottom: 20px;
-  width: 66px;
-  height: 66px;
-  border: 0;
-  border-radius: 50%;
-  background: linear-gradient(135deg,#00c6ff,#1744dc);
-  color: white;
-  font-size: 30px;
-  cursor: pointer;
-  box-shadow: 0 8px 30px #007bff66;
-  z-index: 9998;
+
+:root{
+    --bg:#030912;
+    --bg2:#071522;
+    --card:#0b1b2b;
+    --card2:#10253a;
+    --yellow:#ffd21c;
+    --yellow2:#ffb900;
+    --white:#fff;
+    --text:#e9eef4;
+    --muted:#9eacba;
+    --green:#25d366;
+    --red:#ff5757;
+    --border:rgba(255,255,255,.10);
+    --shadow:0 25px 70px rgba(0,0,0,.40);
 }
 
-#alex-chat {
-  position: fixed;
-  right: 15px;
-  bottom: 95px;
-  width: min(390px, calc(100vw - 30px));
-  height: min(580px, calc(100dvh - 115px));
-  background: #0b1222;
-  color: white;
-  border: 1px solid #29436c;
-  border-radius: 22px;
-  overflow: hidden;
-  box-shadow: 0 15px 55px #0009;
-  z-index: 9999;
-  display: none;
-  flex-direction: column;
-  font-family: Arial, sans-serif;
+*{
+    box-sizing:border-box;
+    margin:0;
+    padding:0;
 }
 
-#alex-chat.open {
-  display: flex;
+html{
+    scroll-behavior:smooth;
 }
 
-.alex-header {
-  padding: 18px;
-  background: linear-gradient(120deg,#102a66,#067bdb);
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
+body{
+    font-family:Arial,Helvetica,sans-serif;
+    background:var(--bg);
+    color:var(--text);
+    overflow-x:hidden;
 }
 
-.alex-header strong {
-  font-size: 20px;
+button,
+input{
+    font:inherit;
 }
 
-.alex-header small {
-  display: block;
-  margin-top: 5px;
-  color: #d5efff;
+button{
+    cursor:pointer;
 }
 
-#alex-close {
-  background: transparent;
-  border: 0;
-  color: white;
-  font-size: 27px;
-  cursor: pointer;
+img{
+    display:block;
+    max-width:100%;
 }
 
-#alex-messages {
-  flex: 1;
-  min-height: 0;
-  overflow-y: auto;
-  padding: 15px;
-  display: flex;
-  flex-direction: column;
-  gap: 12px;
-  overscroll-behavior: contain;
+
+/* ================= HEADER ================= */
+
+header{
+    position:fixed;
+    top:0;
+    left:0;
+    right:0;
+    z-index:1000;
+    padding:12px 5%;
+    background:rgba(3,9,18,.82);
+    backdrop-filter:blur(18px);
+    border-bottom:1px solid rgba(255,255,255,.08);
 }
 
-.alex-bubble {
-  padding: 12px 14px;
-  border-radius: 15px;
-  max-width: 88%;
-  line-height: 1.5;
-  font-size: 14px;
-  white-space: pre-wrap;
-  overflow-wrap: anywhere;
+.nav{
+    max-width:1250px;
+    margin:auto;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
 }
 
-.alex-bot {
-  background: #1c2a42;
-  align-self: flex-start;
+.logo{
+    display:flex;
+    align-items:center;
+    gap:10px;
+    color:#fff;
+    text-decoration:none;
+    font-size:22px;
+    font-weight:900;
 }
 
-.alex-user {
-  background: #075bd7;
-  align-self: flex-end;
+.logo span{
+    color:var(--yellow);
 }
 
-#alex-form {
-  display: flex;
-  gap: 8px;
-  padding: 12px;
-  background: #101b30;
-  border-top: 1px solid #30415e;
+.logo-icon{
+    width:42px;
+    height:42px;
 }
 
-#alex-input {
-  flex: 1;
-  min-width: 0;
-  padding: 13px;
-  border: 1px solid #395172;
-  border-radius: 12px;
-  background: #182842;
-  color: white;
-  font-size: 16px;
-  outline: none;
+.logo-icon svg{
+    width:100%;
+    height:100%;
 }
 
-#alex-input:focus {
-  border-color: #00c6ff;
+.cart-button{
+    border:1px solid rgba(255,210,28,.35);
+    background:rgba(255,210,28,.08);
+    color:#fff;
+    border-radius:12px;
+    padding:11px 16px;
+    font-weight:800;
+    transition:.25s;
 }
 
-#alex-send {
-  border: 0;
-  border-radius: 12px;
-  padding: 0 17px;
-  background: #087df0;
-  color: white;
-  font-weight: bold;
-  cursor: pointer;
+.cart-button:hover{
+    background:var(--yellow);
+    color:#07111d;
+    transform:translateY(-2px);
 }
 
-#alex-send:disabled {
-  opacity: .5;
-  cursor: wait;
+.cart-count{
+    display:inline-flex;
+    align-items:center;
+    justify-content:center;
+    min-width:23px;
+    height:23px;
+    padding:0 6px;
+    margin-left:4px;
+    background:var(--yellow);
+    color:#07111d;
+    border-radius:50px;
+    font-size:12px;
 }
 
-#alex-status {
-  padding: 0 12px 9px;
-  font-size: 12px;
-  color: #9ab1d1;
+
+/* ================= HERO ================= */
+
+.hero{
+    min-height:790px;
+    position:relative;
+    display:flex;
+    align-items:center;
+    overflow:hidden;
+
+    background:
+        linear-gradient(
+            90deg,
+            rgba(2,8,15,.97) 0%,
+            rgba(2,8,15,.84) 38%,
+            rgba(2,8,15,.48) 72%,
+            rgba(2,8,15,.55) 100%
+        ),
+        url("https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?auto=format&fit=crop&w=2200&q=90");
+
+    background-size:cover;
+    background-position:center;
 }
+
+.hero:after{
+    content:"";
+    position:absolute;
+    inset:0;
+    background:
+        radial-gradient(
+            circle at 78% 45%,
+            rgba(255,210,28,.13),
+            transparent 25%
+        ),
+        linear-gradient(
+            transparent 60%,
+            var(--bg) 100%
+        );
+    pointer-events:none;
+}
+
+.hero-content{
+    width:90%;
+    max-width:1250px;
+    margin:95px auto 0;
+    position:relative;
+    z-index:10;
+}
+
+.hero-text{
+    max-width:700px;
+}
+
+.badge{
+    display:inline-flex;
+    align-items:center;
+    gap:8px;
+    color:var(--yellow);
+    border:1px solid rgba(255,210,28,.35);
+    background:rgba(255,210,28,.08);
+    border-radius:50px;
+    padding:9px 14px;
+    margin-bottom:20px;
+    font-size:11px;
+    font-weight:900;
+    letter-spacing:1.5px;
+}
+
+.badge:before{
+    content:"";
+    width:7px;
+    height:7px;
+    border-radius:50%;
+    background:var(--yellow);
+    box-shadow:0 0 15px var(--yellow);
+}
+
+.hero h1{
+    font-size:clamp(44px,7vw,82px);
+    line-height:.96;
+    letter-spacing:-3px;
+    margin-bottom:24px;
+    font-weight:1000;
+}
+
+.hero h1 span{
+    color:var(--yellow);
+}
+
+.hero p{
+    max-width:610px;
+    color:#d8e0e8;
+    font-size:19px;
+    line-height:1.65;
+    margin-bottom:30px;
+}
+
+.hero-buttons{
+    display:flex;
+    flex-wrap:wrap;
+    gap:12px;
+}
+
+.btn{
+    display:inline-flex;
+    align-items:center;
+    justify-content:center;
+    gap:8px;
+    border:0;
+    border-radius:13px;
+    padding:15px 22px;
+    text-decoration:none;
+    font-weight:900;
+    transition:.25s;
+}
+
+.btn-primary{
+    background:var(--yellow);
+    color:#07111d;
+    box-shadow:0 10px 35px rgba(255,210,28,.18);
+}
+
+.btn-primary:hover{
+    transform:translateY(-3px);
+    background:#ffe252;
+}
+
+.btn-secondary{
+    background:rgba(255,255,255,.07);
+    border:1px solid rgba(255,255,255,.15);
+    color:#fff;
+}
+
+.btn-secondary:hover{
+    background:rgba(255,255,255,.13);
+    transform:translateY(-3px);
+}
+
+
+/* ================= DRONE ================= */
+
+.drone-container{
+    position:absolute;
+    z-index:8;
+    right:3%;
+    top:48%;
+    transform:translateY(-50%);
+    width:min(520px,43vw);
+    pointer-events:none;
+}
+
+.flying-drone{
+    width:100%;
+    animation:flying 4s ease-in-out infinite;
+    filter:
+        drop-shadow(0 30px 25px rgba(0,0,0,.55))
+        drop-shadow(0 0 25px rgba(255,210,28,.10));
+}
+
+@keyframes flying{
+    0%,100%{
+        transform:translateY(0) rotate(-1deg);
+    }
+
+    50%{
+        transform:translateY(-22px) rotate(1deg);
+    }
+}
+
+.propeller{
+    transform-box:fill-box;
+    transform-origin:center;
+    animation:spin .15s linear infinite;
+}
+
+@keyframes spin{
+    to{
+        transform:rotate(360deg);
+    }
+}
+
+.drone-light{
+    animation:blink 1s ease-in-out infinite;
+}
+
+@keyframes blink{
+    0%,100%{opacity:1}
+    50%{opacity:.2}
+}
+
+
+/* ================= SECTION ================= */
+
+.section{
+    padding:90px 5%;
+}
+
+.container{
+    max-width:1250px;
+    margin:auto;
+}
+
+.section-title{
+    max-width:760px;
+    margin:0 auto 45px;
+    text-align:center;
+}
+
+.section-title small{
+    display:block;
+    color:var(--yellow);
+    font-size:12px;
+    font-weight:900;
+    letter-spacing:2px;
+    margin-bottom:10px;
+}
+
+.section-title h2{
+    font-size:clamp(31px,5vw,50px);
+    margin-bottom:14px;
+}
+
+.section-title p{
+    color:var(--muted);
+    line-height:1.6;
+}
+
+
+/* ================= BENEFITS ================= */
+
+.benefits{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:20px;
+}
+
+.benefit{
+    padding:28px;
+    border-radius:22px;
+    background:linear-gradient(145deg,#10253a,#071522);
+    border:1px solid var(--border);
+    box-shadow:var(--shadow);
+    transition:.3s;
+}
+
+.benefit:hover{
+    transform:translateY(-7px);
+    border-color:rgba(255,210,28,.35);
+}
+
+.icon{
+    width:52px;
+    height:52px;
+    border-radius:15px;
+    background:rgba(255,210,28,.10);
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    font-size:25px;
+    margin-bottom:18px;
+}
+
+.benefit h3{
+    margin-bottom:9px;
+}
+
+.benefit p{
+    color:var(--muted);
+    line-height:1.55;
+}
+
+
+/* ================= FORMAS DE PAGAMENTO ================= */
+
+.payment-section{
+    padding:20px 5% 90px;
+
+    background:
+        radial-gradient(
+            circle at 50% 0,
+            rgba(255,210,28,.06),
+            transparent 35%
+        ),
+        var(--bg);
+}
+
+.payment-grid{
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+    gap:18px;
+    max-width:1100px;
+    margin:auto;
+}
+
+.payment-card{
+    position:relative;
+    padding:26px 22px;
+    border-radius:20px;
+    background:linear-gradient(145deg,#10253a,#071522);
+    border:1px solid var(--border);
+    box-shadow:var(--shadow);
+    transition:.3s;
+    overflow:hidden;
+}
+
+.payment-card:hover{
+    transform:translateY(-6px);
+    border-color:rgba(255,210,28,.35);
+}
+
+.payment-icon{
+    width:58px;
+    height:58px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    border-radius:16px;
+    background:rgba(255,210,28,.10);
+    border:1px solid rgba(255,210,28,.15);
+    font-size:28px;
+    margin-bottom:18px;
+}
+
+.payment-card h3{
+    font-size:18px;
+    margin-bottom:8px;
+}
+
+.payment-card p{
+    color:var(--muted);
+    font-size:13px;
+    line-height:1.6;
+}
+
+.payment-highlight{
+    display:inline-block;
+    margin-top:13px;
+    padding:6px 10px;
+    border-radius:50px;
+    background:rgba(37,211,102,.09);
+    border:1px solid rgba(37,211,102,.20);
+    color:#9af1b4;
+    font-size:11px;
+    font-weight:900;
+}
+
+.payment-security{
+    max-width:1100px;
+    margin:25px auto 0;
+    padding:20px;
+    border-radius:18px;
+    background:rgba(255,255,255,.035);
+    border:1px solid rgba(255,255,255,.08);
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    gap:12px;
+    text-align:center;
+}
+
+.payment-security-icon{
+    font-size:25px;
+}
+
+.payment-security strong{
+    color:#fff;
+}
+
+.payment-security span{
+    color:var(--muted);
+    font-size:13px;
+    line-height:1.5;
+}
+
+
+/* ================= COMO FUNCIONA ================= */
+
+.steps{
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+    gap:18px;
+}
+
+.step{
+    padding:25px;
+    background:rgba(255,255,255,.035);
+    border:1px solid var(--border);
+    border-radius:20px;
+}
+
+.number{
+    width:43px;
+    height:43px;
+    border-radius:50%;
+    background:var(--yellow);
+    color:#07111d;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    font-weight:1000;
+    margin-bottom:16px;
+}
+
+.step p{
+    color:var(--muted);
+    line-height:1.5;
+    margin-top:8px;
+}
+
+
+/* ================= SERVIÇOS ================= */
+
+.services{
+    background:
+        radial-gradient(
+            circle at 50% 0,
+            rgba(255,210,28,.08),
+            transparent 35%
+        ),
+        var(--bg2);
+}
+
+.tabs{
+    display:flex;
+    justify-content:center;
+    flex-wrap:wrap;
+    gap:9px;
+    margin-bottom:30px;
+}
+
+.tab{
+    border:1px solid var(--border);
+    background:rgba(255,255,255,.04);
+    color:#fff;
+    border-radius:50px;
+    padding:10px 18px;
+    font-weight:800;
+    transition:.25s;
+}
+
+.tab.active,
+.tab:hover{
+    background:var(--yellow);
+    border-color:var(--yellow);
+    color:#07111d;
+}
+
+.services-grid{
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+    gap:18px;
+}
+
+.service{
+    overflow:hidden;
+    position:relative;
+    background:linear-gradient(150deg,#10263d,#071522);
+    border:1px solid var(--border);
+    border-radius:20px;
+    transition:.3s;
+}
+
+.service:hover{
+    transform:translateY(-7px);
+    border-color:rgba(255,210,28,.4);
+    box-shadow:0 25px 55px rgba(0,0,0,.38);
+}
+
+.service-image{
+    height:175px;
+    overflow:hidden;
+    position:relative;
+}
+
+.service-image img{
+    width:100%;
+    height:100%;
+    object-fit:cover;
+    transition:.6s;
+}
+
+.service:hover .service-image img{
+    transform:scale(1.07);
+}
+
+.service-image:after{
+    content:"";
+    position:absolute;
+    inset:0;
+    background:linear-gradient(
+        to top,
+        rgba(3,9,18,.9),
+        transparent 65%
+    );
+}
+
+.popular{
+    position:absolute;
+    top:12px;
+    right:12px;
+    z-index:3;
+    background:var(--yellow);
+    color:#07111d;
+    padding:7px 10px;
+    border-radius:50px;
+    font-size:10px;
+    font-weight:1000;
+}
+
+.service-content{
+    padding:20px;
+}
+
+.service-content h3{
+    font-size:17px;
+    margin-bottom:9px;
+}
+
+.quantity{
+    min-height:40px;
+    color:#c1ccd7;
+    font-size:13px;
+    line-height:1.5;
+}
+
+.price{
+    margin:17px 0;
+    color:var(--yellow);
+    font-size:25px;
+    font-weight:1000;
+}
+
+.add{
+    width:100%;
+    padding:13px;
+    border:0;
+    border-radius:11px;
+    background:var(--yellow);
+    color:#07111d;
+    font-weight:900;
+    transition:.2s;
+}
+
+.add:hover{
+    background:#ffe252;
+    transform:translateY(-2px);
+}
+
+
+/* ================= ENDEREÇO ================= */
+
+.address-section{
+    padding:30px 5% 85px;
+}
+
+.address-box{
+    max-width:950px;
+    margin:auto;
+    padding:30px;
+    border-radius:24px;
+    background:linear-gradient(145deg,#10253a,#071522);
+    border:1px solid var(--border);
+}
+
+.address-box h2{
+    margin-bottom:9px;
+}
+
+.address-box p{
+    color:var(--muted);
+    line-height:1.6;
+    margin-bottom:20px;
+}
+
+.address-row{
+    display:flex;
+    gap:10px;
+}
+
+.address-input{
+    flex:1;
+    min-width:0;
+    border:1px solid rgba(255,255,255,.12);
+    border-radius:12px;
+    padding:15px;
+    background:#030c16;
+    color:#fff;
+    outline:none;
+}
+
+.address-input:focus{
+    border-color:var(--yellow);
+    box-shadow:0 0 0 3px rgba(255,210,28,.08);
+}
+
+.address-status{
+    display:none;
+    margin-top:14px;
+    padding:13px;
+    border-radius:12px;
+    color:#9af1b4;
+    background:rgba(37,211,102,.07);
+    border:1px solid rgba(37,211,102,.20);
+}
+
+
+/* ================= DATA E HORÁRIO ================= */
+
+.schedule-section{
+    padding:0 5% 85px;
+}
+
+.schedule-box{
+    max-width:950px;
+    margin:auto;
+    padding:30px;
+    border-radius:24px;
+    background:linear-gradient(145deg,#10253a,#071522);
+    border:1px solid var(--border);
+}
+
+.schedule-box h2{
+    margin-bottom:9px;
+}
+
+.schedule-box > p{
+    color:var(--muted);
+    line-height:1.6;
+    margin-bottom:22px;
+}
+
+.schedule-row{
+    display:grid;
+    grid-template-columns:1fr 1fr auto;
+    gap:10px;
+    align-items:end;
+}
+
+.schedule-field{
+    display:flex;
+    flex-direction:column;
+    gap:8px;
+}
+
+.schedule-field label{
+    color:#dce4eb;
+    font-size:13px;
+    font-weight:800;
+}
+
+.schedule-input{
+    width:100%;
+    border:1px solid rgba(255,255,255,.12);
+    border-radius:12px;
+    padding:15px;
+    background:#030c16;
+    color:#fff;
+    outline:none;
+    color-scheme:dark;
+}
+
+.schedule-input:focus{
+    border-color:var(--yellow);
+    box-shadow:0 0 0 3px rgba(255,210,28,.08);
+}
+
+.schedule-button{
+    min-height:50px;
+    white-space:nowrap;
+}
+
+.schedule-status{
+    display:none;
+    margin-top:14px;
+    padding:13px;
+    border-radius:12px;
+    color:#9af1b4;
+    background:rgba(37,211,102,.07);
+    border:1px solid rgba(37,211,102,.20);
+}
+
+
+/* ================= DESLOCAMENTO ================= */
+
+.travel{
+    max-width:950px;
+    margin:20px auto 0;
+    padding:24px;
+    border-radius:20px;
+    background:rgba(255,210,28,.055);
+    border:1px solid rgba(255,210,28,.18);
+}
+
+.travel h3{
+    color:var(--yellow);
+    margin-bottom:10px;
+}
+
+.travel p{
+    color:#cbd4de;
+    line-height:1.6;
+}
+
+.examples{
+    display:flex;
+    flex-wrap:wrap;
+    gap:8px;
+    margin-top:15px;
+}
+
+.example{
+    padding:8px 11px;
+    border-radius:9px;
+    background:rgba(255,255,255,.05);
+    color:#dbe2e9;
+    font-size:13px;
+}
+
+
+/* ================= CTA ================= */
+
+.cta{
+    padding:100px 5%;
+    text-align:center;
+
+    background:
+        linear-gradient(
+            rgba(3,9,18,.90),
+            rgba(3,9,18,.94)
+        ),
+        url("https://images.unsplash.com/photo-1473968512647-3e447244af8f?auto=format&fit=crop&w=2000&q=90");
+
+    background-size:cover;
+    background-position:center;
+}
+
+.cta-content{
+    max-width:750px;
+    margin:auto;
+}
+
+.cta h2{
+    font-size:clamp(32px,5vw,55px);
+    margin-bottom:15px;
+}
+
+.cta p{
+    color:#cdd6df;
+    line-height:1.6;
+    margin-bottom:25px;
+}
+
+
+/* ================= FOOTER ================= */
+
+footer{
+    background:#02070d;
+    border-top:1px solid rgba(255,255,255,.08);
+    padding:30px 5%;
+}
+
+.footer{
+    max-width:1250px;
+    margin:auto;
+    display:flex;
+    justify-content:space-between;
+    gap:20px;
+}
+
+.footer p{
+    color:#778797;
+    font-size:13px;
+}
+
+
+/* ================= SELOS DE CONFIANÇA ================= */
+
+.trust-badges{
+    display:flex;
+    justify-content:center;
+    flex-wrap:wrap;
+    gap:12px;
+    margin-top:22px;
+    padding-top:22px;
+    border-top:1px solid rgba(255,255,255,.07);
+}
+
+.trust-badge{
+    display:flex;
+    align-items:center;
+    gap:9px;
+    padding:10px 14px;
+    border-radius:12px;
+    background:rgba(255,255,255,.035);
+    border:1px solid rgba(255,255,255,.08);
+    color:#cbd5df;
+    font-size:11px;
+    line-height:1.4;
+}
+
+.trust-badge:first-child{
+    border-color:rgba(37,211,102,.20);
+}
+
+.trust-badge strong{
+    color:#fff;
+}
+
+
+/* ================= MODAL ================= */
+
+.modal{
+    display:none;
+    position:fixed;
+    inset:0;
+    z-index:3000;
+    background:rgba(0,0,0,.78);
+    backdrop-filter:blur(8px);
+    padding:15px;
+    overflow:auto;
+}
+
+.modal.show{
+    display:flex;
+    justify-content:center;
+    align-items:center;
+}
+
+.modal-box{
+    width:100%;
+    max-width:650px;
+    max-height:92vh;
+    overflow:auto;
+    background:#071522;
+    border:1px solid rgba(255,255,255,.12);
+    border-radius:24px;
+    box-shadow:0 30px 100px rgba(0,0,0,.6);
+}
+
+.modal-header{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    padding:21px;
+    border-bottom:1px solid rgba(255,255,255,.08);
+}
+
+.close{
+    width:38px;
+    height:38px;
+    border:0;
+    border-radius:50%;
+    background:rgba(255,255,255,.08);
+    color:#fff;
+    font-size:21px;
+}
+
+.modal-content{
+    padding:22px;
+}
+
+.empty{
+    text-align:center;
+    padding:35px 15px;
+    color:#8795a4;
+}
+
+.quote-item{
+    display:flex;
+    align-items:center;
+    gap:12px;
+    padding:15px 0;
+    border-bottom:1px solid rgba(255,255,255,.07);
+}
+
+.quote-info{
+    flex:1;
+}
+
+.quote-info strong{
+    display:block;
+    margin-bottom:5px;
+}
+
+.quote-info small{
+    color:#8795a4;
+}
+
+.item-price{
+    color:var(--yellow);
+    font-weight:900;
+    white-space:nowrap;
+}
+
+.delete{
+    width:33px;
+    height:33px;
+    border:0;
+    border-radius:9px;
+    background:rgba(255,87,87,.10);
+    color:#ff7777;
+}
+
+.delete:hover{
+    background:var(--red);
+    color:#fff;
+}
+
+.quote-address{
+    margin-top:20px;
+    padding:15px;
+    border-radius:14px;
+    background:rgba(255,255,255,.045);
+    border:1px solid rgba(255,255,255,.08);
+}
+
+.quote-address-line{
+    display:flex;
+    justify-content:space-between;
+    gap:10px;
+}
+
+.quote-address strong{
+    display:block;
+    color:var(--yellow);
+    margin-bottom:6px;
+}
+
+.quote-address-text{
+    color:#c8d1da;
+    font-size:14px;
+    line-height:1.5;
+}
+
+
+/* ================= DATA NO ORÇAMENTO ================= */
+
+.quote-schedule{
+    margin-top:20px;
+    padding:15px;
+    border-radius:14px;
+    background:rgba(255,210,28,.055);
+    border:1px solid rgba(255,210,28,.18);
+}
+
+.quote-schedule-line{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    gap:10px;
+}
+
+.quote-schedule strong{
+    display:block;
+    color:var(--yellow);
+    margin-bottom:6px;
+}
+
+.quote-schedule-text{
+    color:#c8d1da;
+    font-size:14px;
+    line-height:1.5;
+}
+
+.total{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    padding-top:20px;
+    margin-top:20px;
+    border-top:1px solid rgba(255,255,255,.10);
+    font-weight:1000;
+}
+
+.total strong{
+    color:var(--yellow);
+    font-size:27px;
+}
+
+.whatsapp{
+    width:100%;
+    margin-top:20px;
+    padding:15px;
+    border:0;
+    border-radius:13px;
+    background:var(--green);
+    color:#03110a;
+    font-weight:1000;
+    font-size:16px;
+}
+
+.whatsapp:hover{
+    filter:brightness(1.08);
+}
+
+
+/* ================= RESPONSIVO ================= */
+
+@media(max-width:1050px){
+
+    .services-grid{
+        grid-template-columns:repeat(3,1fr);
+    }
+
+    .steps{
+        grid-template-columns:repeat(2,1fr);
+    }
+
+    .drone-container{
+        width:500px;
+        right:-130px;
+        opacity:.25;
+    }
+
+}
+
+@media(max-width:950px){
+
+    .payment-grid{
+        grid-template-columns:repeat(2,1fr);
+    }
+
+}
+
+@media(max-width:800px){
+
+    .hero{
+        min-height:730px;
+    }
+
+    .hero h1{
+        letter-spacing:-2px;
+    }
+
+    .hero p{
+        font-size:16px;
+    }
+
+    .drone-container{
+        width:450px;
+        right:-150px;
+        top:32%;
+        opacity:.18;
+    }
+
+    .benefits{
+        grid-template-columns:1fr;
+    }
+
+    .services-grid{
+        grid-template-columns:repeat(2,1fr);
+    }
+
+    .address-row{
+        flex-direction:column;
+    }
+
+    .schedule-row{
+        grid-template-columns:1fr;
+    }
+
+    .schedule-button{
+        width:100%;
+    }
+
+    .footer{
+        flex-direction:column;
+        text-align:center;
+    }
+
+}
+
+@media(max-width:520px){
+
+    header{
+        padding:10px 4%;
+    }
+
+    .logo{
+        font-size:18px;
+    }
+
+    .logo-icon{
+        width:34px;
+        height:34px;
+    }
+
+    .cart-button{
+        padding:9px 11px;
+        font-size:13px;
+    }
+
+    .hero{
+        min-height:700px;
+    }
+
+    .hero-content{
+        margin-top:70px;
+    }
+
+    .hero h1{
+        font-size:45px;
+    }
+
+    .hero-buttons{
+        flex-direction:column;
+    }
+
+    .btn{
+        width:100%;
+    }
+
+    .section{
+        padding:65px 5%;
+    }
+
+    .payment-section{
+        padding:10px 5% 65px;
+    }
+
+    .payment-grid{
+        grid-template-columns:1fr;
+    }
+
+    .payment-security{
+        align-items:flex-start;
+        text-align:left;
+    }
+
+    .services-grid{
+        grid-template-columns:1fr;
+    }
+
+    .steps{
+        grid-template-columns:1fr;
+    }
+
+    .address-box,
+    .travel,
+    .schedule-box{
+        padding:20px;
+    }
+
+    .modal{
+        padding:8px;
+    }
+
+    .modal-box{
+        border-radius:18px;
+    }
+
+    .quote-schedule-line{
+        align-items:flex-start;
+    }
+
+    .trust-badges{
+        flex-direction:column;
+        align-items:stretch;
+    }
+
+    .trust-badge{
+        justify-content:center;
+    }
+
+}
+
 </style>
+</head>
 
-<button id="alex-launch"
-  type="button"
-  aria-label="Abrir Alex IA">✦</button>
 
-<section id="alex-chat" aria-label="Alex IA">
-  <div class="alex-header">
-    <div>
-      <strong>✦ Alex IA</strong>
-      <small>Assistente virtual AéreoAlex</small>
-    </div>
-    <button id="alex-close"
-      type="button"
-      aria-label="Fechar">×</button>
-  </div>
+<body>
 
-  <div id="alex-messages" role="log"
-    aria-live="polite">
-    <div class="alex-bubble alex-bot">
-      Olá! 👋 Sou a Alex IA.
-      Como posso ajudar com nossos
-      serviços de drones?
-    </div>
-  </div>
 
-  <form id="alex-form">
-    <input id="alex-input"
-      type="text"
-      placeholder="Digite sua mensagem..."
-      autocomplete="off"
-      maxlength="2000"
-      required>
-    <button id="alex-send"
-      type="submit">Enviar</button>
-  </form>
-  <div id="alex-status" role="status"></div>
+<header>
+
+<div class="nav">
+
+<a href="#" class="logo">
+
+<div class="logo-icon">
+
+<svg viewBox="0 0 100 70">
+
+<g fill="none"
+stroke="#FFD21C"
+stroke-width="5"
+stroke-linecap="round">
+
+<path d="M39 29L18 18"/>
+<path d="M39 41L18 52"/>
+<path d="M61 29L82 18"/>
+<path d="M61 41L82 52"/>
+
+</g>
+
+<circle cx="14" cy="16" r="7" fill="#FFD21C"/>
+<circle cx="14" cy="54" r="7" fill="#FFD21C"/>
+<circle cx="86" cy="16" r="7" fill="#FFD21C"/>
+<circle cx="86" cy="54" r="7" fill="#FFD21C"/>
+
+<rect x="34"
+y="24"
+width="32"
+height="22"
+rx="8"
+fill="#FFD21C"/>
+
+<rect x="40"
+y="28"
+width="20"
+height="11"
+rx="4"
+fill="#06111F"/>
+
+<circle cx="50"
+cy="45"
+r="5"
+fill="#FFD21C"/>
+
+</svg>
+
+</div>
+
+Aéreo<span>Alex</span>
+
+</a>
+
+
+<button class="cart-button"
+onclick="openCart()">
+
+🛒 Orçamento
+
+<span class="cart-count"
+id="cartCount">
+0
+</span>
+
+</button>
+
+</div>
+
+</header>
+
+
+<!-- ================= HERO ================= -->
+
+<section class="hero">
+
+<div class="hero-content">
+
+<div class="hero-text">
+
+<div class="badge">
+FOTOS E VÍDEOS AÉREOS • SÃO PAULO
+</div>
+
+<h1>
+Uma nova perspectiva para
+<span>seu projeto.</span>
+</h1>
+
+<p>
+Fotos e vídeos profissionais com drone para imóveis,
+terrenos, obras, chácaras, sítios, eventos e muito mais.
+</p>
+
+<div class="hero-buttons">
+
+<a href="#servicos"
+class="btn btn-primary">
+Ver serviços
+</a>
+
+<button class="btn btn-secondary"
+onclick="openCart()">
+🛒 Montar orçamento
+</button>
+
+</div>
+
+</div>
+
+</div>
+
+
+<div class="drone-container">
+
+<svg class="flying-drone"
+viewBox="0 0 700 330">
+
+<g stroke="#FFD21C"
+stroke-width="12"
+stroke-linecap="round"
+fill="none">
+
+<path d="M290 125L145 65"/>
+<path d="M290 175L145 235"/>
+<path d="M410 125L555 65"/>
+<path d="M410 175L555 235"/>
+
+</g>
+
+
+<g class="propeller"
+stroke="#FFD21C"
+stroke-width="7"
+stroke-linecap="round">
+
+<path d="M90 45L200 85"/>
+<path d="M200 45L90 85"/>
+
+</g>
+
+
+<g transform="translate(0 170)">
+
+<g class="propeller"
+stroke="#FFD21C"
+stroke-width="7"
+stroke-linecap="round">
+
+<path d="M90 45L200 85"/>
+<path d="M200 45L90 85"/>
+
+</g>
+
+</g>
+
+
+<g transform="translate(410 0)">
+
+<g class="propeller"
+stroke="#FFD21C"
+stroke-width="7"
+stroke-linecap="round">
+
+<path d="M90 45L200 85"/>
+<path d="M200 45L90 85"/>
+
+</g>
+
+</g>
+
+
+<g transform="translate(410 170)">
+
+<g class="propeller"
+stroke="#FFD21C"
+stroke-width="7"
+stroke-linecap="round">
+
+<path d="M90 45L200 85"/>
+<path d="M200 45L90 85"/>
+
+</g>
+
+</g>
+
+
+<circle cx="145" cy="65" r="18" fill="#FFD21C"/>
+<circle cx="145" cy="235" r="18" fill="#FFD21C"/>
+<circle cx="555" cy="65" r="18" fill="#FFD21C"/>
+<circle cx="555" cy="235" r="18" fill="#FFD21C"/>
+
+
+<rect x="270"
+y="105"
+width="160"
+height="95"
+rx="30"
+fill="#FFD21C"/>
+
+<rect x="300"
+y="125"
+width="100"
+height="55"
+rx="18"
+fill="#06111F"/>
+
+<circle cx="350"
+cy="190"
+r="20"
+fill="#FFD21C"/>
+
+<circle cx="350"
+cy="190"
+r="12"
+fill="#06111F"/>
+
+<circle cx="346"
+cy="186"
+r="4"
+fill="#fff"/>
+
+<circle class="drone-light"
+cx="285"
+cy="115"
+r="6"
+fill="#fff"/>
+
+<circle class="drone-light"
+cx="415"
+cy="115"
+r="6"
+fill="#fff"/>
+
+</svg>
+
+</div>
+
 </section>
 
+
+<!-- ================= BENEFÍCIOS ================= -->
+
+<section class="section">
+
+<div class="container">
+
+<div class="section-title">
+
+<small>POR QUE AÉREOALEX</small>
+
+<h2>
+Imagens que valorizam seu projeto
+</h2>
+
+<p>
+Mostre imóveis, propriedades, obras e eventos
+de uma perspectiva profissional.
+</p>
+
+</div>
+
+
+<div class="benefits">
+
+<div class="benefit">
+
+<div class="icon">📷</div>
+
+<h3>
+Fotos aéreas
+</h3>
+
+<p>
+Imagens aéreas para anúncios,
+redes sociais e apresentação profissional.
+</p>
+
+</div>
+
+
+<div class="benefit">
+
+<div class="icon">🎬</div>
+
+<h3>
+Vídeos profissionais
+</h3>
+
+<p>
+Vídeos aéreos para apresentar espaços,
+propriedades, obras e eventos.
+</p>
+
+</div>
+
+
+<div class="benefit">
+
+<div class="icon">📍</div>
+
+<h3>
+Atendimento em São Paulo
+</h3>
+
+<p>
+Informe o endereço do trabalho e monte
+seu orçamento diretamente pelo site.
+</p>
+
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+
+<!-- ================= FORMAS DE PAGAMENTO ================= -->
+
+<section class="payment-section">
+
+<div class="container">
+
+<div class="section-title">
+
+<small>FORMAS DE PAGAMENTO</small>
+
+<h2>
+Pague do jeito que for melhor para você
+</h2>
+
+<p>
+A AéreoAlex oferece diferentes formas de pagamento
+para facilitar a contratação do seu serviço.
+</p>
+
+</div>
+
+
+<div class="payment-grid">
+
+
+<div class="payment-card">
+
+<div class="payment-icon">
+📱
+</div>
+
+<h3>
+Pix por aproximação
+</h3>
+
+<p>
+Pague aproximando seu celular de um dispositivo
+compatível com NFC. Uma opção rápida e prática.
+</p>
+
+<span class="payment-highlight">
+⚡ Pagamento rápido
+</span>
+
+</div>
+
+
+<div class="payment-card">
+
+<div class="payment-icon">
+▦
+</div>
+
+<h3>
+Pix via QR Code
+</h3>
+
+<p>
+Escaneie o QR Code Pix utilizando o aplicativo
+do seu banco e confirme o pagamento.
+</p>
+
+<span class="payment-highlight">
+✓ Pix
+</span>
+
+</div>
+
+
+<div class="payment-card">
+
+<div class="payment-icon">
+💳
+</div>
+
+<h3>
+Cartão de crédito
+</h3>
+
+<p>
+Aceitamos cartão de crédito com possibilidade
+de pagamento em até <strong>5 vezes</strong>.
+</p>
+
+<span class="payment-highlight">
+💳 Até 5x
+</span>
+
+</div>
+
+
+<div class="payment-card">
+
+<div class="payment-icon">
+💵
+</div>
+
+<h3>
+Débito ou dinheiro
+</h3>
+
+<p>
+Também aceitamos pagamento no cartão de débito
+ou em dinheiro, conforme combinado para o serviço.
+</p>
+
+<span class="payment-highlight">
+✓ Aceitamos
+</span>
+
+</div>
+
+
+</div>
+
+
+<div class="payment-security">
+
+<div class="payment-security-icon">
+🔒
+</div>
+
+<div>
+
+<strong>
+Pagamento com segurança
+</strong>
+
+<br>
+
+<span>
+Confira sempre o valor e o destinatário antes de
+confirmar qualquer pagamento. O pagamento deverá
+ser confirmado antes ou conforme combinado para
+a realização do serviço.
+</span>
+
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+
+<!-- ================= COMO FUNCIONA ================= -->
+
+<section class="section">
+
+<div class="container">
+
+<div class="section-title">
+
+<small>COMO FUNCIONA</small>
+
+<h2>
+Seu orçamento em poucos passos
+</h2>
+
+</div>
+
+
+<div class="steps">
+
+
+<div class="step">
+
+<div class="number">1</div>
+
+<h3>
+Escolha os serviços
+</h3>
+
+<p>
+Selecione fotos, vídeos ou pacotes.
+</p>
+
+</div>
+
+
+<div class="step">
+
+<div class="number">2</div>
+
+<h3>
+Informe o endereço
+</h3>
+
+<p>
+Digite o local onde será realizada a filmagem.
+</p>
+
+</div>
+
+
+<div class="step">
+
+<div class="number">3</div>
+
+<h3>
+Escolha data e horário
+</h3>
+
+<p>
+Informe quando deseja realizar o serviço.
+</p>
+
+</div>
+
+
+<div class="step">
+
+<div class="number">4</div>
+
+<h3>
+Fale pelo WhatsApp
+</h3>
+
+<p>
+Envie o orçamento diretamente para atendimento.
+</p>
+
+</div>
+
+
+</div>
+
+</div>
+
+</section>
+
+
+<!-- ================= SERVIÇOS ================= -->
+
+<section class="section services"
+id="servicos">
+
+<div class="container">
+
+<div class="section-title">
+
+<small>SERVIÇOS</small>
+
+<h2>
+Escolha o que você precisa
+</h2>
+
+<p>
+Selecione os serviços e monte seu orçamento.
+</p>
+
+</div>
+
+
+<div class="tabs">
+
+<button class="tab active"
+onclick="filterServices('todos',this)">
+Todos
+</button>
+
+<button class="tab"
+onclick="filterServices('fotos',this)">
+Fotos
+</button>
+
+<button class="tab"
+onclick="filterServices('videos',this)">
+Vídeos
+</button>
+
+<button class="tab"
+onclick="filterServices('pacotes',this)">
+Pacotes
+</button>
+
+</div>
+
+
+<div class="services-grid"
+id="servicesGrid">
+</div>
+
+</div>
+
+</section>
+
+
+<!-- ================= ENDEREÇO ================= -->
+
+<section class="address-section">
+
+<div class="container">
+
+<div class="address-box">
+
+<h2>
+📍 Local da filmagem
+</h2>
+
+<p>
+Digite o endereço onde o serviço será realizado
+e clique em <strong>Anexar endereço ao orçamento</strong>.
+</p>
+
+<div class="address-row">
+
+<input
+id="clientAddress"
+class="address-input"
+type="text"
+placeholder="Ex.: Rua, número, bairro, cidade - SP"
+autocomplete="street-address"
+>
+
+<button
+class="btn btn-primary"
+onclick="addAddressToBudget()">
+
+➕ Anexar endereço ao orçamento
+
+</button>
+
+</div>
+
+
+<div class="address-status"
+id="addressStatus">
+
+✓ Endereço anexado ao orçamento.
+
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+
+<!-- ================= DATA E HORÁRIO ================= -->
+
+<section class="schedule-section">
+
+<div class="container">
+
+<div class="schedule-box">
+
+<h2>
+📅 Data e horário do serviço
+</h2>
+
+<p>
+Escolha o dia e o horário desejados para realizar
+o serviço e adicione essas informações ao orçamento.
+</p>
+
+
+<div class="schedule-row">
+
+
+<div class="schedule-field">
+
+<label for="serviceDate">
+📅 Data do serviço
+</label>
+
+<input
+id="serviceDate"
+class="schedule-input"
+type="date"
+>
+
+</div>
+
+
+<div class="schedule-field">
+
+<label for="serviceTime">
+🕐 Horário
+</label>
+
+<input
+id="serviceTime"
+class="schedule-input"
+type="time"
+>
+
+</div>
+
+
+<button
+class="btn btn-primary schedule-button"
+onclick="addScheduleToBudget()">
+
+➕ Adicionar ao orçamento
+
+</button>
+
+</div>
+
+
+<div
+class="schedule-status"
+id="scheduleStatus">
+
+✓ Data e horário adicionados ao orçamento.
+
+</div>
+
+</div>
+
+
+<div class="travel">
+
+<h3>
+🚗 Deslocamento
+</h3>
+
+<p>
+Valor mínimo de <strong>R$ 30,00</strong>,
+com referência ida e volta de <strong>R$ 2,00 por km rodado</strong>.
+O valor final do deslocamento será confirmado conforme o local.
+</p>
+
+
+<div class="examples">
+
+<span class="example">
+5 km → R$ 30
+</span>
+
+<span class="example">
+10 km → R$ 30
+</span>
+
+<span class="example">
+15 km → R$ 30
+</span>
+
+<span class="example">
+20 km → R$ 40
+</span>
+
+<span class="example">
+30 km → R$ 60
+</span>
+
+</div>
+
+
+<p style="margin-top:12px;font-size:13px;">
+O deslocamento não é acrescentado automaticamente ao total dos serviços.
+</p>
+
+</div>
+
+</div>
+
+</section>
+
+
+<!-- ================= CTA ================= -->
+
+<section class="cta">
+
+<div class="cta-content">
+
+<h2>
+Vamos colocar seu projeto no ar?
+</h2>
+
+<p>
+Monte seu orçamento e entre em contato com a AéreoAlex.
+</p>
+
+<button
+class="btn btn-primary"
+onclick="openCart()">
+
+🛒 Montar orçamento
+
+</button>
+
+</div>
+
+</section>
+
+
+<!-- ================= FOOTER ================= -->
+
+<footer>
+
+<div class="footer">
+
+<p>
+© 2026 AéreoAlex — Fotos e vídeos com drone
+</p>
+
+<p>
+São Paulo - SP
+</p>
+
+</div>
+
+
+<div class="trust-badges">
+
+
+<div class="trust-badge">
+
+<span style="font-size:22px;">
+🔒
+</span>
+
+<span>
+
+<strong>
+Site seguro
+</strong>
+
+<br>
+
+Conexão protegida
+
+</span>
+
+</div>
+
+
+<div class="trust-badge">
+
+<span style="font-size:22px;">
+⚡
+</span>
+
+<span>
+
+<strong>
+Pix
+</strong>
+
+<br>
+
+Pagamento instantâneo
+
+</span>
+
+</div>
+
+
+<div class="trust-badge">
+
+<span style="font-size:22px;">
+💳
+</span>
+
+<span>
+
+<strong>
+Pagamento facilitado
+</strong>
+
+<br>
+
+Crédito, débito ou dinheiro
+
+</span>
+
+</div>
+
+
+</div>
+
+</footer>
+
+
+<!-- ================= MODAL ================= -->
+
+<div class="modal"
+id="cartModal">
+
+<div class="modal-box">
+
+<div class="modal-header">
+
+<h2>
+🛒 Seu orçamento
+</h2>
+
+<button
+class="close"
+onclick="closeCart()">
+×
+</button>
+
+</div>
+
+
+<div class="modal-content">
+
+<div id="quoteItems"></div>
+
+<div id="quoteAddress"></div>
+
+<div id="quoteSchedule"></div>
+
+
+<div class="total">
+
+<span>
+Total dos serviços
+</span>
+
+<strong id="quoteTotal">
+R$ 0,00
+</strong>
+
+</div>
+
+
+<button
+class="whatsapp"
+onclick="sendWhats()">
+
+💬 Solicitar orçamento pelo WhatsApp
+
+</button>
+
+</div>
+
+</div>
+
+</div>
+
+
 <script>
-(() => {
-  // SUBSTITUA PELA URL REAL DO SEU WORKER
-  const API_URL =
-    "https://alex-ia-api.SEU-SUBDOMINIO.workers.dev";
 
-  const chat = document.getElementById("alex-chat");
-  const launch = document.getElementById("alex-launch");
-  const close = document.getElementById("alex-close");
-  const form = document.getElementById("alex-form");
-  const input = document.getElementById("alex-input");
-  const send = document.getElementById("alex-send");
-  const messages = document.getElementById("alex-messages");
-  const status = document.getElementById("alex-status");
 
-  const history = [];
-  let busy = false;
+/* =========================================================
+SERVIÇOS
+========================================================= */
 
-  launch.addEventListener("click", () => {
-    chat.classList.toggle("open");
-    if (chat.classList.contains("open")) {
-      input.focus();
-    }
-  });
+const services = [
 
-  close.addEventListener("click", () => {
-    chat.classList.remove("open");
-  });
+{
+id:1,
+name:"10 fotos aéreas",
+price:180,
+category:"fotos",
+quantity:"📷 Até 10 fotos",
+image:"https://images.unsplash.com/photo-1485846234645-a62644f84728?auto=format&fit=crop&w=1000&q=90"
+},
 
-  function addMessage(text, role) {
-    const bubble = document.createElement("div");
-    bubble.className = "alex-bubble " +
-      (role === "user" ? "alex-user" : "alex-bot");
+{
+id:2,
+name:"20 fotos aéreas",
+price:250,
+category:"fotos",
+quantity:"📷 Até 20 fotos",
+popular:true,
+image:"https://images.unsplash.com/photo-1497366754035-f200968a6e72?auto=format&fit=crop&w=1000&q=90"
+},
 
-    // textContent evita injeção de HTML.
-    bubble.textContent = text;
-    messages.appendChild(bubble);
-    messages.scrollTop = messages.scrollHeight;
-  }
+{
+id:3,
+name:"30 fotos aéreas",
+price:300,
+category:"fotos",
+quantity:"📷 Até 30 fotos",
+image:"https://images.unsplash.com/photo-1511818966892-d7d671e672a2?auto=format&fit=crop&w=1000&q=90"
+},
 
-  form.addEventListener("submit", async (event) => {
-    event.preventDefault();
+{
+id:4,
+name:"Foto extra, adicionado apenas em pacote e serviços existente",
+price:7,
+category:"fotos",
+quantity:"📷 1 foto adicional",
+image:"https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?auto=format&fit=crop&w=1000&q=90"
+},
 
-    const message = input.value.trim();
-    if (!message || busy) return;
+{
+id:5,
+name:"Vídeo bruto até 1 min",
+price:180,
+category:"videos",
+quantity:"🎬 Até 1 minuto",
+image:"https://images.unsplash.com/photo-1492724441997-5dc865305da7?auto=format&fit=crop&w=1000&q=90"
+},
 
-    if (API_URL.includes("SEU-SUBDOMINIO")) {
-      addMessage(
-        "Configure a URL do servidor Alex IA.",
-        "assistant"
-      );
-      return;
-    }
+{
+id:6,
+name:"Vídeo bruto até 3 min",
+price:280,
+category:"videos",
+quantity:"🎬 Até 3 minutos",
+image:"https://images.unsplash.com/photo-1536240478700-b869070f9279?auto=format&fit=crop&w=1000&q=90"
+},
 
-    busy = true;
-    send.disabled = true;
-    input.disabled = true;
-    status.textContent = "Alex IA está digitando...";
+{
+id:7,
+name:"Vídeo bruto até 5 min",
+price:350,
+category:"videos",
+quantity:"🎬 Até 5 minutos",
+image:"https://images.unsplash.com/photo-1485846234645-a62644f84728?auto=format&fit=crop&w=1000&q=90"
+},
 
-    addMessage(message, "user");
-    input.value = "";
+{
+id:8,
+name:"Vídeo editado até 1 min",
+price:280,
+category:"videos",
+quantity:"🎬 Até 1 minuto editado",
+image:"https://images.unsplash.com/photo-1574717024653-61fd2cf4d44d?auto=format&fit=crop&w=1000&q=90"
+},
 
-    const conversation = [
-      ...history,
-      { role: "user", content: message }
-    ].slice(-12);
+{
+id:9,
+name:"Vídeo editado até 3 min",
+price:400,
+category:"videos",
+quantity:"🎬 Até 3 minutos editados",
+image:"https://images.unsplash.com/photo-1579165466741-7f35e4755660?auto=format&fit=crop&w=1000&q=90"
+},
 
-    try {
-      const controller = new AbortController();
-      const timeout = setTimeout(
-        () => controller.abort(), 25000
-      );
+{
+id:10,
+name:"Vídeo editado até 5 min",
+price:550,
+category:"videos",
+quantity:"🎬 Até 5 minutos editados",
+image:"https://images.unsplash.com/photo-1489599849927-2ee91cede3ba?auto=format&fit=crop&w=1000&q=90"
+},
 
-      let response;
+{
+id:11,
+name:"Imóveis e terrenos",
+price:350,
+category:"pacotes",
+quantity:"📷 20 fotos + 🎬 vídeo até 1 min",
+image:"https://images.unsplash.com/photo-1564013799919-ab600027ffc6?auto=format&fit=crop&w=1000&q=90"
+},
 
-      try {
-        response = await fetch(API_URL, {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json"
-          },
-          body: JSON.stringify({
-            messages: conversation
-          }),
-          signal: controller.signal
-        });
-      } finally {
-        clearTimeout(timeout);
-      }
+{
+id:12,
+name:"Obras e construções",
+price:380,
+category:"pacotes",
+quantity:"📷 20 fotos + 🎬 vídeo até 2 min",
+image:"https://images.unsplash.com/photo-1503387762-592deb58ef4e?auto=format&fit=crop&w=1000&q=90"
+},
 
-      const data = await response.json();
+{
+id:13,
+name:"Chácaras e sítios",
+price:450,
+category:"pacotes",
+quantity:"📷 30 fotos + 🎬 vídeo até 3 min",
+image:"https://images.unsplash.com/photo-1500076656116-558758c991c1?auto=format&fit=crop&w=1000&q=90"
+},
 
-      if (!response.ok) {
-        throw new Error(
-          data.error || "Erro HTTP " + response.status
-        );
-      }
+{
+id:14,
+name:"Pequenos eventos",
+price:500,
+category:"pacotes",
+quantity:"📷 30 fotos + 🎬 vídeo até 3 min",
+image:"https://images.unsplash.com/photo-1492684223066-81342ee5ff30?auto=format&fit=crop&w=1000&q=90"
+}
 
-      if (typeof data.reply !== "string") {
-        throw new Error("Resposta inválida");
-      }
+];
 
-      addMessage(data.reply, "assistant");
 
-      history.push(
-        { role: "user", content: message },
-        { role: "assistant", content: data.reply }
-      );
+/* =========================================================
+ESTADO
+========================================================= */
 
-      if (history.length > 10) {
-        history.splice(0, history.length - 10);
-      }
+let cart = [];
 
-      status.textContent = "Alex IA online";
+let clientAddress = "";
 
-    } catch (error) {
-      console.error("Alex IA:", error);
-      addMessage(
-        "Não consegui responder agora. " +
-        "Verifique a conexão ou tente novamente.",
-        "assistant"
-      );
-      status.textContent = "Falha na conexão";
-    } finally {
-      busy = false;
-      send.disabled = false;
-      input.disabled = false;
-      input.focus();
-    }
-  });
-})();
+let serviceDate = "";
+
+let serviceTime = "";
+
+
+/* =========================================================
+DINHEIRO
+========================================================= */
+
+function money(value){
+
+return value.toLocaleString("pt-BR",{
+style:"currency",
+currency:"BRL"
+});
+
+}
+
+
+/* =========================================================
+DATA MÍNIMA = HOJE
+========================================================= */
+
+function setMinimumDate(){
+
+const dateInput =
+document.getElementById("serviceDate");
+
+if(!dateInput) return;
+
+const now = new Date();
+
+const year =
+now.getFullYear();
+
+const month =
+String(now.getMonth()+1).padStart(2,"0");
+
+const day =
+String(now.getDate()).padStart(2,"0");
+
+const today =
+`${year}-${month}-${day}`;
+
+dateInput.min = today;
+
+}
+
+
+/* =========================================================
+FORMATAR DATA
+========================================================= */
+
+function formatDate(date){
+
+if(!date) return "";
+
+const parts =
+date.split("-");
+
+if(parts.length !== 3)
+return date;
+
+return `${parts[2]}/${parts[1]}/${parts[0]}`;
+
+}
+
+
+/* =========================================================
+MOSTRAR SERVIÇOS
+========================================================= */
+
+function renderServices(category="todos"){
+
+const grid =
+document.getElementById("servicesGrid");
+
+let list = services;
+
+if(category !== "todos"){
+
+list = services.filter(
+service => service.category === category
+);
+
+}
+
+grid.innerHTML = list.map(service => `
+
+<article class="service">
+
+${service.popular ? `
+<div class="popular">
+MAIS PEDIDO
+</div>
+` : ""}
+
+<div class="service-image">
+
+<img
+src="${service.image}"
+alt="${service.name}"
+loading="lazy"
+onerror="this.src='https://images.unsplash.com/photo-1473968512647-3e447244af8f?auto=format&fit=crop&w=1000&q=85'"
+>
+
+</div>
+
+<div class="service-content">
+
+<h3>
+${service.name}
+</h3>
+
+<div class="quantity">
+${service.quantity}
+</div>
+
+<div class="price">
+${money(service.price)}
+</div>
+
+<button
+class="add"
+onclick="addService(${service.id},this)">
+
+➕ Adicionar ao orçamento
+
+</button>
+
+</div>
+
+</article>
+
+`).join("");
+
+}
+
+
+/* =========================================================
+FILTROS
+========================================================= */
+
+function filterServices(category,button){
+
+document.querySelectorAll(".tab")
+.forEach(tab =>
+tab.classList.remove("active")
+);
+
+button.classList.add("active");
+
+renderServices(category);
+
+}
+
+
+/* =========================================================
+ADICIONAR SERVIÇO
+========================================================= */
+
+function addService(id,button){
+
+const service =
+services.find(item => item.id === id);
+
+if(!service) return;
+
+cart.push({...service});
+
+updateCart();
+
+const original =
+button.innerHTML;
+
+button.innerHTML =
+"✓ Adicionado";
+
+button.style.background =
+"#25d366";
+
+setTimeout(()=>{
+
+button.innerHTML =
+original;
+
+button.style.background =
+"";
+
+},1000);
+
+}
+
+
+/* =========================================================
+REMOVER SERVIÇO
+========================================================= */
+
+function removeItem(index){
+
+cart.splice(index,1);
+
+updateCart();
+
+renderQuote();
+
+}
+
+
+/* =========================================================
+CONTADOR
+========================================================= */
+
+function updateCart(){
+
+document.getElementById("cartCount")
+.textContent = cart.length;
+
+}
+
+
+/* =========================================================
+ABRIR
+========================================================= */
+
+function openCart(){
+
+renderQuote();
+
+document.getElementById("cartModal")
+.classList.add("show");
+
+}
+
+
+/* =========================================================
+FECHAR
+========================================================= */
+
+function closeCart(){
+
+document.getElementById("cartModal")
+.classList.remove("show");
+
+}
+
+
+/* =========================================================
+ENDEREÇO
+========================================================= */
+
+function addAddressToBudget(){
+
+const input =
+document.getElementById("clientAddress");
+
+const address =
+input.value.trim();
+
+if(!address){
+
+alert(
+"Digite o endereço do local da filmagem."
+);
+
+input.focus();
+
+return;
+
+}
+
+clientAddress = address;
+
+document.getElementById("addressStatus")
+.style.display = "block";
+
+document.getElementById("addressStatus")
+.textContent =
+"✓ Endereço anexado ao orçamento.";
+
+renderQuote();
+
+}
+
+
+/* =========================================================
+REMOVER ENDEREÇO
+========================================================= */
+
+function removeAddress(){
+
+clientAddress = "";
+
+document.getElementById("clientAddress")
+.value = "";
+
+document.getElementById("addressStatus")
+.style.display = "none";
+
+renderQuote();
+
+}
+
+
+/* =========================================================
+ADICIONAR DATA E HORÁRIO
+========================================================= */
+
+function addScheduleToBudget(){
+
+const dateInput =
+document.getElementById("serviceDate");
+
+const timeInput =
+document.getElementById("serviceTime");
+
+const date =
+dateInput.value;
+
+const time =
+timeInput.value;
+
+if(!date){
+
+alert(
+"Escolha a data desejada para o serviço."
+);
+
+dateInput.focus();
+
+return;
+
+}
+
+if(!time){
+
+alert(
+"Escolha o horário desejado para o serviço."
+);
+
+timeInput.focus();
+
+return;
+
+}
+
+const selectedDate =
+new Date(date + "T00:00:00");
+
+const today =
+new Date();
+
+today.setHours(0,0,0,0);
+
+if(selectedDate < today){
+
+alert(
+"A data escolhida não pode ser anterior à data de hoje."
+);
+
+dateInput.focus();
+
+return;
+
+}
+
+serviceDate = date;
+
+serviceTime = time;
+
+document.getElementById("scheduleStatus")
+.style.display = "block";
+
+document.getElementById("scheduleStatus")
+.textContent =
+"✓ Data e horário adicionados ao orçamento.";
+
+renderQuote();
+
+openCart();
+
+}
+
+
+/* =========================================================
+REMOVER DATA E HORÁRIO
+========================================================= */
+
+function removeSchedule(){
+
+serviceDate = "";
+
+serviceTime = "";
+
+document.getElementById("serviceDate")
+.value = "";
+
+document.getElementById("serviceTime")
+.value = "";
+
+document.getElementById("scheduleStatus")
+.style.display = "none";
+
+renderQuote();
+
+}
+
+
+/* =========================================================
+ESCAPAR TEXTO
+========================================================= */
+
+function escapeHtml(text){
+
+const div =
+document.createElement("div");
+
+div.textContent = text;
+
+return div.innerHTML;
+
+}
+
+
+/* =========================================================
+ORÇAMENTO
+========================================================= */
+
+function renderQuote(){
+
+const items =
+document.getElementById("quoteItems");
+
+if(cart.length === 0){
+
+items.innerHTML = `
+
+<div class="empty">
+
+Seu orçamento ainda está vazio.
+
+<br><br>
+
+Adicione um ou mais serviços.
+
+</div>
+
+`;
+
+}else{
+
+items.innerHTML =
+cart.map((item,index)=>`
+
+<div class="quote-item">
+
+<div class="quote-info">
+
+<strong>
+${item.name}
+</strong>
+
+<small>
+${item.quantity}
+</small>
+
+</div>
+
+<div class="item-price">
+${money(item.price)}
+</div>
+
+<button
+class="delete"
+onclick="removeItem(${index})"
+title="Excluir serviço">
+
+🗑️
+
+</button>
+
+</div>
+
+`).join("");
+
+}
+
+
+/* ENDEREÇO */
+
+const addressBox =
+document.getElementById("quoteAddress");
+
+if(clientAddress){
+
+addressBox.innerHTML = `
+
+<div class="quote-address">
+
+<div class="quote-address-line">
+
+<div>
+
+<strong>
+📍 Local da filmagem
+</strong>
+
+<div class="quote-address-text">
+${escapeHtml(clientAddress)}
+</div>
+
+</div>
+
+<button
+class="delete"
+onclick="removeAddress()"
+title="Excluir endereço">
+
+🗑️
+
+</button>
+
+</div>
+
+</div>
+
+`;
+
+}else{
+
+addressBox.innerHTML = "";
+
+}
+
+
+/* DATA E HORÁRIO */
+
+const scheduleBox =
+document.getElementById("quoteSchedule");
+
+if(serviceDate && serviceTime){
+
+scheduleBox.innerHTML = `
+
+<div class="quote-schedule">
+
+<div class="quote-schedule-line">
+
+<div>
+
+<strong>
+📅 Data e horário do serviço
+</strong>
+
+<div class="quote-schedule-text">
+
+📅 ${formatDate(serviceDate)}
+
+<br>
+
+🕐 ${escapeHtml(serviceTime)}
+
+</div>
+
+</div>
+
+<button
+class="delete"
+onclick="removeSchedule()"
+title="Excluir data e horário">
+
+🗑️
+
+</button>
+
+</div>
+
+</div>
+
+`;
+
+}else{
+
+scheduleBox.innerHTML = "";
+
+}
+
+
+/* TOTAL */
+
+const total =
+cart.reduce(
+(sum,item)=>sum + item.price,
+0
+);
+
+document.getElementById("quoteTotal")
+.textContent = money(total);
+
+}
+
+
+/* =========================================================
+WHATSAPP — NÚMERO OFICIAL AÉREOALEX
+========================================================= */
+
+function sendWhats(){
+
+if(cart.length === 0){
+
+alert(
+"Adicione pelo menos um serviço ao orçamento."
+);
+
+return;
+
+}
+
+
+if(!clientAddress){
+
+alert(
+"Para enviar o orçamento pelo WhatsApp, informe e anexe o endereço do local da filmagem."
+);
+
+document.getElementById("clientAddress").focus();
+
+return;
+
+}
+
+
+if(!serviceDate){
+
+alert(
+"Para enviar o orçamento pelo WhatsApp, escolha a data do serviço."
+);
+
+document.getElementById("serviceDate").focus();
+
+return;
+
+}
+
+
+if(!serviceTime){
+
+alert(
+"Para enviar o orçamento pelo WhatsApp, escolha o horário do serviço."
+);
+
+document.getElementById("serviceTime").focus();
+
+return;
+
+}
+
+
+const total =
+cart.reduce(
+(sum,item)=>sum + item.price,
+0
+);
+
+
+let message =
+`Olá, AéreoAlex! 👋
+
+Gostaria de solicitar um orçamento para serviço com drone.
+
+SERVIÇOS:
+
+`;
+
+
+cart.forEach((item,index)=>{
+
+message +=
+`${index+1}. ${item.name} — ${money(item.price)}
+   ${item.quantity}
+
+`;
+
+});
+
+
+message +=
+`TOTAL DOS SERVIÇOS: ${money(total)}
+
+`;
+
+
+message +=
+`📅 DATA DO SERVIÇO:
+${formatDate(serviceDate)}
+
+🕐 HORÁRIO:
+${serviceTime}
+
+`;
+
+
+message +=
+`📍 LOCAL DA FILMAGEM:
+${clientAddress}
+
+`;
+
+
+message +=
+`💳 FORMAS DE PAGAMENTO DISPONÍVEIS:
+• Pix por aproximação
+• Pix via QR Code
+• Cartão de crédito em até 5 vezes
+• Cartão de débito
+• Dinheiro
+
+`;
+
+
+message +=
+`🚗 DESLOCAMENTO:
+Mínimo de R$ 30,00
+Referência "ida e volta" de R$ 2,00 por km rodado.
+O valor será confirmado conforme o endereço.
+
+Gostaria de confirmar a disponibilidade.`;
+
+
+const phone = "5511953169968";
+
+
+const url =
+"https://wa.me/" +
+phone +
+"?text=" +
+encodeURIComponent(message);
+
+
+window.open(
+url,
+"_blank",
+"noopener,noreferrer"
+);
+
+}
+
+
+/* =========================================================
+FECHAR CLICANDO FORA
+========================================================= */
+
+document
+.getElementById("cartModal")
+.addEventListener("click",function(event){
+
+if(event.target === this){
+
+closeCart();
+
+}
+
+});
+
+
+/* =========================================================
+ESC
+========================================================= */
+
+document.addEventListener(
+"keydown",
+function(event){
+
+if(event.key === "Escape"){
+
+closeCart();
+
+}
+
+});
+
+
+/* =========================================================
+INICIALIZAR
+========================================================= */
+
+renderServices();
+
+updateCart();
+
+setMinimumDate();
+
 </script>
-<!-- FIM ALEX IA -->
+
+</body>
+</html>
